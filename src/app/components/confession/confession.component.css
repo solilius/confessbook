@@ -1,0 +1,32 @@
+h1 {
+  font-size: 45px;
+}
+.confession-form {
+
+  margin-top: 8vh;
+  padding-top: 5vh;
+  text-align: center;
+}
+
+.intro {
+  margin-top: 5vh;
+  font-size: 20px;
+  display: inline-flex;
+}
+
+.confession {
+
+  display: inline;
+  margin-bottom: 5vh;
+  min-height: 20vh;
+  max-height: 40vh;
+  min-width: 50vw;
+  max-width: 50vw;
+  text-align: justify;
+  padding: 2%;
+}
+
+.btn-send{
+  font-size: 20px;
+  width: 8vw;
+}

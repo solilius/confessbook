@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css?family=Varela+Round&display=swap");
+
+html {
+  font-size: 15px;
+  direction: rtl;
+  background-color: #9c9c9c;
+}
+
+body{
+  font-family: "Varela Round" !important;
+  background-color: #9c9c9c !important;
+}

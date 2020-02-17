@@ -1,0 +1,23 @@
+<form class="col-md-8 col-md-offset-2 confession-form well" (ngSubmit)="sendConfession()">
+    <h1>Tattoos Confesions</h1>
+    <div>
+        <div class="intro">
+            ספרו לנו על חוויה שלכם מעולם הקעקועים! <br />
+            זה יכול להיות על קעקוע שעשיתם\רוצים לעשות או שראיתם<br />
+            או בכללי תובנה שרציתם לחלוק.<br />
+            קיצר פשוט כתבו!
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+    </div>
+    <textarea name="confession" [(ngModel)]="confession" class="form-control z-depth-1 confession" autofocus required minlength="10"
+        placeholder="יש לי חלום לעשות קעקוע של מפת העולם על הרגל ולצבוע כל מדינה שאני מבקר">
+        </textarea>
+    <br />
+    <input type="submit" class="btn btn-lg btn-success btn-send" value="שלח">
+    <br />
+    <br />
+
+</form>
