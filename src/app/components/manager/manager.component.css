@@ -1,0 +1,35 @@
+.navbar{
+    border-radius: 0;
+}
+
+.navbar-nav{
+    padding-right: 0;
+}
+
+.float{
+	position:fixed;
+	width:7vh;
+	height:7vh;
+	bottom:3vh;
+	right:3vh;
+	background-color:rgb(19, 150, 52);
+	color:#FFF;
+	border-radius:50px;
+    border-width: 0;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+    font-size: 4vh;
+    padding-top: 0.5vh;
+}
+
+.float:hover{
+	background-color:rgb(16, 163, 53);
+}
+
+.float:active{
+	background-color:rgb(24, 145, 54);
+}
+
+.my-float{
+	margin-top:22px;
+}
