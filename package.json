@@ -1,6 +1,9 @@
 {
   "name": "tattoos-confessions-angular",
-  "version": "0.0.0",
+  "version": "1.0.0",
+   "engines": {
+   "node": "12.14.1"
+   },
   "scripts": {
     "ng": "ng",
     "heroku-postbuild": "ng build --prod",
