@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
+
 
 @Component({
     selector: 'app-manager',
@@ -8,11 +10,13 @@ import { Router } from '@angular/router';
 })
 export class ManagerComponent implements OnInit {
     activeTab: string;
+    systemName: string;
     constructor(private router: Router) { }
 
     ngOnInit(): void {
         this.router.navigateByUrl(`/manager/main`);
         this.activeTab = 'main';
+        this.systemName = environment.system;
     }
 
     loadChild(page: string, e) {

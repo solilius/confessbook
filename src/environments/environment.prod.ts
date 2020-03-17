@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  system: "Tattoos Confessions",
+  serverURL: "https://confessions-tattoos.herokuapp.com",
 };

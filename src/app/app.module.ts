@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { ConfessionComponent } from './components/confession/confession.component';
 import { ManagerComponent } from './components/manager/manager.component';
-import { ConfessionSentComponent } from './components/confession-sent/confession-sent.component';
 import { MainComponent } from './components/manager/child-components/main/main.component';
 import { SchedulerComponent } from './components/manager/child-components/scheduler/scheduler.component';
 import { ArchiveComponent } from './components/manager/child-components/archive/archive.component';
@@ -25,7 +24,6 @@ import { ArchivedConfessionItemComponent } from './components/manager/child-comp
     LoginComponent,
     ConfessionComponent,
     ManagerComponent,
-    ConfessionSentComponent,
     MainComponent,
     SchedulerComponent,
     ArchiveComponent,

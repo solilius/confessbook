@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+    system: "Tattoos Confessions",
+  serverURL: "http://localhost:3000",
 };
 
 /*

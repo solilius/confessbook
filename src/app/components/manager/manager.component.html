@@ -1,6 +1,6 @@
 <mat-toolbar color="primary" class="toolbar">
     <mat-toolbar-row>
-        <span>Tattoos Confessions</span>
+        <span>{{systemName}}</span>
         <span class="toolbar-spacer"></span>
         <a [ngClass]="setClasses('archive')" class="toolbar-item" (click)="loadChild('archive', $event)">
             <mat-icon>archive</mat-icon>

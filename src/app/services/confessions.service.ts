@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Confession } from '../models/confession/confession.module';
 import { CookieService } from 'ngx-cookie-service';
+import { environment } from '../../environments/environment.prod';
 
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -15,8 +16,8 @@ const httpOptions = {
     providedIn: 'root'
 })
 export class ConfessionsService {
-    //serverUrl: string = 'http://localhost:3000';
-    serverUrl: string = 'https://confessions-tattoos.herokuapp.com/';
+    
+    serverUrl: string = environment.serverURL;
 
     constructor(private http: HttpClient, private cookie: CookieService) { }
 
