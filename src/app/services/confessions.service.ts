@@ -16,7 +16,7 @@ const httpOptions = {
 })
 export class ConfessionsService {
     //serverUrl: string = 'http://localhost:3000';
-    serverUrl: string = 'https://tattoos-confessions.herokuapp.com';
+    serverUrl: string = 'https://confessions-tattoos.herokuapp.com/';
 
     constructor(private http: HttpClient, private cookie: CookieService) { }
 
