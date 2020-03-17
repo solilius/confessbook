@@ -1,13 +1,14 @@
 {
   "name": "tattoos-confessions-angular",
   "version": "1.0.0",
-   "engines": {
-   "node": "12.14.1"
-   },
+  "engines": {
+    "node": "12.14.1"
+  },
   "scripts": {
     "ng": "ng",
     "heroku-postbuild": "ng build --prod",
-    "start": "ng serve",
+    "start-dev": "ng serve",
+    "start":"node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -17,8 +18,10 @@
   "dependencies": {
     "@angular/animations": "~9.0.0",
     "@angular/cdk": "^9.1.1",
+    "@angular/cli": "~9.0.1",
     "@angular/common": "~9.0.0",
     "@angular/compiler": "~9.0.0",
+    "@angular/compiler-cli": "~9.0.0",
     "@angular/core": "~9.0.0",
     "@angular/forms": "~9.0.0",
     "@angular/localize": "^9.0.1",
@@ -26,14 +29,13 @@
     "@angular/platform-browser": "~9.0.0",
     "@angular/platform-browser-dynamic": "~9.0.0",
     "@angular/router": "~9.0.0",
+    "express": "^4.17.1",
     "moment": "^2.24.0",
     "ngx-cookie-service": "^3.0.2",
     "rxjs": "~6.5.4",
     "sweetalert2": "^9.7.2",
     "tslib": "^1.10.0",
-    "zone.js": "~0.10.2",
-    "@angular/cli": "~9.0.1",
-    "@angular/compiler-cli": "~9.0.0"
+    "zone.js": "~0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.900.1",
