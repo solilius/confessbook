@@ -10,16 +10,18 @@ import Swal from 'sweetalert2'
 })
 export class ConfessionComponent implements OnInit {
     confession: string;
-
+    isSent: boolean;
     constructor(private confessionsService: ConfessionsService, private router: Router) { }
 
-    ngOnInit(): void { }
+    ngOnInit(): void {
+        this.isSent = false;
+     }
 
     sendConfession() {
         if (this.confession && this.confession.length >= 10) {
-            this.confessionsService.postConfesion(this.confession).subscribe(res => {
+            this.confessionsService.postConfession(this.confession).subscribe(res => {
                 if (res.status === "success") {
-                    this.router.navigateByUrl('/sent');
+                     this.isSent = true;
                 } else {
                     Swal.fire({
                         title: 'אופס',

@@ -7,7 +7,6 @@ import { ManagerComponent } from '../app/components/manager/manager.component';
 import { MainComponent } from '../app/components/manager/child-components/main/main.component';
 import { SchedulerComponent } from '../app/components/manager/child-components/scheduler/scheduler.component';
 import { ArchiveComponent } from '../app/components/manager/child-components/archive/archive.component';
-import { UpdatesComponent } from '../app/components/manager/child-components/updates/updates.component';
 
 
 const routes: Routes = [
@@ -19,8 +18,7 @@ const routes: Routes = [
         children: [
             { path: 'main', component: MainComponent },
             { path: 'scheduler', component: SchedulerComponent },
-            { path: 'archive', component: ArchiveComponent },
-            { path: 'updates', component: UpdatesComponent }
+            { path: 'archive', component: ArchiveComponent }
         ]
     },
     { path: '**', component: ConfessionComponent }

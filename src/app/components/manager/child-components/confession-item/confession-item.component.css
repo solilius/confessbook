@@ -1,0 +1,79 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  padding: 20px 32px;
+  cursor: pointer;
+  text-align: right;
+  min-height: 50px;
+  max-height: 700px;
+  font-size: 20px;
+  transition: 300ms;
+  line-height: 1.2;
+}
+
+.create-date {
+  flex-basis: 12%;
+  color: gray;
+  font-size: 12px;
+}
+
+.item-collapsed {
+  flex-basis: 75%;
+  overflow-y: hidden;
+}
+
+.collaped-message {
+  max-height: 100px;
+}
+
+.item-extended {
+  max-height: 700px;
+  flex-basis: 75%;
+  cursor: default;
+}
+
+mat-form-field {
+  width: 100%;
+  line-height: 1.2 !important;
+  font-family: "Varela Round";
+  overflow-x: visible;
+  text-align: right;
+}
+
+.message {
+  max-height: 400px;
+  min-height: 100px;
+  height: 300px;
+  direction: rtl;
+  padding: 0;
+  margin-top: -1.28125em;
+}
+
+.buttons-area {
+  width: 100%;
+  text-align: left;
+}
+
+button{
+    margin-right: 4px;
+}
+
+.collpase-button-area{
+    position: relative;
+}
+
+.collpase-button{
+    position: absolute;
+    bottom: 0;
+    left: -128px;
+    font-size: 32px;
+
+}
+
+.collpase-button:hover {
+  font-weight: bolder;
+  color: rgb(121, 121, 121);
+  transition: font-weight 100ms;
+  cursor: pointer;
+}

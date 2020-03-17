@@ -3,10 +3,14 @@
 html {
   font-size: 15px;
   direction: rtl;
-  background-color: #9c9c9c;
+  background-color: #c7effc !important;
 }
 
 body{
   font-family: "Varela Round" !important;
-  background-color: #9c9c9c !important;
+  background-color: #c7effc !important;
+  height: 100vh;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

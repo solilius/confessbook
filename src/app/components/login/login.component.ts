@@ -16,7 +16,9 @@ export class LoginComponent implements OnInit {
     constructor(private fb: FormBuilder, private service: ConfessionsService, private router: Router) {
         this.initForm();
     }
-    ngOnInit(): void { }
+    ngOnInit(): void { 
+        this.loginForm.controls['username'].setValue(localStorage.getItem('username'));
+    }
 
     initForm() {
         this.loginForm = this.fb.group({
@@ -26,7 +28,7 @@ export class LoginComponent implements OnInit {
     }
 
     login() {
-        this.service.login(this.loginForm.value).subscribe(res => {
+        this.service.login(this.loginForm.value).subscribe((res)=> {
             localStorage.setItem('username', this.loginForm.get('username').value);
             this.router.navigateByUrl('/manager');
         }, (err) => {

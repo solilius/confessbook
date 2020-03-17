@@ -1,0 +1,28 @@
+<div class="container" [ngStyle]="{'cursor': cursor}" >
+
+    <p class="create-date">{{confession.create_date | dateFormat: ' HH:MM - DD/MM/YYYY'}}</p>
+
+    <div class="item-collapsed" (click)="toggleItem()" *ngIf="!isOpen; else open_confession">
+        <div class="collaped-message">{{confession.message}}</div>
+    </div>
+
+    <ng-template #open_confession>
+        <div class="item-extended">
+            <mat-form-field>
+                <textarea class="message" matInput type="text" [(ngModel)]="confession.message"> </textarea>
+            </mat-form-field>
+            <mat-form-field>
+                <textarea matInput type="text" [(ngModel)]="confession.comment" placeholder="הערת המערכת"> </textarea>
+            </mat-form-field>
+            <div class="buttons-area">
+                <button mat-raised-button color="warn" (click)='deleteConfession()'>מחק</button>
+                <button mat-raised-button color="primary" (click)='postConfession()'>פרסם</button>
+            </div>
+            <div class=collpase-button-area>
+                <button mat-stroked-button class="collpase-button" (click)='toggleItem()'>
+                    <mat-icon>keyboard_arrow_up</mat-icon>
+                </button>
+            </div>
+        </div>
+    </ng-template>
+</div>

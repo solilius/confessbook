@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="meta-data">
+        <p class="meta-data-title">תאריך יצירה:</p>
+        <p class="meta-data-info">{{confession.create_date | dateFormat: ' HH:MM - DD/MM/YYYY'}}</p>
+        <p class="meta-data-title">תאריך שינוי:</p>
+        <p class="meta-data-info">{{confession.update_date | dateFormat: ' HH:MM - DD/MM/YYYY'}}</p>
+        <p class="meta-data-title">נערך על ידי:</p>
+        <p class="meta-data-info">{{confession.updated_by}}</p>
+        <p class="meta-data-title">פורסם:</p>
+        <p class="meta-data-info">{{confession.serial ? 'כן': 'לא'}}</p>
+
+
+    </div>
+
+    <p class="message">{{confession.message}}</p>
+    <button mat-raised-button color="primary" class="unarchive-btn" (click)='unarchiveConfession()'>שחזר</button>
+</div>

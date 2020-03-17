@@ -1,23 +1,27 @@
-<form class="col-md-8 col-md-offset-2 confession-form well" (ngSubmit)="sendConfession()">
-    <h1>Tattoos Confesions</h1>
-    <div>
-        <div class="intro">
-            ספרו לנו על חוויה שלכם מעולם הקעקועים! <br />
-            זה יכול להיות על קעקוע שעשיתם\רוצים לעשות או שראיתם<br />
-            או בכללי תובנה שרציתם לחלוק.<br />
-            קיצר פשוט כתבו!
-        </div>
-        <br />
-        <br />
-        <br />
-        <br />
-    </div>
-    <textarea name="confession" [(ngModel)]="confession" class="form-control z-depth-1 confession" autofocus required minlength="10"
-        placeholder="יש לי חלום לעשות קעקוע של מפת העולם על הרגל ולצבוע כל מדינה שאני מבקר">
-        </textarea>
-    <br />
-    <input type="submit" class="btn btn-lg btn-success btn-send" value="שלח">
-    <br />
-    <br />
+<div class='abu-container'>
+    <div class="title">Tattoos Confessions</div>
+    <mat-card class="container">
+        <form *ngIf="!isSent; else confession_sent" class="" (ngSubmit)="sendConfession()">
+                <p class="intro">
+                    ספרו לנו על חוויה שלכם מעולם הקעקועים!<br />
+                    זה יכול להיות על קעקוע שעשיתם/רוצים לעשות או שראיתם<br />
+                    או בכללי תובנה שרציתם לחלוק.<br />
+                    קיצר פשוט כתבו!
+                </p>
+            <mat-form-field >
+                <textarea matInput class="confession" name="confession" [(ngModel)]="confession" autofocus required minlength="10">
+                </textarea>
+            </mat-form-field>
+            <button class="send-btn" mat-raised-button color="primary">שלח</button>
 
-</form>
+        </form>
+
+        <ng-template #confession_sent>
+            <div class="confession-sent">
+                <h2> הוידוי נשלח בהצלחה!</h2><br /><br /><br />
+                <h3> תודה רבה! נשתדל להעלות אותו בהקדם האפשרי</h3><br /><br /><br />
+                <img class="sent-img" src="../../../assets/sent.png">
+            </div>
+        </ng-template>
+    </mat-card>
+</div>

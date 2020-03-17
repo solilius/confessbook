@@ -12,8 +12,12 @@ import { ConfessionSentComponent } from './components/confession-sent/confession
 import { MainComponent } from './components/manager/child-components/main/main.component';
 import { SchedulerComponent } from './components/manager/child-components/scheduler/scheduler.component';
 import { ArchiveComponent } from './components/manager/child-components/archive/archive.component';
-import { NewConfessionComponent } from './components/manager/child-components/new-confession/new-confession.component';
-import { UpdatesComponent } from './components/manager/child-components/updates/updates.component';
+import { ConfessionItemComponent } from './components/manager/child-components/confession-item/confession-item.component';
+import { MomentPipe } from './datePipe';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MaterialModule} from './material';
+import {CookieService } from 'ngx-cookie-service';
+import { ArchivedConfessionItemComponent } from './components/manager/child-components/archived-confession-item/archived-confession-item.component';
 
 @NgModule({
   declarations: [
@@ -25,17 +29,20 @@ import { UpdatesComponent } from './components/manager/child-components/updates/
     MainComponent,
     SchedulerComponent,
     ArchiveComponent,
-    NewConfessionComponent,
-    UpdatesComponent
+    ConfessionItemComponent,
+    MomentPipe,
+    ArchivedConfessionItemComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

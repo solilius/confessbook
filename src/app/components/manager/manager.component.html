@@ -1,16 +1,20 @@
-<nav class="navbar navbar-default">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="#">Tattoos Confessions Manager</a>
-    </div>
-    <div style="float: right">
-        <ul class="nav navbar-nav">
-            <li [ngClass]="setClasses('updates')"><a (click)="loadChild('updates', $event)" href="">עדכונים</a></li>
-            <li [ngClass]="setClasses('archive')"><a (click)="loadChild('archive', $event)" href="">ארכיון</a></li>
-            <li [ngClass]="setClasses('scheduler')"><a (click)="loadChild('scheduler', $event)" href="">תזמונים</a></li>
-            <li [ngClass]="setClasses('main')"><a (click)="loadChild('main', $event)" href="">ראשי</a></li>
-        </ul>
-    </div>
-</nav>
+<mat-toolbar color="primary" class="toolbar">
+    <mat-toolbar-row>
+        <span>Tattoos Confessions</span>
+        <span class="toolbar-spacer"></span>
+        <a [ngClass]="setClasses('archive')" class="toolbar-item" (click)="loadChild('archive', $event)">
+            <mat-icon>archive</mat-icon>
+            <span class='item-text'> ארכיון </span>
+        </a>
+        <a [ngClass]="setClasses('scheduler')" class="toolbar-item" (click)="loadChild('scheduler', $event)">
+            <mat-icon>timer</mat-icon>
+            <span class='item-text'> תזמונים </span>
+        </a>
+        <a [ngClass]="setClasses('main')" class="toolbar-item" (click)="loadChild('main', $event)">
+            <mat-icon>list_alt</mat-icon>
+            <span class='item-text'> דף ראשי </span>
+        </a>
+    </mat-toolbar-row>
+</mat-toolbar>
 
 <router-outlet></router-outlet>
-<button class="float"> + </button>

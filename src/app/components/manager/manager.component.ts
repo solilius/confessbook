@@ -16,7 +16,6 @@ export class ManagerComponent implements OnInit {
     }
 
     loadChild(page: string, e) {
-        e.preventDefault();
         this.activeTab = page;
         this.router.navigateByUrl(`/manager/${page}`);
     }

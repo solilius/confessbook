@@ -1,1 +1,16 @@
-<p>archive works!</p>
+<mat-card class="slider">
+    <mat-card-content>
+        <section class="slider-container">
+            <span> שלא פורסמו </span>
+            <mat-slide-toggle [color]="color" [checked]="displayPosted"(change)="filter()">
+            </mat-slide-toggle>
+            <span> כולם </span>
+        </section>
+    </mat-card-content>
+</mat-card>
+
+<div id="confession-list">
+    <app-archived-confession-item *ngFor="let confession of displayedConfessions" [confession]="confession"
+        (removeConfession)="removeConfession($event)">
+    </app-archived-confession-item>
+</div>

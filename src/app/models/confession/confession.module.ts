@@ -2,9 +2,9 @@ export class Confession {
     _id: string;
     archived: boolean;
     message: string;
-    created_date: Date;
+    create_date: Date;
     comment?: string;
-    post_by?: string;
-    post_date?: Date;
+    updated_by?: string;
+    update_date?: Date;
     serial?: number;
 }

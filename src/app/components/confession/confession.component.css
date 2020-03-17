@@ -1,32 +1,45 @@
-h1 {
-  font-size: 45px;
+.abu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  padding-top: 200px;
+  align-items: center;
 }
-.confession-form {
 
-  margin-top: 8vh;
-  padding-top: 5vh;
+.title {
+  font-size: 30px;
+  font-weight: bolder;
+  padding-bottom: 50px;
+}
+
+.container {
+  width: 30vw;
   text-align: center;
+  line-height: 1.5;
+  font-size: 20px;
 }
 
 .intro {
-  margin-top: 5vh;
-  font-size: 20px;
-  display: inline-flex;
+  padding: 30px;
 }
 
+mat-form-field {
+  width: 25vw;
+border: solid 1px whitesmoke;
+}
 .confession {
-
-  display: inline;
-  margin-bottom: 5vh;
-  min-height: 20vh;
+  height: 20vh;
   max-height: 40vh;
-  min-width: 50vw;
-  max-width: 50vw;
   text-align: justify;
-  padding: 2%;
+  padding: 0 20px;
 }
 
-.btn-send{
-  font-size: 20px;
-  width: 8vw;
+.send-btn {
+  width: 100px;
+  margin-top: 20px;
+}
+
+.sent-img {
+  height: 30vh;
 }
