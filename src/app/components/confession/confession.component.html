@@ -3,10 +3,7 @@
     <mat-card class="container">
         <form *ngIf="!isSent; else confession_sent" class="" (ngSubmit)="sendConfession()">
             <p class="intro">
-                ספרו לנו על חוויה שלכם מעולם הקעקועים!<br />
-                זה יכול להיות על קעקוע שעשיתם/ שראיתם/ רוצים לעשות<br />
-                או בכללי תובנה שרציתם לחלוק.<br />
-                קיצר פשוט כתבו!<br />
+                {{intro}}
             </p>
             <p class="anonymous">כמובן שהכל באנונימיות מוחלטת</p>
             <mat-form-field>

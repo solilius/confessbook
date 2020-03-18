@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from '../../../environments/environment';
+import { ConfessionsService } from '../../services/confessions.service';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 import Swal from 'sweetalert2'
 
 @Component({
@@ -11,9 +12,13 @@ import Swal from 'sweetalert2'
 export class ManagerComponent implements OnInit {
     activeTab: string;
     appName: string;
-    constructor(private router: Router) { }
+    constructor(private service: ConfessionsService, private router: Router, private titleService: Title) { }
 
     ngOnInit(): void {
+        this.service.getAppData().subscribe(res => {
+            this.titleService.setTitle(res.name);
+            this.appName = res.name;
+        });
         if (this.mobilecheck()) {
             Swal.fire({
                 title: 'אופס',
@@ -21,11 +26,10 @@ export class ManagerComponent implements OnInit {
                 icon: 'info',
                 showCancelButton: false,
                 confirmButtonText: 'תודה'
-            })
+            });
         }
         this.router.navigateByUrl(`/manager/main`);
         this.activeTab = 'main';
-        this.appName = environment.appName;
     }
 
     loadChild(page: string) {

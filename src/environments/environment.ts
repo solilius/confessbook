@@ -1,6 +1,7 @@
 export const environment = {
   production: false,
   server: "http://localhost:8080",
-  appName: "<temp_name>"
+  appName: "Confessions",
+  intro: "זה המקום להתוודות על וידיים ש"
 };
 

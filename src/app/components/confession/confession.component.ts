@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfessionsService } from '../../services/confessions.service';
-import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 import Swal from 'sweetalert2'
 
 @Component({
@@ -12,19 +12,24 @@ import Swal from 'sweetalert2'
 export class ConfessionComponent implements OnInit {
     confession: string;
     appName: string;
+    intro: string;
     isSent: boolean;
-    constructor(private confessionsService: ConfessionsService, private router: Router) { }
+    constructor(private service: ConfessionsService, private router: Router, private titleService: Title) { }
 
     ngOnInit(): void {
         this.isSent = false;
-        this.appName = environment.appName;
-     }
+        this.service.getAppData().subscribe(res => {
+            this.titleService.setTitle(res.name);
+            this.appName = res.name;
+            this.intro = res.intro;
+        });
+    }
 
     sendConfession() {
         if (this.confession && this.confession.length >= 10) {
-            this.confessionsService.postConfession(this.confession).subscribe(res => {
+            this.service.postConfession(this.confession).subscribe(res => {
                 if (res.status === "success") {
-                     this.isSent = true;
+                    this.isSent = true;
                 } else {
                     Swal.fire({
                         title: 'אופס',

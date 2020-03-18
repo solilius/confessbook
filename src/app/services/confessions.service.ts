@@ -19,18 +19,19 @@ export class ConfessionsService {
     constructor(private http: HttpClient, private cookie: CookieService) { }
 
     login(data: Object): Observable<any> {
-        return this.http.post<any>(`${environment.server}/login`, data, httpOptions).pipe(map(res => {}));
+        return this.http.post<any>(`${environment.server}/login`, data, httpOptions).pipe(map(res => { }));
+    }
+
+    getConfessions(isArchived: boolean): Observable<any> {
+        return this.http.get<Confession[]>(`${environment.server}/confessions?archived=${isArchived}`);
     }
 
     postConfession(confession: string): Observable<any> {
         return this.http.post<any>(`${environment.server}/confessions`, { message: confession }, httpOptions);
     }
 
-    getConfessions(isArchived: boolean) {
-        return this.http.get<Confession[]>(`${environment.server}/confessions?archived=${isArchived}`);
-    }
 
-    unarchiveConfession(id: string) {
+    unarchiveConfession(id: string): Observable<any> {
         return this.http.put<any>(`${environment.server}/confessions/unarchive/${id}`, {}, httpOptions);
     }
 
@@ -40,5 +41,9 @@ export class ConfessionsService {
 
     postConfessionToFB(confession: Confession): Observable<any> {
         return this.http.put<any>(`${environment.server}/confessions`, confession, httpOptions);
+    }
+
+    getAppData(): Observable<any> {
+        return this.http.get<any[]>(`${environment.server}/app`);
     }
 }

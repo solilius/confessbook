@@ -27,7 +27,7 @@ const login = require("./routes/login");
 app.use("/login", login);
 app.use("/confessions", confessions);
 app.get("/app", (req, res, next) => {
-  res.send({ name: process.env.APP_NAME });
+  res.send({ name: process.env.APP_NAME, intro: process.env.INTRO });
 });
 app.get("/*", (req, res, next) => {
   res.sendFile("index.html", { root: "dist/confessions-manager/" });
@@ -42,7 +42,6 @@ app.use((err, req, res, next) => {
 mongoose.connect(process.env.DB_URI).then(
   () => {
     app.listen(port, err => {
-      updateAppName();
       err ? console.error(err) : console.log("Server is up, Port: " + port);
       User.find().then(res => {
         if (res.length === 0) {
@@ -58,18 +57,3 @@ mongoose.connect(process.env.DB_URI).then(
     console.error("err", err);
   }
 );
-
-function updateAppName() {
-  var fs = require("fs");
-  const path = "./dist/confessions-manager";
-  fs.readdir(path, (err, files) => {
-    const app_name = process.env.APP_NAME;
-    files.forEach(file => {
-      if (file.startsWith("main")) {
-        const read = fs.readFileSync(`${path}/${file}`, "utf8");
-        const replaced = read.replace(/<temp_name>/g, app_name);
-        fs.writeFileSync(`${path}/${file}`, replaced);
-      }
-    });
-  });
-}
