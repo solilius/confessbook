@@ -16,7 +16,7 @@ app.use(cors({origin: ['http://localhost:4200'], credentials: true}));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(express.static("./dist/confessions-angular"));
+app.use(express.static("./dist/confessions-manager"));
 
 // ################ ROUTERS ################# //
 
@@ -28,7 +28,7 @@ const login = require("./routes/login");
 app.use("/login", login);
 app.use("/confessions", confessions);
 app.get("/app", (req, res, next) => { res.send({name: process.env.APP_NAME})});
-app.get("/*", (req, res, next) => { res.sendFile("index.html", { root: "dist/confessions-angular/" })});
+app.get("/*", (req, res, next) => { res.sendFile("index.html", { root: "dist/confessions-manager/" })});
 app.use((err, req, res, next) => {
   console.error("Handled", err);
   res.status(500).send({ message: "Something went wrong", status: "failed" });
