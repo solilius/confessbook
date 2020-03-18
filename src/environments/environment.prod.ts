@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
   server: "",
-  appName: "Confessions"
+  appName: "<temp_name>"
 };

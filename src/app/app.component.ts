@@ -11,5 +11,5 @@ export class AppComponent {
     public constructor(private titleService: Title) {
         this.titleService.setTitle(environment.appName);
     }
-
+        title = 'confessions-angular';
 }
