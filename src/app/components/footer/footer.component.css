@@ -1,40 +1,45 @@
-
-.footer{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-color: cornflowerblue;
-    color: white;
-    font-size: 16px;
-    text-decoration: none;
-
-}
-.left-side-footer{
-    display: flex;
-flex-direction: row-reverse;
-    align-items: center;
-    justify-content: space-evenly;
-
-
-}
-.angular-logo{
-    height: 30px;
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: cornflowerblue;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
 }
 
-p{
-    margin: 8px 16px 8px 16px;
+.left-side-footer {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.angular-logo {
+  height: 30px;
 }
 
-a{
-    text-decoration: none;
-    margin: 0 4px;
+p {
+  margin: 8px 16px 8px 16px;
 }
 
-a:hover{
-    font-size: 16.5px;
-    transition: 300ms;
+a {
+  text-decoration: none;
+  margin: 0 4px;
+}
+
+a:hover {
+  font-size: 16.5px;
+  transition: 300ms;
+}
+
+@media only screen and (max-width: 600px) {
+  .footer {
+    font-size: 0.6vh;
+  }
+  .angular-logo {
+    height: 3vh;
+  }
 }

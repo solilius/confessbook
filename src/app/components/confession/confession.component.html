@@ -4,16 +4,16 @@
         <form *ngIf="!isSent; else confession_sent" class="" (ngSubmit)="sendConfession()">
             <p class="intro">
                 ספרו לנו על חוויה שלכם מעולם הקעקועים!<br />
-                זה יכול להיות על קעקוע שעשיתם/שראיתם/רוצים לעשות<br />
+                זה יכול להיות על קעקוע שעשיתם/ שראיתם/ רוצים לעשות<br />
                 או בכללי תובנה שרציתם לחלוק.<br />
                 קיצר פשוט כתבו!<br />
             </p>
-            <span class="anonymous">כמובן שהכל באנונימיות מוחלטת</span>
+            <p class="anonymous">כמובן שהכל באנונימיות מוחלטת</p>
             <mat-form-field>
                 <textarea matInput class="confession" name="confession" [(ngModel)]="confession" autofocus required
                     minlength="10">
                 </textarea>
-            </mat-form-field>
+            </mat-form-field><br/>
             <button class="send-btn" mat-raised-button color="primary">שלח</button>
 
         </form>
