@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfessionsService } from '../../services/confessions.service';
-import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2'
 
 @Component({
@@ -11,13 +11,13 @@ import Swal from 'sweetalert2'
 })
 export class ConfessionComponent implements OnInit {
     confession: string;
-    systemName: string;
+    appName: string;
     isSent: boolean;
     constructor(private confessionsService: ConfessionsService, private router: Router) { }
 
     ngOnInit(): void {
         this.isSent = false;
-        this.systemName = environment.system;
+        this.appName = environment.appName;
      }
 
     sendConfession() {

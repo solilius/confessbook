@@ -4,47 +4,41 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Confession } from '../models/confession/confession.module';
 import { CookieService } from 'ngx-cookie-service';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     withCredentials: true
 };
 
-
 @Injectable({
     providedIn: 'root'
 })
 export class ConfessionsService {
-    
-    serverUrl: string = environment.serverURL;
 
     constructor(private http: HttpClient, private cookie: CookieService) { }
 
     login(data: Object): Observable<any> {
-        return this.http.post<any>(`${this.serverUrl}/login`, data, httpOptions).pipe(map(res => {
-            console.log(res.token);
-            this.cookie.set('token', res.token);
-        }));
+        return this.http.post<any>(`${environment.server}/login`, data, httpOptions).pipe(map(res => {}));
     }
 
     postConfession(confession: string): Observable<any> {
-        return this.http.post<any>(`${this.serverUrl}/confessions`, { message: confession }, httpOptions);
+        return this.http.post<any>(`${environment.server}/confessions`, { message: confession }, httpOptions);
     }
 
     getConfessions(isArchived: boolean) {
-        return this.http.get<Confession[]>(`${this.serverUrl}/confessions?archived=${isArchived}`);
+        return this.http.get<Confession[]>(`${environment.server}/confessions?archived=${isArchived}`);
     }
 
-    unarchiveConfession(id:string) {
-        return this.http.put<any>(`${this.serverUrl}/confessions/unarchive/${id}`, {}, httpOptions);
+    unarchiveConfession(id: string) {
+        return this.http.put<any>(`${environment.server}/confessions/unarchive/${id}`, {}, httpOptions);
     }
 
     deleteConfession(id: string): Observable<any> {
-        return this.http.delete(`${this.serverUrl}/confessions/${id}?user=${localStorage.getItem('username')}`);
+        return this.http.delete(`${environment.server}/confessions/${id}?user=${localStorage.getItem('username')}`);
     }
 
     postConfessionToFB(confession: Confession): Observable<any> {
-        return this.http.put<any>(`${this.serverUrl}/confessions`, confession, httpOptions);
+        return this.http.put<any>(`${environment.server}/confessions`, confession, httpOptions);
     }
 }

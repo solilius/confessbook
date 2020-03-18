@@ -1,3 +1,6 @@
+  body{
+      font-family: "Varela Round" !important;
+  }
 .abu-container {
   display: flex;
   flex-direction: column;
@@ -21,12 +24,11 @@
 }
 
 .intro {
-  padding: 30px;
+  padding: 50px 30px 0 30px;
 }
 
 mat-form-field {
   width: 25vw;
-border: solid 1px whitesmoke;
 }
 .confession {
   height: 20vh;
@@ -41,5 +43,11 @@ border: solid 1px whitesmoke;
 }
 
 .sent-img {
-  height: 30vh;
+  height: 15vh;
+  margin: 5vh;
 }
+
+.anonymous{
+    font-size: 16px;
+}
+

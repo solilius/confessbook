@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -13,10 +12,13 @@ import { SchedulerComponent } from './components/manager/child-components/schedu
 import { ArchiveComponent } from './components/manager/child-components/archive/archive.component';
 import { ConfessionItemComponent } from './components/manager/child-components/confession-item/confession-item.component';
 import { MomentPipe } from './datePipe';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MaterialModule} from './material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material';
 import {CookieService } from 'ngx-cookie-service';
 import { ArchivedConfessionItemComponent } from './components/manager/child-components/archived-confession-item/archived-confession-item.component';
+import {AuthGuard } from './auth.guard';
+import { FooterComponent } from './components/footer/footer.component';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { ArchivedConfessionItemComponent } from './components/manager/child-comp
     ArchiveComponent,
     ConfessionItemComponent,
     MomentPipe,
-    ArchivedConfessionItemComponent
+    ArchivedConfessionItemComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,7 @@ import { ArchivedConfessionItemComponent } from './components/manager/child-comp
     ReactiveFormsModule,
     MaterialModule
   ],
-  providers: [CookieService],
+  providers: [CookieService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

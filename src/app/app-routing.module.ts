@@ -6,6 +6,7 @@ import { ManagerComponent } from '../app/components/manager/manager.component';
 import { MainComponent } from '../app/components/manager/child-components/main/main.component';
 import { SchedulerComponent } from '../app/components/manager/child-components/scheduler/scheduler.component';
 import { ArchiveComponent } from '../app/components/manager/child-components/archive/archive.component';
+import {AuthGuard } from './auth.guard';
 
 
 const routes: Routes = [
@@ -13,10 +14,11 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent },
     {
         path: 'manager', component: ManagerComponent,
+        canActivate: [AuthGuard],
         children: [
-            { path: 'main', component: MainComponent },
-            { path: 'scheduler', component: SchedulerComponent },
-            { path: 'archive', component: ArchiveComponent }
+            {  canActivate: [AuthGuard], path: 'main', component: MainComponent },
+            {  canActivate: [AuthGuard], path: 'scheduler', component: SchedulerComponent },
+            {  canActivate: [AuthGuard], path: 'archive', component: ArchiveComponent }
         ]
     },
     { path: '**', component: ConfessionComponent }

@@ -4,13 +4,15 @@ html {
   font-size: 15px;
   direction: rtl;
   background-color: #c7effc !important;
+  
 }
 
 body{
-  font-family: "Varela Round" !important;
   background-color: #c7effc !important;
   height: 100vh;
+  margin: 0;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+*{
+  font-family: "Varela Round" !important;
+}

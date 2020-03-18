@@ -2,6 +2,7 @@ import { Component, OnInit, Output } from '@angular/core';
 import { ConfessionsService } from '../../../../services/confessions.service';
 import { Confession } from '../../../../models/confession/confession.module'
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-archive',
@@ -22,7 +23,12 @@ export class ArchiveComponent implements OnInit {
             this.displayPosted = false;
             this.color = "primary";
         }, (err) => {
-            this.router.navigateByUrl('/login');
+            Swal.fire({
+                title: 'אופס',
+                text: err.error,
+                icon: 'warning',
+                confirmButtonText: 'אוקיי'
+            });
         })
     }
 
@@ -33,6 +39,6 @@ export class ArchiveComponent implements OnInit {
 
     filter() {
         this.displayPosted = !this.displayPosted;
-        this.displayedConfessions  = (this.displayPosted) ?  this.confessions.filter(c => c.serial == null) : this.confessions;
+        this.displayedConfessions = (this.displayPosted) ? this.confessions.filter(c => c.serial == null) : this.confessions;
     }
 }

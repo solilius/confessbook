@@ -11,12 +11,12 @@
   cursor: pointer;
   font-size: 24px;
   font-weight: 400;
-  color: rgb(235, 235, 253);
+  color:white;
 
 }
 
 .toolbar-item:hover {
-  color:white;
+  color: rgb(235, 235, 253);
 }
 
 .toolbar-spacer {
@@ -25,10 +25,17 @@
 
 .active {
   font-size: 27px;
-  color:white;
+  color: rgb(235, 235, 253);
+
   transition: 100ms;
 }
 
 .toolbar-item > .item-text {
   margin-left: 4px;
+}
+
+.login-item{
+    text-decoration: none;
+    margin-left: 30px;
+    font-size: 18px;
 }

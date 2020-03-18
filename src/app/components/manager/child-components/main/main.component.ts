@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ConfessionsService } from '../../../../services/confessions.service';
 import { Confession } from '../../../../models/confession/confession.module'
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-main',
@@ -17,12 +18,16 @@ export class MainComponent implements OnInit {
         this.confessionsService.getConfessions(false).subscribe(confessions => {
             this.confessions = confessions;
         }, (err) => {
-            this.router.navigateByUrl('/login');
-            alert(err.error);
+            Swal.fire({
+                title: 'אופס',
+                text: err.error,
+                icon: 'warning',
+                confirmButtonText: 'אוקיי'
+            });
         })
     }
 
-    removeConfession(id){
-        this.confessions = this.confessions.filter( c => c._id !== id);
+    removeConfession(id) {
+        this.confessions = this.confessions.filter(c => c._id !== id);
     }
 }
