@@ -1,12 +1,14 @@
 #confession-list {
-    display: flex;
-    flex-direction: column;
-    max-height: 85%;
-    min-height: 0px; 
-    margin: 2.5vh 18vw;
-    overflow-y: scroll;
+  position: fixed;
+  top: 5vh;
+  display: flex;
+  flex-direction: column;
+  max-height: 86vh;
+  min-height: 0px;
+  margin: 2.5vh 18vw;
+  overflow-y: scroll;
 }
 
 app-confession-item {
-    margin-bottom: 4px;
+  margin-bottom: 4px;
 }
