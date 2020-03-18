@@ -7,9 +7,7 @@
         <p class="meta-data-title">נערך על ידי:</p>
         <p class="meta-data-info">{{confession.updated_by}}</p>
         <p class="meta-data-title">פורסם:</p>
-        <p class="meta-data-info">{{confession.serial ? 'כן': 'לא'}}</p>
-
-
+        <p class="meta-data-info">{{confession.serial ? 'כן ( #' + confession.serial + ' )' : 'לא'}}</p>
     </div>
 
     <p class="message">{{confession.message}}</p>
