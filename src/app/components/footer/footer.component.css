@@ -22,3 +22,7 @@ flex-direction: row-reverse;
 .angular-logo{
     height: 30px;
 }
+
+p{
+    margin: 8px 16px 8px 16px;
+}
