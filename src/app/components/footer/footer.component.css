@@ -10,6 +10,8 @@
     background-color: cornflowerblue;
     color: white;
     font-size: 16px;
+    text-decoration: none;
+
 }
 .left-side-footer{
     display: flex;
@@ -25,4 +27,14 @@ flex-direction: row-reverse;
 
 p{
     margin: 8px 16px 8px 16px;
+}
+
+a{
+    text-decoration: none;
+    margin: 0 4px;
+}
+
+a:hover{
+    font-size: 16.5px;
+    transition: 300ms;
 }
