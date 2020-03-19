@@ -1,4 +1,4 @@
-# iConfess (idead for names are welcome)
+# Confessbook
 
 a confessions manager for Facebook conffessions pages,
 allowing you to handle confession's posting and scheduling in a more orgenized way.
