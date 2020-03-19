@@ -10,6 +10,14 @@
   overflow-y: scroll;
 }
 
+.empty-list {
+  width: 100%;
+  text-align: center;
+  font-size: 25px;
+  color: blue;
+  margin-top: 10vh;
+}
+
 app-confession-item {
   margin-bottom: 4px;
 }

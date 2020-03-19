@@ -1,4 +1,7 @@
 <div id="confession-list" class="my-scroller">
+    <p *ngIf="confessions.length==0" class="empty-list">
+       - אין וידויים להצגה -
+    </p>
     <app-confession-item 
     *ngFor="let confession of confessions"
      [confession]="confession"

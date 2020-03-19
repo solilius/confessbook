@@ -2,7 +2,7 @@
     <mat-card-content>
         <section class="slider-container">
             <span> שלא פורסמו </span>
-            <mat-slide-toggle [color]="color" [checked]="displayPosted"(change)="filter()">
+            <mat-slide-toggle [color]="color" [checked]="displayPosted" (change)="filter()">
             </mat-slide-toggle>
             <span> כולם </span>
         </section>
@@ -10,6 +10,9 @@
 </mat-card>
 
 <div id="confession-list" class="my-scroller">
+    <p *ngIf="displayedConfessions.length==0" class="empty-list">
+        - אין וידויים להצגה -
+    </p>
     <app-archived-confession-item *ngFor="let confession of displayedConfessions" [confession]="confession"
         (removeConfession)="removeConfession($event)">
     </app-archived-confession-item>
