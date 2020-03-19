@@ -1,6 +1,6 @@
 # Confessbook
 
-a confessions manager for Facebook conffessions pages,
+a confessions manager for Facebook confessions pages,
 allowing you to handle confession's posting and scheduling in a more orgenized way.
 
 #### Table of Contents
