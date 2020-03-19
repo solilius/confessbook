@@ -10,6 +10,8 @@ allowing you to handle confession's posting and scheduling in a more orgenized w
   * [Installation](#installation)
   * [Deployment](#deployment)
   * [How To Use](#how-to-use)
+  
+<br/>
 
 ## Abilities
   * Submitting confessions anonymously.
@@ -25,7 +27,6 @@ allowing you to handle confession's posting and scheduling in a more orgenized w
   * Set schedulers for automatic posting from list of tagged confessions
   * Full mobile compatibility
 
-<br/>
 <br/>
 <br/>
 
@@ -65,7 +66,6 @@ allowing you to handle confession's posting and scheduling in a more orgenized w
 
 <br/>
 <br/>
-<br/>
 
 ## Installation
 * Clone the repository
@@ -99,7 +99,6 @@ INTRO=don't be shy just confess!
 | APP_NAME | The name of your page|
 | INTRO | The message in the confession form |
 
-<br/>
 <br/>
 <br/>
 
