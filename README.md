@@ -9,7 +9,7 @@ allowing you to handle confession's posting and scheduling in a more orgenized w
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
   * [Deployment](#deployment)
-  * [How To Use](#how-to-use)
+  * [Routes](#Routes)
   
 <br/>
 
@@ -120,7 +120,7 @@ INTRO=don't be shy just confess!
 
 <br/>
 
-## How To Use
+## Routes
 
 ### Save a Confession 
 `http://your-app.domain` + `/`
