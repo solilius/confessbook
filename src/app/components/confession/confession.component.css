@@ -34,7 +34,7 @@ mat-form-field {
   min-height: 20vh;
   max-height: 20vh;
   text-align: justify;
-  padding: 0 20px;
+  padding: 0;
 }
 
 .send-btn {
