@@ -10,7 +10,6 @@
 <br/>
 
 ## Abilities
-------
   * Submitting confessions anonymously.
   * Organizing confessions in a convenient lists.
   * Editing confessions before posting (editor's comment, confession number).
@@ -30,7 +29,6 @@
 <br/>
 
 ## Prerequisites
-------
 
 ##### 1. Facebook Page
 &emsp; If you don't already have a page use [this guide](https://www.facebook.com/help/104002523024878) to create a new Facebook page.
@@ -70,7 +68,6 @@
 <br/>
 
 ## Installation
-------
 * Clone the repository
 * Run the command: ``` $ npm i``` to install all the dependencies.
 * in the root repository create **.env** file. in fill it out like this:
@@ -108,7 +105,6 @@ INTRO=don't be shy just confess!
 <br/>
 
 ## Deployment
-------
 ###### Locally
 * if it's the first time run the command: ``` $ npm run build``` before to build the Angular app.
 * run the command: ``` $ npm start```.
