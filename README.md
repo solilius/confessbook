@@ -121,3 +121,30 @@ INTRO=don't be shy just confess!
 <br/>
 
 ## How To Use
+
+### Save a Confession 
+`http://your-app.domain` + `/`
+This is the route your confessors will access to send their confessions.
+(it's compatible with both desktop and mobile browsers.)
+
+### Login Page
+`http://your-app.domain` + `/login`
+You will be moved here automaticlly if you try to go to `/manager` without a token saved in your cookie
+and only after the authentication you will be rediredted there.
+
+### Manage Confessions
+`http://your-app.domain` + `/manager` + `/main`
+Here you can view all the pending confessions.
+click on a confession to expend and reveal it all.
+you can edit and add a comment before posting it,
+or delete it (which will move it to the archive)
+
+### Archive
+`http://your-app.domain` + `/manager` + `/archive`
+Here you can view all the archived confessions and restore them.
+you can see when they were created/posted/deleted and by who.
+there is a toggle on the top left to filter only the none-posted confession.
+
+### Schedulers
+`http://your-app.domain` + `/manager` + `/scheduler`
+in development atm.
