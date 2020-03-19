@@ -4,10 +4,10 @@
 ##### a confessions manager for Facebook conffessions pages,
 ##### allowing you to handle confession's posting and scheduling in a more orgenized way.
 
-#
-#
-#
-#
+<br/>
+<br/>
+<br/>
+<br/>
 
 ## Abilities
 ------
@@ -24,14 +24,14 @@
   * Set schedulers for automatic posting from list of tagged confessions
   * Full mobile compatibility
 
-#
-#
-#
-#
+<br/>
+<br/>
+<br/>
+<br/>
 
 ## Prerequisites
 ------
-#
+
 ##### 1. Facebook Page
 &emsp; If you don't already have a page use [this guide](https://www.facebook.com/help/104002523024878) to create a new Facebook page.
 ##### 2. Facebook App
@@ -64,10 +64,10 @@
 ##### 5. NodeJS
 &emsp; Get the latest version of NodeJS from [here](https://nodejs.org/en/), LTS version is recommended).
 
-#
-#
-#
-#
+<br/>
+<br/>
+<br/>
+<br/>
 
 ## Installation
 ------
@@ -84,9 +84,13 @@ SECRET=secret1234
 APP_NAME=Somethimg Confessions
 INTRO=don't be shy just confess!
 ```
-#
+
+<br/>
+
 ##### Values Explained:
-#
+
+<br/>
+
 | Key | Value |
 | ------------- |-------------|
 | FB_API  | https://graph.facebook.com/[Page_ID] |
@@ -97,10 +101,11 @@ INTRO=don't be shy just confess!
 | SECRET| Random string to encrypt logging token|
 | APP_NAME | The name of your page|
 | INTRO | The message in the confession form |
-#
-#
-#
-#
+
+<br/>
+<br/>
+<br/>
+<br/>
 
 ## Deployment
 ------
