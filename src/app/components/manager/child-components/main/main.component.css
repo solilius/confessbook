@@ -12,3 +12,15 @@
 app-confession-item {
   margin-bottom: 4px;
 }
+
+app-confession-item:last-child {
+  margin-bottom: 0;
+}
+
+.my-scroller::-webkit-scrollbar {
+  width: 6px;
+}
+
+.my-scroller::-webkit-scrollbar-thumb {
+  background-color: #32c3f3;
+}

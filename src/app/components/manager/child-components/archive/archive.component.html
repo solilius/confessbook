@@ -9,7 +9,7 @@
     </mat-card-content>
 </mat-card>
 
-<div id="confession-list">
+<div id="confession-list" class="my-scroller">
     <app-archived-confession-item *ngFor="let confession of displayedConfessions" [confession]="confession"
         (removeConfession)="removeConfession($event)">
     </app-archived-confession-item>

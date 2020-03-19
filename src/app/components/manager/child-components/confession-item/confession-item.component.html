@@ -9,10 +9,10 @@
     <ng-template #open_confession>
         <div class="item-extended">
             <mat-form-field>
-                <textarea class="message" matInput type="text" [(ngModel)]="confession.message"> </textarea>
+                <textarea  cdkTextareaAutosize  class="message my-scroller" matInput type="text" [(ngModel)]="confession.message"> </textarea>
             </mat-form-field>
             <mat-form-field>
-                <textarea matInput type="text" [(ngModel)]="confession.comment" placeholder="הערת המערכת"> </textarea>
+                <textarea matInput type="text" class="comment my-scroller" [(ngModel)]="confession.comment" placeholder="הערת המערכת"> </textarea>
             </mat-form-field>
             <div class="buttons-area">
                 <button mat-raised-button color="warn" (click)='deleteConfession()'>מחק</button>

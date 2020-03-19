@@ -13,6 +13,10 @@ app-archived-confession-item {
   margin-bottom: 4px;
 }
 
+app-archived-confession-item:last-child {
+  margin-bottom: 0;
+}
+
 .slider {
   position: absolute;
   left: 1vw;
@@ -27,4 +31,12 @@ app-archived-confession-item {
 
 mat-slide-toggle {
   margin: 0 8px;
+}
+
+.my-scroller::-webkit-scrollbar {
+  width: 6px;
+}
+
+.my-scroller::-webkit-scrollbar-thumb {
+  background-color: #32c3f3;
 }
