@@ -15,7 +15,7 @@ app.use(cors({ origin: ["http://localhost:4200"], credentials: true }));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(express.static("./dist/confessions-manager"));
+app.use(express.static("./dist/confessbook"));
 
 // ################ ROUTERS ################# //
 
@@ -30,7 +30,7 @@ app.get("/app", (req, res, next) => {
   res.send({ name: process.env.APP_NAME, intro: process.env.INTRO });
 });
 app.get("/*", (req, res, next) => {
-  res.sendFile("index.html", { root: "dist/confessions-manager/" });
+  res.sendFile("index.html", { root: "dist/confessbook/" });
 });
 app.use((err, req, res, next) => {
   console.error("Handled", err);
