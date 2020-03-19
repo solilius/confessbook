@@ -1,10 +1,9 @@
 # iConfess (idead for names are welcome)
 
 
-##### a confessions manager for Facebook conffessions pages,
-##### allowing you to handle confession's posting and scheduling in a more orgenized way.
+a confessions manager for Facebook conffessions pages,
+allowing you to handle confession's posting and scheduling in a more orgenized way.
 
-<br/>
 <br/>
 <br/>
 <br/>
@@ -23,7 +22,6 @@
   * Set schedulers for automatic posting from list of tagged confessions
   * Full mobile compatibility
 
-<br/>
 <br/>
 <br/>
 <br/>
@@ -65,7 +63,6 @@
 <br/>
 <br/>
 <br/>
-<br/>
 
 ## Installation
 * Clone the repository
@@ -102,13 +99,12 @@ INTRO=don't be shy just confess!
 <br/>
 <br/>
 <br/>
-<br/>
 
 ## Deployment
-###### Locally
+Locally
 * if it's the first time run the command: ``` $ npm run build``` before to build the Angular app.
 * run the command: ``` $ npm start```.
-###### Heroku Cloud Platrofm
+Heroku Cloud Platrofm
 * go to [Heroku](https://www.heroku.com/). sign up/in. (if you sign up choose NodeJS as _your Primary development language_, and Other as _Role_).
 * Create a new app, choose an _App name_ and a _region_ and click _Create app_.
 * go to the Deploy tab and choose GitHub, connect and choose this project repository, _Enable Automatic Deploys_, but before you click _Deploy Branch_...
