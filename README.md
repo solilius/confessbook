@@ -5,7 +5,7 @@ allowing you to handle confession's posting and scheduling in a more orgenized w
 
 <br/>
 
-##### Table of Contents
+#### Table of Contents
 
   * [Abilities](#abilities)
   * [Prerequisites](#prerequisites)
