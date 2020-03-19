@@ -4,6 +4,14 @@ a confessions manager for Facebook conffessions pages,
 allowing you to handle confession's posting and scheduling in a more orgenized way.
 
 <br/>
+##### Table of Contents
+* [Abilities](#abilities)
+* [Prerequisites](#prerequisites)
+* [Installation](#installation)
+* [Deployment](#deployment)
+* [How To Use](#how-to-use)
+
+<br/>
 <br/>
 <br/>
 
