@@ -3,8 +3,6 @@
 a confessions manager for Facebook conffessions pages,
 allowing you to handle confession's posting and scheduling in a more orgenized way.
 
-<br/>
-
 #### Table of Contents
 
   * [Abilities](#abilities)
@@ -12,10 +10,6 @@ allowing you to handle confession's posting and scheduling in a more orgenized w
   * [Installation](#installation)
   * [Deployment](#deployment)
   * [How To Use](#how-to-use)
-
-<br/>
-<br/>
-<br/>
 
 ## Abilities
   * Submitting confessions anonymously.
