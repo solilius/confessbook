@@ -3,7 +3,7 @@
         <span>{{appName}}</span>
         <a  class="toolbar-item login-item" href="/login">
             <mat-icon>perm_identity</mat-icon>
-            <span class='item-text'> התחברות </span>
+            <span class='item-text'> {{loginText}} </span>
         </a>
         <span class="toolbar-spacer"></span>
         <a [ngClass]="setClasses('archive')" class="toolbar-item" (click)="loadChild('archive')">

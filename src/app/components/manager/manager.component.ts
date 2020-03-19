@@ -12,6 +12,7 @@ import Swal from 'sweetalert2'
 export class ManagerComponent implements OnInit {
     activeTab: string;
     appName: string;
+    loginText: string;
     constructor(private service: ConfessionsService, private router: Router, private titleService: Title) { }
 
     ngOnInit(): void {
@@ -30,6 +31,7 @@ export class ManagerComponent implements OnInit {
         }
         this.router.navigateByUrl(`/manager/main`);
         this.activeTab = 'main';
+        this.loginText = `${localStorage.getItem('username')} מחובר`;
     }
 
     loadChild(page: string) {
