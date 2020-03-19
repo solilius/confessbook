@@ -113,3 +113,7 @@ INTRO=don't be shy just confess!
 * go to the Deploy tab and choose GitHub, connect and choose this project repository, _Enable Automatic Deploys_, but before you click _Deploy Branch_...
 * go to _Settings_ tab, click on Reveal Config Vars and add all the vars from the .env file.
 * go back to _Deploy_ tab, scroll down and click _Deploy Branch_. after the build process will be finished you can access the app by clicking  _Open app_ on the top righ.
+
+<br/>
+
+## How To Use
