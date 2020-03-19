@@ -1,4 +1,4 @@
-# Confessbook
+# iConfess (idead for names are welcome)
 
 a confessions manager for Facebook conffessions pages,
 allowing you to handle confession's posting and scheduling in a more orgenized way.
@@ -9,7 +9,7 @@ allowing you to handle confession's posting and scheduling in a more orgenized w
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
   * [Deployment](#deployment)
-  * [Routes](#Routes)
+  * [How To Use](#how-to-use)
   
 <br/>
 
@@ -60,11 +60,15 @@ allowing you to handle confession's posting and scheduling in a more orgenized w
 * insert a user name and a password and click on _Choose a connection method_.
 * on the next page choose _connect your application_, copy the URI you received and remember to replace _<password>_ with the new user's password.
 
-##### 6. Angular CLI
-&emsp; Run the command: ```$ npm install -g @angular/cli ```.
+<br/>
+
+#### For Local Deployment
 
 ##### 5. NodeJS
 &emsp; Get the latest version of NodeJS from [here](https://nodejs.org/en/), LTS version is recommended).
+
+##### 6. Angular CLI
+&emsp; Run the command: ```$ npm install -g @angular/cli ```.
 
 <br/>
 
@@ -120,31 +124,31 @@ INTRO=don't be shy just confess!
 
 <br/>
 
-## Routes
+## How To Use
 
-### Save a Confession 
+### Save Confession 
 `http://your-app.domain` + `/`
 This is the route your confessors will access to send their confessions.
 (it's compatible with both desktop and mobile browsers.)
 
-### Login Page
+### Manage Confessions
 `http://your-app.domain` + `/login`
-You will be moved here automaticlly if you try to go to `/manager` without a token saved in your cookie
+You will be moved here automaticlly if you try to go to `/manager`
 and only after the authentication you will be rediredted there.
 
 ### Manage Confessions
 `http://your-app.domain` + `/manager` + `/main`
-Here you can view all the pending confessions.
-click on a confession to expend and reveal it all.
-you can edit and add a comment before posting it,
-or delete it (which will move it to the archive)
+Here you can view all the pending confessions
+click one one to expend and reviel all the confession.
+you can edit it and add a comment before posting it.
+or delete it which will move it to the archive
 
 ### Archive
 `http://your-app.domain` + `/manager` + `/archive`
-Here you can view all the archived confessions and restore them.
-you can see when they were created/posted/deleted and by who.
+Here you can view all the archived confessions, and restore them.
+you can see when they were created and posted/deleted and by who.
 there is a toggle on the top left to filter only the none-posted confession.
 
-### Schedulers
+### Schedualers
 `http://your-app.domain` + `/manager` + `/scheduler`
 in development atm.
