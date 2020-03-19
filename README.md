@@ -28,7 +28,6 @@ allowing you to handle confession's posting and scheduling in a more orgenized w
   * Full mobile compatibility
 
 <br/>
-<br/>
 
 ## Prerequisites
 
@@ -65,7 +64,6 @@ allowing you to handle confession's posting and scheduling in a more orgenized w
 &emsp; Get the latest version of NodeJS from [here](https://nodejs.org/en/), LTS version is recommended).
 
 <br/>
-<br/>
 
 ## Installation
 * Clone the repository
@@ -99,7 +97,6 @@ INTRO=don't be shy just confess!
 | APP_NAME | The name of your page|
 | INTRO | The message in the confession form |
 
-<br/>
 <br/>
 
 ## Deployment
