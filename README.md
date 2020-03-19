@@ -1,6 +1,5 @@
 # iConfess (idead for names are welcome)
 
-
 a confessions manager for Facebook conffessions pages,
 allowing you to handle confession's posting and scheduling in a more orgenized way.
 
@@ -81,7 +80,7 @@ INTRO=don't be shy just confess!
 
 <br/>
 
-##### Values Explained:
+**Values Explained:**
 
 <br/>
 
@@ -101,15 +100,13 @@ INTRO=don't be shy just confess!
 <br/>
 
 ## Deployment
-Locally
+**Locally**
 * if it's the first time run the command: ``` $ npm run build``` before to build the Angular app.
 * run the command: ``` $ npm start```.
 
 <br/>
 
-Heroku Cloud Platrofm
-
-<br/>
+**Heroku Cloud Platrofm**
 
 * go to [Heroku](https://www.heroku.com/). sign up/in. (if you sign up choose NodeJS as _your Primary development language_, and Other as _Role_).
 * Create a new app, choose an _App name_ and a _region_ and click _Create app_.
