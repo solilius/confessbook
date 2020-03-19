@@ -104,7 +104,13 @@ INTRO=don't be shy just confess!
 Locally
 * if it's the first time run the command: ``` $ npm run build``` before to build the Angular app.
 * run the command: ``` $ npm start```.
+
+<br/>
+
 Heroku Cloud Platrofm
+
+<br/>
+
 * go to [Heroku](https://www.heroku.com/). sign up/in. (if you sign up choose NodeJS as _your Primary development language_, and Other as _Role_).
 * Create a new app, choose an _App name_ and a _region_ and click _Create app_.
 * go to the Deploy tab and choose GitHub, connect and choose this project repository, _Enable Automatic Deploys_, but before you click _Deploy Branch_...
