@@ -2,6 +2,7 @@
 
 a confessions manager for Facebook confessions pages,
 allowing you to handle confession's posting and scheduling in a more orgenized way.
+[click here to see screenshots](https://confessbook.pixieset.com/confessbook/)
 
 #### Table of Contents
 
