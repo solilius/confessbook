@@ -5,7 +5,8 @@
   flex-direction: column;
   max-height: 86vh;
   min-height: 0px;
-  margin: 2.5vh 18vw;
+  width: 68vw;
+  margin: 2.5vh 16vw 0 0;
   overflow-y: scroll;
 }
 
