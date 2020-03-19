@@ -15,6 +15,7 @@ export class MainComponent implements OnInit {
 
     constructor(private confessionsService: ConfessionsService, private router: Router) { }
     ngOnInit(): void {
+        this.confessions = [];
         this.confessionsService.getConfessions(false).subscribe(confessions => {
             this.confessions = confessions;
         }, (err) => {

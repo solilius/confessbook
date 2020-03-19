@@ -17,6 +17,7 @@ export class ArchiveComponent implements OnInit {
 
     constructor(private confessionsService: ConfessionsService, private router: Router) { }
     ngOnInit(): void {
+        this.displayedConfessions = [];
         this.confessionsService.getConfessions(true).subscribe(confessions => {
             this.confessions = confessions;
             this.displayedConfessions = confessions;
