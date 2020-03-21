@@ -2,11 +2,13 @@
 
     <div class="meta-data">
         <p class="meta-data-title">תאריך יצירה:</p>
-        <p class="meta-data-info">{{confession.create_date | dateFormat: ' HH:MM - DD/MM/YYYY'}}</p>
-        <p class="meta-data-title">תאריך שינוי:</p>
-        <p class="meta-data-info">{{confession.update_date | dateFormat: ' HH:MM - DD/MM/YYYY'}}</p>
-        <p class="meta-data-title">נערך לאחרונה על ידי:</p>
-        <p class="meta-data-info">{{confession.updated_by}}</p>
+        <p class="meta-data-info">{{confession.create_date | date:'MM/d/y - HH:mm'}}</p>
+        <div class="extra-meta-data" *ngIf="confession.update_date">
+            <p class="meta-data-title">תאריך שינוי:</p>
+            <p class="meta-data-info">{{confession.update_date | date:'MM/d/y - HH:mm'}}</p>
+            <p class="meta-data-title">נערך לאחרונה על ידי:</p>
+            <p class="meta-data-info">{{confession.updated_by}}</p>
+        </div>
         <p class="meta-data-title">פורסם:</p>
         <p class="meta-data-info">{{confession.serial ? 'כן ( #' + confession.serial + ' )' : 'לא'}}</p>
     </div>

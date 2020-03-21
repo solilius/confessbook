@@ -11,7 +11,6 @@ import { MainComponent } from './components/manager/child-components/main/main.c
 import { SchedulerComponent } from './components/manager/child-components/scheduler/scheduler.component';
 import { ArchiveComponent } from './components/manager/child-components/archive/archive.component';
 import { ConfessionItemComponent } from './components/manager/child-components/confession-item/confession-item.component';
-import { MomentPipe } from './datePipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material';
 import {CookieService } from 'ngx-cookie-service';
@@ -30,7 +29,6 @@ import { FooterComponent } from './components/footer/footer.component';
     SchedulerComponent,
     ArchiveComponent,
     ConfessionItemComponent,
-    MomentPipe,
     ArchivedConfessionItemComponent,
     FooterComponent
   ],

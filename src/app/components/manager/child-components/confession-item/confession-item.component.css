@@ -34,6 +34,7 @@
 .meta-data-info {
   color: gray;
   margin-bottom: 16px;
+  direction: ltr;
 }
 
 .item-collapsed {
