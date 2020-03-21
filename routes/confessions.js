@@ -1,9 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const controller = require("../controllers/confessions.controller");
+const validator = require("../middlewares/confession.validator");
 const auth = require("../middlewares/auth");
 
-router.use("*", auth);
+router.use("*", validator);
+//router.use("*", auth);
 
 // ################### API ################### //
 
