@@ -34,7 +34,6 @@ allowing you to handle confession's posting and scheduling in a more orgenized w
 ##### 1. Facebook Page
 If you don't already have a page use [this guide](https://www.facebook.com/help/104002523024878) to create a new Facebook Page.
 
-<br/>
 
 ##### 2. Facebook App
 Go to [Facebook for Developers](https://developers.facebook.com/apps/) and add a new app, name it as your page's name (you might need to create a Developer Account).
