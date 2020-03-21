@@ -103,7 +103,6 @@ export class ConfessionItemComponent implements OnInit {
         }).then((result) => {
             if (result.value) {
                 this.confession.updated_by = localStorage.getItem('username');
-                this.confession.archived = true;
                 this.confessionsService.postConfessionToFB(this.confession).subscribe((res) => {
                     if (res.status === "success") {
                         Swal.fire(
@@ -111,6 +110,7 @@ export class ConfessionItemComponent implements OnInit {
                             '',
                             'success'
                         ).then(() => {
+                            this.removeConfession.emit(this.confession._id);
                             this.toggleItem();
                         })
 

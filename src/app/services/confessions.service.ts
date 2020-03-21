@@ -40,6 +40,7 @@ export class ConfessionsService {
     }
 
     postConfessionToFB(confession: Confession): Observable<any> {
+        confession.updated_by = localStorage.getItem('username');
         return this.http.post<any>(`${environment.server}/confessions/fb`, confession, httpOptions);
     }
 

@@ -12,7 +12,7 @@
     </div>
 
     <div class="item-collapsed" (click)="toggleItem()" *ngIf="!isOpen; else open_confession">
-        <div class="collaped-message">{{confession.message}}</div>
+        {{confession.message}}
     </div>
 
     <ng-template #open_confession>

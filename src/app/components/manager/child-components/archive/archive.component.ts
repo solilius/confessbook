@@ -26,7 +26,7 @@ export class ArchiveComponent implements OnInit {
         }, (err) => {
             Swal.fire({
                 title: 'אופס',
-                text: err.error,
+                text: err.error.message,
                 icon: 'warning',
                 confirmButtonText: 'אוקיי'
             });

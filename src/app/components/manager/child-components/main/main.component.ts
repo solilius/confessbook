@@ -19,9 +19,10 @@ export class MainComponent implements OnInit {
         this.confessionsService.getConfessions(false).subscribe(confessions => {
             this.confessions = confessions;
         }, (err) => {
+            console.log(err);
             Swal.fire({
                 title: 'אופס',
-                text: err.error,
+                text: err.error.message,
                 icon: 'warning',
                 confirmButtonText: 'אוקיי'
             });
