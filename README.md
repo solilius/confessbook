@@ -72,6 +72,12 @@ If you don't have a MongoDB ready, you can get one for free [here](https://www.m
 
 <br/>
 
+##### 5. GitHub
+If you don't already have a GitHub account create on from [here](https://github.com/join?source=header-home).
+now click on the _Fork_ button on the top right, now you should have a copy of this repository named **Confessbook**
+
+<br/>
+
 #### For Local Deployment
 
 <br/>
@@ -132,7 +138,7 @@ INTRO=don't be shy just confess!
 
 * go to [Heroku](https://www.heroku.com/). sign up/in. (if you sign up choose NodeJS as _your Primary development language_, and Other as _Role_).
 * Create a new app, choose an _App name_ and a _region_ and click _Create app_.
-* go to the Deploy tab and choose GitHub, connect and choose this project's repository, _Enable Automatic Deploys_, but before you click _Deploy Branch_...
+* go to the Deploy tab and choose GitHub, connect and choose your new forked repository, _Enable Automatic Deploys_, but before you click _Deploy Branch_...
 * go to _Settings_ tab, click on Reveal Config Vars and add all the vars from the .env file (except PORT).
 * go back to _Deploy_ tab, scroll down and click _Deploy Branch_. after the build process is finished you can access the app by clicking  _Open app_ on the top right.
 
