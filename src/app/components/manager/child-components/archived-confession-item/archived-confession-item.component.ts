@@ -38,13 +38,9 @@ export class ArchivedConfessionItemComponent implements OnInit {
                         })
 
                     } else {
-                        Swal.fire(
-                            'אופס',
-                            'מחיקת הוידוי נכשלה',
-                            'warning'
-                        )
+                        SwalError('מחיקת הוידוי נכשלה', null)
                     }
-                });
+                }, (err) => { SwalError('מחיקת הוידוי נכשלה', err) });
             }
         });
     }
@@ -76,14 +72,16 @@ export class ArchivedConfessionItemComponent implements OnInit {
                         })
 
                     } else {
-                        Swal.fire(
-                            'אופס',
-                            'שיחזור הוידוי נכשל',
-                            'warning'
-                        )
+                        SwalError('שחזור הוידוי נכשל', null);
                     }
-                });
+                }, (err) => { SwalError('שחזור הוידוי נכשל', err) });
             }
         });
     }
+}
+
+
+function SwalError(msg, err) {
+    console.log(JSON.stringify(err));
+    Swal.fire('אופס', msg, 'error');
 }

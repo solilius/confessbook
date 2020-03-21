@@ -45,12 +45,10 @@ export class ConfessionItemComponent implements OnInit {
                             'success'
                         );
                     } else {
-                        Swal.fire(
-                            'אופס',
-                            'שמירת הוידוי נכשלה',
-                            'warning'
-                        )
+                        SwalError('שמירת הוידוי נכשלה', null);
                     }
+                }, (err) => {
+                    SwalError('שמירת הוידוי נכשלה', err);
                 });
             }
         })
@@ -80,13 +78,9 @@ export class ConfessionItemComponent implements OnInit {
                         })
 
                     } else {
-                        Swal.fire(
-                            'אופס',
-                            'מחיקת הוידוי נכשלה',
-                            'warning'
-                        )
+                        SwalError('מחיקת הוידוי הכשלה', null);
                     }
-                });
+                }, (err) => { SwalError('מחיקת הוידוי הכשלה', err) });
             }
         })
     }
@@ -115,14 +109,18 @@ export class ConfessionItemComponent implements OnInit {
                         })
 
                     } else {
-                        Swal.fire(
-                            'אופס',
-                            'העלאת הוידוי נכשלה',
-                            'warning'
-                        )
+                        SwalError('העלאת פוסט נכשלה', null);
+
                     }
+                }, (err) => {
+                    SwalError('העלאת פוסט נכשלה', err);
                 });
             }
         })
     }
+}
+
+function SwalError(msg, err) {
+    console.log(JSON.stringify(err));
+    Swal.fire('אופס', msg, 'error');
 }
