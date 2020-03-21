@@ -5,7 +5,6 @@
   padding: 20px 0 10px 0;
   cursor: pointer;
   text-align: right;
-  min-height: 150px;
   max-height: 700px;
   font-size: 20px;
   transition: 300ms;
@@ -22,6 +21,11 @@
   overflow: hidden;
 }
 
+.extra-meta-data{
+  text-align: center;
+
+}
+
 .meta-data-title {
   font-weight: bolder;
   margin-bottom: 4px;
@@ -36,6 +40,7 @@
   flex-basis: 70%;
   overflow-y: hidden;
   max-height: 170px;
+  white-space: pre-line;
 }
 
 .item-extended {

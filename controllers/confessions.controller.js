@@ -30,7 +30,7 @@ const controller = {
   },
   postConfessionToFB: async (req, res, next) => {
     try {
-      const confession = req.body;  
+      const confession = await populateConfession(req.body);
       await facebook.post(foramtBody(confession));
       await db.updateConfession(confession._id, confession);
       res.send({ status: "success" });
