@@ -20,18 +20,23 @@ app.use(express.static("./dist/confessbook"));
 // ################ ROUTERS ################# //
 
 const confessions = require("./routes/confessions");
+const schedulers = require("./routes/schedulers");
 const login = require("./routes/login");
 
 // ################## API ################### //
 
 app.use("/login", login);
+app.use("/schedulers", schedulers);
 app.use("/confessions", confessions);
+
 app.get("/app", (req, res, next) => {
   res.send({ name: process.env.APP_NAME, intro: process.env.INTRO });
 });
+
 app.get("/*", (req, res, next) => {
   res.sendFile("index.html", { root: "dist/confessbook/" });
 });
+
 app.use((err, req, res, next) => {
   console.error("Handled", err);
   res.status(500).send({ message: "Something went wrong", status: "failed" });
