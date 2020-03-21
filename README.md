@@ -34,8 +34,14 @@ allowing you to handle confession's posting and scheduling in a more orgenized w
 
 ##### 1. Facebook Page
 If you don't already have a page use [this guide](https://www.facebook.com/help/104002523024878) to create a new Facebook Page.
+
+<br/>
+
 ##### 2. Facebook App
 Go to [Facebook for Developers](https://developers.facebook.com/apps/) and add a new app, name it as your page's name (you might need to create a Developer Account).
+
+<br/>
+
 ##### 3. Access Token
 * go to [Facebook's Graph API Explorer](https://developers.facebook.com/tools/explorer), and select your Facebook App from the list.
 * press on _Get Token_ and select _Get User Access Token_.
@@ -53,6 +59,9 @@ Go to [Facebook for Developers](https://developers.facebook.com/apps/) and add a
     *  the Token is the extended one from the last step.
     * (no square brackets of course...)
 * copy the _"access_token"_ and That's the Access Token we will use.
+
+<br/>
+
 ##### 4. Mongo DB
 If you don't have a MongoDB ready, you can get one for free [here](https://www.mongodb.com/atlas-signup-from-mlab?).
 * sign up, create a free cluster, choose Cloud Provider & Region.
@@ -65,8 +74,12 @@ If you don't have a MongoDB ready, you can get one for free [here](https://www.m
 
 #### For Local Deployment
 
+<br/>
+
 ##### 5. NodeJS
 Get the latest version of NodeJS from [here](https://nodejs.org/en/), LTS version is recommended).
+
+<br/>
 
 ##### 6. Angular CLI
 Run the command: ```$ npm install -g @angular/cli ```.
