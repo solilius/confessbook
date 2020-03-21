@@ -12,8 +12,7 @@ allowing you to handle confession's posting and scheduling in a more orgenized w
   * [Deployment](#deployment)
   * [How To Use](#how-to-use)
   
-<br/>
-
+  
 ## Abilities
   * Submitting confessions anonymously.
   * Organizing confessions in convenient lists.
