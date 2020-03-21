@@ -38,8 +38,11 @@ If you don't already have a page use [this guide](https://www.facebook.com/help/
 
 
 ##### 2. Facebook App
-Go to [Facebook for Developers](https://developers.facebook.com/apps/) and add a new app, name it as your page's name (you might need to create a Developer Account).
-
+* go to [Facebook for Developers](https://developers.facebook.com/apps/) and create a new app, name it as your page's name (you might need to create a Developer Account).
+* on your left side go to _Setting > Basic_ and paste this: <br/>
+`https://www.privacypolicies.com/generic/?fbclid=IwAR2HttnlhNRWmfgZrd3aWGsaOF7FCe6p_RadxFTAH-68d2YXLxAmY9jU14M` <br/>
+in the _Privacy Policy URL_ input box, and click  _Save Changes_ button on the bottom of the page.
+* on the top left you will see _In development_  toogle, click it,  _Choose a Category_ > _Businnes and Pages_, and then click _Switch Mode_. the toggle should show _Live_ now.
 <br/>
 
 ##### 3. Access Token
