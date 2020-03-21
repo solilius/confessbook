@@ -1,6 +1,15 @@
-<div class="container" [ngStyle]="{'cursor': cursor}" >
+<div class="container" [ngStyle]="{'cursor': cursor}">
 
-    <p class="create-date">{{confession.create_date | dateFormat: ' HH:MM - DD/MM/YYYY'}}</p>
+    <div class="meta-data">
+        <p class="meta-data-title">תאריך יצירה:</p>
+        <p class="meta-data-info">{{confession.create_date | dateFormat: ' HH:MM - DD/MM/YYYY'}}</p>
+        <p class="meta-data-title">תאריך שינוי:</p>
+        <p class="meta-data-info">{{confession.update_date | dateFormat: ' HH:MM - DD/MM/YYYY'}}</p>
+        <p class="meta-data-title">נערך לאחרונה על ידי:</p>
+        <p class="meta-data-info">{{confession.updated_by}}</p>
+        <p class="meta-data-title">פורסם:</p>
+        <p class="meta-data-info">{{confession.serial ? 'כן ( #' + confession.serial + ' )' : 'לא'}}</p>
+    </div>
 
     <div class="item-collapsed" (click)="toggleItem()" *ngIf="!isOpen; else open_confession">
         <div class="collaped-message">{{confession.message}}</div>
@@ -9,16 +18,17 @@
     <ng-template #open_confession>
         <div class="item-extended">
             <mat-form-field>
-                <textarea  cdkTextareaAutosize  class="message my-scroller" matInput type="text" [(ngModel)]="confession.message"> </textarea>
+                <textarea cdkTextareaAutosize class="message my-scroller" matInput type="text"
+                    [(ngModel)]="confession.message"> </textarea>
             </mat-form-field>
             <mat-form-field>
-                <textarea matInput type="text" class="comment my-scroller" [(ngModel)]="confession.comment" placeholder="הערת המערכת"> </textarea>
+                <textarea matInput type="text" class="comment my-scroller" [(ngModel)]="confession.comment"
+                    placeholder="הערת המערכת"> </textarea>
             </mat-form-field>
             <div class="buttons-area">
-                <button mat-raised-button color="warn" (click)='deleteConfession()'>מחק</button>
+                <button mat-raised-button color="warn" (click)='archiveConfession()'>מחק</button>
+                <button mat-raised-button color="accent" (click)='saveConfession()'>שמור</button>
                 <button mat-raised-button color="primary" (click)='postConfession()'>פרסם</button>
-            </div>
-            <div class=collpase-button-area>
                 <button mat-stroked-button class="collpase-button" (click)='toggleItem()'>
                     <mat-icon>keyboard_arrow_up</mat-icon>
                 </button>

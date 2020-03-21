@@ -30,9 +30,9 @@ export class ConfessionsService {
         return this.http.post<any>(`${environment.server}/confessions`, { message: confession }, httpOptions);
     }
 
-
-    unarchiveConfession(id: string): Observable<any> {
-        return this.http.put<any>(`${environment.server}/confessions/unarchive/${id}`, {}, httpOptions);
+    updateConfession(confession: Confession): Observable<any> {
+        confession.updated_by = localStorage.getItem('username');
+        return this.http.put<any>(`${environment.server}/confessions/${confession._id}`, confession, httpOptions);
     }
 
     deleteConfession(id: string): Observable<any> {
@@ -40,7 +40,7 @@ export class ConfessionsService {
     }
 
     postConfessionToFB(confession: Confession): Observable<any> {
-        return this.http.put<any>(`${environment.server}/confessions`, confession, httpOptions);
+        return this.http.post<any>(`${environment.server}/confessions/fb`, confession, httpOptions);
     }
 
     getAppData(): Observable<any> {

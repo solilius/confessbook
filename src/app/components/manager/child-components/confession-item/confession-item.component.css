@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row;
   background-color: white;
-  padding: 20px 32px;
+  padding: 20px 0;
   cursor: pointer;
   text-align: right;
   min-height: 50px;
@@ -12,14 +12,26 @@
   line-height: 1.2;
 }
 
-.create-date {
-  flex-basis: 12%;
-  color: gray;
+.meta-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-size: 12px;
+  flex-basis: 20%;
+}
+
+.meta-data-title {
+  font-weight: bolder;
+  margin-bottom: 4px;
+}
+
+.meta-data-info {
+  color: gray;
+  margin-bottom: 16px;
 }
 
 .item-collapsed {
-  flex-basis: 75%;
+  flex-basis: 70%;
   overflow-y: hidden;
 }
 
@@ -29,7 +41,7 @@
 
 .item-extended {
   max-height: 700px;
-  flex-basis: 75%;
+  flex-basis: 70%;
   cursor: default;
 }
 
@@ -64,15 +76,10 @@ button {
   margin-right: 4px;
 }
 
-.collpase-button-area {
-  position: relative;
-}
-
 .collpase-button {
-  position: absolute;
-  bottom: 0;
-  left: -128px;
-  font-size: 32px;
+  padding: 0 0 2px 0;
+  min-width: 40px;
+  margin: 0 3vw 0 -5vw;
 }
 
 .collpase-button:hover {

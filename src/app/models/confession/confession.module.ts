@@ -1,10 +1,10 @@
 export class Confession {
     _id: string;
-    archived: boolean;
-    message: string;
     create_date: Date;
-    comment?: string;
-    updated_by?: string;
     update_date?: Date;
+    updated_by?: string;
+    message: string;
+    comment?: string;
     serial?: number;
+    archived: boolean;
 }

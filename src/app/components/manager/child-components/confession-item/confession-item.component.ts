@@ -19,17 +19,45 @@ export class ConfessionItemComponent implements OnInit {
     constructor(private confessionsService: ConfessionsService, private router: Router) { }
 
     ngOnInit(): void {
-        
+
     }
 
     toggleItem() {
         (this.isOpen) ? this.cursor = 'pointer' : this.cursor = 'default'
         this.isOpen = !this.isOpen;
     }
-
-    deleteConfession() {
+    saveConfession() {
         Swal.fire({
-            title: 'מחק וידויי',
+            title: 'עדכן וידוי',
+            text: "האם את/ה בטוח/ה?",
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonColor: '#228B22',
+            confirmButtonText: 'שמור',
+            cancelButtonText: 'ביטול'
+        }).then((result) => {
+            if (result.value) {
+                this.confessionsService.updateConfession(this.confession).subscribe((res) => {
+                    if (res.status === "success") {
+                        Swal.fire(
+                            'הוידוי נשמר בהצלחה!',
+                            '',
+                            'success'
+                        );
+                    } else {
+                        Swal.fire(
+                            'אופס',
+                            'שמירת הוידוי נכשלה',
+                            'warning'
+                        )
+                    }
+                });
+            }
+        })
+    }
+    archiveConfession() {
+        Swal.fire({
+            title: 'מחק וידוי',
             text: "מחיקת הודוי תעביר אותו לארכיון, האם את/ה בטוח/ה?",
             icon: 'error',
             showCancelButton: true,
@@ -39,7 +67,8 @@ export class ConfessionItemComponent implements OnInit {
             cancelButtonText: 'ביטול'
         }).then((result) => {
             if (result.value) {
-                this.confessionsService.deleteConfession(this.confession._id).subscribe((res) => {
+                this.confession.archived = true;
+                this.confessionsService.updateConfession(this.confession).subscribe((res) => {
                     if (res.status === "success") {
                         Swal.fire(
                             'הוידוי נמחק בהצלחה!',

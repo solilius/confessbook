@@ -2,11 +2,10 @@
   display: flex;
   flex-direction: row;
   background-color: white;
-  padding: 20px 32px;
+  padding: 20px 0;
   text-align: right;
   font-size: 20px;
   line-height: 1.2;
-  justify-content: space-between;
 }
 
 .meta-data {
@@ -14,7 +13,7 @@
   flex-direction: column;
   align-items: center;
   font-size: 12px;
-  flex-basis: 12%;
+  flex-basis: 20%;
     
 }
 
@@ -28,13 +27,16 @@ margin-bottom: 4px;
   margin-bottom: 16px;
 }
 
-.message {
+.sub-container {
   flex-basis: 70%;
 }
 
-.unarchive-btn {
-  flex-basis: 5%;
-  float: left;
-  height: 40px;
-  align-self: flex-end;
+.buttons-area {
+  margin: 25px 0 5px 0;
+  width: 100%;
+  text-align: left;
+}
+
+button {
+  margin-right: 4px;
 }
