@@ -1,6 +1,5 @@
 const db = require("../db/confessions.db");
 const facebook = require("../services/facebook.service");
-const Transaction = require("mongoose-transactions");
 
 const controller = {
   getConfessions: async (req, res, next) => {
