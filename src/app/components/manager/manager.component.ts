@@ -12,6 +12,7 @@ import Swal from 'sweetalert2'
 export class ManagerComponent implements OnInit {
     activeTab: string;
     appName: string;
+    fbPage: string;
     loginText: string;
     constructor(private service: ConfessionsService, private router: Router, private titleService: Title) { }
 
@@ -19,6 +20,7 @@ export class ManagerComponent implements OnInit {
         this.service.getAppData().subscribe(res => {
             this.titleService.setTitle(res.name);
             this.appName = res.name;
+            this.fbPage = `https://www.facebook.com/${res.pageID}`;
         });
         if (this.mobilecheck()) {
             Swal.fire({

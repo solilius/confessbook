@@ -78,7 +78,7 @@ allowing you to handle confession's posting and scheduling in a more orgenized w
 * Run the command: ``` $ npm i``` to install all the dependencies.
 * in the root repository create **.env** file. in fill it out like this:
 ```
-FB_API=https://graph.facebook.com/104845176905...
+PAGE_ID=104603479746871
 ACCESS_TOKEN=XrHqlfuG1ZB8zsgE7kBvovwdIeSb0TZB9...
 DB_URI=mongodb+srv://myuser:mypassword@cluster...
 PORT=3000
@@ -96,7 +96,7 @@ INTRO=don't be shy just confess!
 
 | Key | Value |
 | ------------- |-------------|
-| FB_API  | https://graph.facebook.com/[Page_ID] |
+| PAGE_ID  | Your Facebook page ID |
 | ACCESS_TOKEN| The last Token we generated |
 | DB_URI | Connections string to the DB  |
 | ADMIN_PASSWORD |password for the Admin  User |

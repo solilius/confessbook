@@ -1,6 +1,8 @@
 <mat-toolbar color="primary" class="toolbar">
     <mat-toolbar-row>
-        <span>{{appName}}</span>
+                <a  class="toolbar-item" href={{fbPage}}>
+            <span class='item-text'> {{appName}} </span>
+        </a>
         <a  class="toolbar-item login-item" href="/login">
             <mat-icon>perm_identity</mat-icon>
             <span class='item-text'> {{loginText}} </span>

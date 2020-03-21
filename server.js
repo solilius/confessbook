@@ -30,7 +30,7 @@ app.use("/schedulers", schedulers);
 app.use("/confessions", confessions);
 
 app.get("/app", (req, res, next) => {
-  res.send({ name: process.env.APP_NAME, intro: process.env.INTRO });
+  res.send({ name: process.env.APP_NAME, intro: process.env.INTRO, pageID: process.env.PAGE_ID });
 });
 
 app.get("/*", (req, res, next) => {
@@ -39,7 +39,7 @@ app.get("/*", (req, res, next) => {
 
 app.use((err, req, res, next) => {
   console.error("Handled", err);
-  res.status(500).send({ message: "Something went wrong", status: "failed" });
+  res.status(500).send({ message: err.message, status: "failed" });
 });
 
 // ############# Start Server ############### //
