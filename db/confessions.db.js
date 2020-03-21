@@ -8,11 +8,23 @@ const db = {
     return Confession.create(confession);
   },
   updateConfession: (id, newConfession) => {
-    return Confession.update({_id: id}, { $set: newConfession });
+    return Confession.updateOne({ _id: id }, { $set: newConfession });
   },
 
   deleteConfession: id => {
     return Confession.deleteOne({ _id: id });
+  },
+  getSerial: () => {
+    return Confession.aggregate([
+      {
+        $group: {
+          _id: null,
+          serial: {
+            $max: "$serial"
+          }
+        }
+      }
+    ]);
   }
 };
 
