@@ -53,7 +53,6 @@ and click _Save Changes_ button on the bottom of the page.
   * public_profile (added automatically)
   * manage_pages
   * publish_pages
-  * business_management
 * click the _Generate Access Token_ and copy the _Access Token_.
 * go to [Facebook's Access Token Debugger](https://developers.facebook.com/tools/debug/accesstoken/) and paste the token, then click on _Debug_, scroll down and click on _Extend Access Token_, copy the new token.
 * open a new tab and paste this:
