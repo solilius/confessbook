@@ -33,9 +33,9 @@ allowing you to handle confession's posting and scheduling in a more orgenized w
 ## Prerequisites
 
 ##### 1. Facebook Page
-&emsp; If you don't already have a page use [this guide](https://www.facebook.com/help/104002523024878) to create a new Facebook Page.
+If you don't already have a page use [this guide](https://www.facebook.com/help/104002523024878) to create a new Facebook Page.
 ##### 2. Facebook App
-&emsp; Go to [Facebook for Developers](https://developers.facebook.com/apps/) and add a new app, name it as your page's name (you might need to create a Developer Account).
+Go to [Facebook for Developers](https://developers.facebook.com/apps/) and add a new app, name it as your page's name (you might need to create a Developer Account).
 ##### 3. Access Token
 * go to [Facebook's Graph API Explorer](https://developers.facebook.com/tools/explorer), and select your Facebook App from the list.
 * press on _Get Token_ and select _Get User Access Token_.
@@ -54,7 +54,7 @@ allowing you to handle confession's posting and scheduling in a more orgenized w
     * (no square brackets of course...)
 * copy the _"access_token"_ and That's the Access Token we will use.
 ##### 4. Mongo DB
-&emsp; If you don't have a MongoDB ready, you can get one for free [here](https://www.mongodb.com/atlas-signup-from-mlab?).
+If you don't have a MongoDB ready, you can get one for free [here](https://www.mongodb.com/atlas-signup-from-mlab?).
 * sign up, create a free cluster, choose Cloud Provider & Region.
 * after the cluster is created (1-3 minutes) click _connect_ on you new cluster (Clusrter0 probably).
 * on _Whitelist a connection IP address_ choose _Add a Different IP Address_, insert 0.0.0.0 and click _Add IP Address_
@@ -66,10 +66,10 @@ allowing you to handle confession's posting and scheduling in a more orgenized w
 #### For Local Deployment
 
 ##### 5. NodeJS
-&emsp; Get the latest version of NodeJS from [here](https://nodejs.org/en/), LTS version is recommended).
+Get the latest version of NodeJS from [here](https://nodejs.org/en/), LTS version is recommended).
 
 ##### 6. Angular CLI
-&emsp; Run the command: ```$ npm install -g @angular/cli ```.
+Run the command: ```$ npm install -g @angular/cli ```.
 
 <br/>
 
