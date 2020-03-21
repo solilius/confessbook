@@ -81,7 +81,7 @@ now click on the _Fork_ button on the top right, now you should have a copy of t
 #### For Local Deployment
 
 Get the latest version of NodeJS from [here](https://nodejs.org/en/), LTS version is recommended). <br/>
-and  the command: ```$ npm install -g @angular/cli ```.
+and run the command: ```$ npm install -g @angular/cli ```.
 
 
 <br/>
