@@ -73,14 +73,14 @@ If you don't have a MongoDB ready, you can get one for free [here](https://www.m
 <br/>
 
 ##### 5. GitHub
-If you don't already have a GitHub account create on from [here](https://github.com/join?source=header-home).
+If you don't already have a GitHub account create on from [here](https://github.com/join?source=header-home). <br/>
 now click on the _Fork_ button on the top right, now you should have a copy of this repository named **Confessbook**
 
 <br/>
 
 #### For Local Deployment
 
-Get the latest version of NodeJS from [here](https://nodejs.org/en/), LTS version is recommended).
+Get the latest version of NodeJS from [here](https://nodejs.org/en/), LTS version is recommended). <br/>
 and  the command: ```$ npm install -g @angular/cli ```.
 
 
