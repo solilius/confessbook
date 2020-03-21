@@ -12,8 +12,7 @@ allowing you to handle confession's posting and scheduling in a more orgenized w
   * [Deployment](#deployment)
   * [How To Use](#how-to-use)
   
-<br/>
-
+  
 ## Abilities
   * Submitting confessions anonymously.
   * Organizing confessions in convenient lists.
@@ -33,18 +32,29 @@ allowing you to handle confession's posting and scheduling in a more orgenized w
 ## Prerequisites
 
 ##### 1. Facebook Page
-&emsp; If you don't already have a page use [this guide](https://www.facebook.com/help/104002523024878) to create a new Facebook Page.
+If you don't already have a page use [this guide](https://www.facebook.com/help/104002523024878) to create a new Facebook Page.
+
+<br/>
+
 ##### 2. Facebook App
-&emsp; Go to [Facebook for Developers](https://developers.facebook.com/apps/) and add a new app, name it as your page's name (you might need to create a Developer Account).
+* first make sure you have a Developer Account go [Here](https://developers.facebook.com/docs/pages/getting-started/) and scroll down until you see a button saying _Create Developer Account_ and click it.
+* click next and for _"as Which of the following best describes you?"_ choose _Developer_.
+* then click _Create You First App_ and name it as your page.
+* after it's creatred it will redirect you to the app managment page, on your left side go to _Setting > Basic_  amd in the _Privacy Policy URL_ input box paste this: <br/>
+`https://www.privacypolicies.com/generic/?fbclid=IwAR2HttnlhNRWmfgZrd3aWGsaOF7FCe6p_RadxFTAH-68d2YXLxAmY9jU14M` <br/>
+and click _Save Changes_ button on the bottom of the page.
+* on the top left you will see _In development_  toogle, click it,  _Choose a Category_ > _Businnes and Pages_, and then click _Switch Mode_. the toggle should show _Live_ now.
+<br/>
+
 ##### 3. Access Token
 * go to [Facebook's Graph API Explorer](https://developers.facebook.com/tools/explorer), and select your Facebook App from the list.
 * press on _Get Token_ and select _Get User Access Token_.
 * add the following permissions from _Events Group Pages_:
   * manage_pages
-	* pages_show_list
-	* publish_pages
-	* business_management
-	* public_profile (added automatically)
+  * pages_show_list
+  * publish_pages
+  * business_management
+  * public_profile (added automatically)
 * click the _Generate Access Token_ and copy the _Access Token_.
 * go to [Facebook's Access Token Debugger](https://developers.facebook.com/tools/debug/accesstoken/) and paste the token, then click on _Debug_, scroll down and click on _Extend Access Token_, copy the new token.
 * open a new tab and paste this:
@@ -53,8 +63,11 @@ allowing you to handle confession's posting and scheduling in a more orgenized w
     *  the Token is the extended one from the last step.
     * (no square brackets of course...)
 * copy the _"access_token"_ and That's the Access Token we will use.
+
+<br/>
+
 ##### 4. Mongo DB
-&emsp; If you don't have a MongoDB ready, you can get one for free [here](https://www.mongodb.com/atlas-signup-from-mlab?).
+If you don't have a MongoDB ready, you can get one for free [here](https://www.mongodb.com/atlas-signup-from-mlab?).
 * sign up, create a free cluster, choose Cloud Provider & Region.
 * after the cluster is created (1-3 minutes) click _connect_ on you new cluster (Clusrter0 probably).
 * on _Whitelist a connection IP address_ choose _Add a Different IP Address_, insert 0.0.0.0 and click _Add IP Address_
@@ -63,13 +76,17 @@ allowing you to handle confession's posting and scheduling in a more orgenized w
 
 <br/>
 
+##### 5. GitHub
+If you don't already have a GitHub account create on from [here](https://github.com/join?source=header-home). <br/>
+now click on the _Fork_ button on the top right, now you should have a copy of this repository named **Confessbook**
+
+<br/>
+
 #### For Local Deployment
 
-##### 5. NodeJS
-&emsp; Get the latest version of NodeJS from [here](https://nodejs.org/en/), LTS version is recommended).
+Get the latest version of NodeJS from [here](https://nodejs.org/en/), LTS version is recommended). <br/>
+and run the command: ```$ npm install -g @angular/cli ```.
 
-##### 6. Angular CLI
-&emsp; Run the command: ```$ npm install -g @angular/cli ```.
 
 <br/>
 
@@ -119,7 +136,7 @@ INTRO=don't be shy just confess!
 
 * go to [Heroku](https://www.heroku.com/). sign up/in. (if you sign up choose NodeJS as _your Primary development language_, and Other as _Role_).
 * Create a new app, choose an _App name_ and a _region_ and click _Create app_.
-* go to the Deploy tab and choose GitHub, connect and choose this project's repository, _Enable Automatic Deploys_, but before you click _Deploy Branch_...
+* go to the Deploy tab and choose GitHub, connect and choose your new forked repository, _Enable Automatic Deploys_, but before you click _Deploy Branch_...
 * go to _Settings_ tab, click on Reveal Config Vars and add all the vars from the .env file (except PORT).
 * go back to _Deploy_ tab, scroll down and click _Deploy Branch_. after the build process is finished you can access the app by clicking  _Open app_ on the top right.
 
