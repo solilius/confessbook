@@ -1,4 +1,4 @@
-const Joi = require("Joi");
+const Joi = require("joi");
 Joi.objectId = require("Joi-objectid")(Joi);
 
 const messageScheme = Joi.object().keys({
