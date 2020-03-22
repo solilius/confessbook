@@ -1,5 +1,5 @@
 const Joi = require("joi");
-Joi.objectId = require("Joi-objectid")(Joi);
+Joi.objectId = require("joi-objectid")(Joi);
 
 const messageScheme = Joi.object().keys({
   message: Joi.string()
