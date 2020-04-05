@@ -6,6 +6,7 @@ const confessionSchema = mongoose.Schema({
     updated_by: String,
     message: String,
     comment: String,
+    tags: [String],
     serial: Number,
     archived :{ type: Boolean, default: false }
 });

@@ -4,7 +4,9 @@ const facebook = require("../services/facebook.service");
 const controller = {
   getConfessions: async (req, res, next) => {
     try {
-      const confessions = await db.getConfessions({archived: req.query.archived});
+      const confessions = await db.getConfessions({
+        archived: req.query.archived
+      });
       res.send(confessions);
     } catch (error) {
       next(error);
@@ -50,22 +52,8 @@ const controller = {
 module.exports = controller;
 
 async function populateConfession(confession) {
-  confession.serial = await getNextSerial();
+  confession.serial = await db.getNextSerial();
   confession.update_date = new Date();
   confession.archived = true;
   return confession;
-}
-
-async function getNextSerial() {
-  const [lastConfession] = await db.getSerial();
-  return lastConfession ? lastConfession.serial + 1 : 0;
-}
-
-function foramtBody(confession) {
-  let body = {
-    access_token: process.env.ACCESS_TOKEN,
-    message: `#${confession.serial} ${confession.message}`
-  };
-  if (confession.comment) body.message += `\nהערת העורך: ${confession.comment}`;
-  return body;
 }

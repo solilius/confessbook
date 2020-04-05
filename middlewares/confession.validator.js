@@ -16,6 +16,7 @@ const ConfessionScheme = Joi.object().keys({
   updated_by: Joi.string().required(),
   create_date: Joi.date().required(),
   update_date: Joi.date(),
+  tags: Joi.array().items(Joi.string()),
   serial: Joi.number().allow(null),
   __v: Joi.number(),
   comment: Joi.string().allow("")

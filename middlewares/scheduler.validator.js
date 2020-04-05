@@ -9,7 +9,7 @@ const schedulerScheme = joi.object().keys({
 });
 
 module.exports = (req, res, next) => {
-  if (req.method !== "GET") {
+  if (req.method == "POST" || req.method == "PUT") {
     joi.validate(req.body, schedulerScheme, err => {
       if (err) {
         res.status(400).send(err.details[0].message);

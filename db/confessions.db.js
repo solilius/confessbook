@@ -4,6 +4,9 @@ const db = {
   getConfessions: query => {
     return Confession.find(query).sort({ create_date: "asc" });
   },
+  getConfession: query => {
+    return Confession.findOne(query);
+  },
   insertConfession: confession => {
     return Confession.create(confession);
   },
@@ -14,8 +17,8 @@ const db = {
   deleteConfession: id => {
     return Confession.deleteOne({ _id: id });
   },
-  getSerial: () => {
-    return Confession.aggregate([
+  getNextSerial: async () => {
+    const [lastConfession] = await Confession.aggregate([
       {
         $group: {
           _id: null,
@@ -25,6 +28,7 @@ const db = {
         }
       }
     ]);
+    return lastConfession ? lastConfession.serial + 1 : 0;
   }
 };
 
