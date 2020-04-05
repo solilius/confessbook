@@ -1,8 +1,8 @@
 const Confession = require("../models/confession");
 
 const db = {
-  getConfessions: archived => {
-    return Confession.find({ archived: archived }).sort({ create_date: "asc" });
+  getConfessions: query => {
+    return Confession.find(query).sort({ create_date: "asc" });
   },
   insertConfession: confession => {
     return Confession.create(confession);

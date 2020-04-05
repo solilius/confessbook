@@ -4,7 +4,7 @@ const facebook = require("../services/facebook.service");
 const controller = {
   getConfessions: async (req, res, next) => {
     try {
-      const confessions = await db.getConfessions(req.query.archived);
+      const confessions = await db.getConfessions({archived: req.query.archived});
       res.send(confessions);
     } catch (error) {
       next(error);

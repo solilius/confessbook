@@ -6,7 +6,6 @@ const schedulerSchema = mongoose.Schema({
     name: String,
     tag: String,
     rule: String,
-    isRepeatable: Boolean,
     isActive: Boolean
 });
 
