@@ -17,6 +17,7 @@ export class MainComponent implements OnInit {
     ngOnInit(): void {
         this.confessions = [];
         this.confessionsService.getConfessions(false).subscribe(confessions => {
+            this.confessionsService.allTags = this.getAllTags(confessions);
             this.confessions = confessions;
         }, (err) => {
             console.log(err);
@@ -31,5 +32,13 @@ export class MainComponent implements OnInit {
 
     removeConfession(id) {
         this.confessions = this.confessions.filter(c => c._id !== id);
+    }
+
+    getAllTags(confessions:Confession[]): string[]{
+        let tags = [];
+        confessions.forEach(confession =>{
+            tags = tags.concat(confession.tags);
+        });
+        return tags.filter((item, index) => {return tags.indexOf(item) == index});
     }
 }

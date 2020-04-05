@@ -15,6 +15,7 @@ const httpOptions = {
     providedIn: 'root'
 })
 export class ConfessionsService {
+    allTags: string[];
 
     constructor(private http: HttpClient, private cookie: CookieService) { }
 

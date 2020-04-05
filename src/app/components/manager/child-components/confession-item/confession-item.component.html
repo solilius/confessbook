@@ -27,6 +27,7 @@
                 <textarea matInput type="text" class="comment my-scroller" [(ngModel)]="confession.comment"
                     placeholder="הערת המערכת"> </textarea>
             </mat-form-field>
+            <app-chips [tags]="confession.tags" (updateTags)="updateTags($event)"></app-chips>
             <div class="buttons-area">
                 <button mat-raised-button color="warn" (click)='archiveConfession()'>מחק</button>
                 <button mat-raised-button color="accent" (click)='saveConfession()'>שמור</button>

@@ -7,4 +7,5 @@ export class Confession {
     comment?: string;
     serial?: number;
     archived: boolean;
+    tags: string[];
 }

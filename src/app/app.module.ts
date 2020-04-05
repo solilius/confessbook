@@ -17,6 +17,7 @@ import {CookieService } from 'ngx-cookie-service';
 import { ArchivedConfessionItemComponent } from './components/manager/child-components/archived-confession-item/archived-confession-item.component';
 import {AuthGuard } from './auth.guard';
 import { FooterComponent } from './components/footer/footer.component';
+import { ChipsComponent } from './components/chips/chips.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { FooterComponent } from './components/footer/footer.component';
     ArchiveComponent,
     ConfessionItemComponent,
     ArchivedConfessionItemComponent,
-    FooterComponent
+    FooterComponent,
+    ChipsComponent
   ],
   imports: [
     BrowserModule,

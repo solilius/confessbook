@@ -118,6 +118,9 @@ export class ConfessionItemComponent implements OnInit {
             }
         })
     }
+    updateTags(tags:string[]){
+        this.confession.tags = tags;
+    }
 }
 
 function SwalError(msg, err) {
