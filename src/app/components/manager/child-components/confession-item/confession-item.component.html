@@ -15,8 +15,13 @@
 
     <div class="item-collapsed" (click)="toggleItem()" *ngIf="!isOpen; else open_confession">
         {{confession.message}}
-    </div>
 
+    </div>
+    <mat-chip-list class="mat-chip-list-stacked">
+        <mat-chip class="tag-collapsed" *ngFor="let tag of confession.tags">
+            {{tag}}
+        </mat-chip>
+    </mat-chip-list>
     <ng-template #open_confession>
         <div class="item-extended">
             <mat-form-field>

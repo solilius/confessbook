@@ -13,7 +13,6 @@ import Swal from 'sweetalert2'
 export class ConfessionItemComponent implements OnInit {
     @Input() confession: Confession;
     @Output() removeConfession: EventEmitter<string> = new EventEmitter();
-
     isOpen = false;
     cursor = 'pointer';
     constructor(private confessionsService: ConfessionsService, private router: Router) { }
