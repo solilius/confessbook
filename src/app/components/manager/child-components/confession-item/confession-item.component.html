@@ -17,7 +17,7 @@
         {{confession.message}}
 
     </div>
-    <mat-chip-list class="mat-chip-list-stacked">
+    <mat-chip-list class="mat-chip-list-stacked" *ngIf="!isOpen">
         <mat-chip class="tag-collapsed" *ngFor="let tag of confession.tags">
             {{tag}}
         </mat-chip>

@@ -58,7 +58,7 @@
 
 .item-extended {
   max-height: 700px;
-  flex-basis: 70%;
+  flex-basis: 65%;
   padding-left: 10px;  
   cursor: default;
 }
