@@ -5,7 +5,7 @@ import { MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material
 import { MatChipInputEvent } from '@angular/material/chips';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { ConfessionsService } from '../../services/confessions.service';
+import { SchedulersService } from '../../services/schedulers.service'
 
 @Component({
     selector: 'app-chips',
@@ -14,6 +14,7 @@ import { ConfessionsService } from '../../services/confessions.service';
 })
 export class ChipsComponent implements OnInit {
     @Input() tags: string[];
+    @Input() isUnlimited: boolean;
     @Output() updateTags: EventEmitter<string> = new EventEmitter();
     visible = true;
     selectable = true;
@@ -26,7 +27,7 @@ export class ChipsComponent implements OnInit {
     @ViewChild('tagInput') tagInput: ElementRef<HTMLInputElement>;
     @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
-    constructor(private service: ConfessionsService) {
+    constructor(private service: SchedulersService) {
         this.filteredTags = this.tagCtrl.valueChanges.pipe(
             startWith(null),
             map((tag: string | null) => tag ? this._filter(tag) : this.allTags.slice()));
@@ -40,7 +41,7 @@ export class ChipsComponent implements OnInit {
         const value = event.value;
 
         // Add our tag
-        if ((value || '').trim() && !this.tags.includes(value.trim())) {
+        if ((value || '').trim() && !this.tags.includes(value.trim()) && (this.isUnlimited || this.tags.length == 0)) {
             this.tags.push(value.trim());
             this.service.allTags.push(value.trim());
         }

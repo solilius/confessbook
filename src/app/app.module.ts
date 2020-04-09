@@ -18,6 +18,8 @@ import { ArchivedConfessionItemComponent } from './components/manager/child-comp
 import {AuthGuard } from './auth.guard';
 import { FooterComponent } from './components/footer/footer.component';
 import { ChipsComponent } from './components/chips/chips.component';
+import { SchedulerItemComponent } from './components/manager/child-components/scheduler-item/scheduler-item.component';
+import { FloatingButtonComponent } from './components/floating-button/floating-button.component';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { ChipsComponent } from './components/chips/chips.component';
     ConfessionItemComponent,
     ArchivedConfessionItemComponent,
     FooterComponent,
-    ChipsComponent
+    ChipsComponent,
+    SchedulerItemComponent,
+    FloatingButtonComponent
   ],
   imports: [
     BrowserModule,
