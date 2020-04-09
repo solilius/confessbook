@@ -5,7 +5,8 @@
     <app-confession-item 
     *ngFor="let confession of confessions"
      [confession]="confession"
-     (removeConfession)="removeConfession($event)">
+     (removeConfession)="removeConfession($event)"
+     (click)="lastItemClicked(confession._id)">
       </app-confession-item>
 </div>
 
