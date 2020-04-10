@@ -8,7 +8,7 @@ const confessionSchema = mongoose.Schema({
     comment: String,
     tags: [String],
     serial: Number,
-    archived :{ type: Boolean, default: false }
+    isArchived :{ type: Boolean, default: false }
 });
 
 module.exports = mongoose.model('Confession', confessionSchema);

@@ -16,7 +16,7 @@ export class ArchivedConfessionItemComponent implements OnInit {
     constructor(private confessionsService: ConfessionsService, private router: Router) { }
 
     ngOnInit(): void { }
-    deleteConfession() {
+    async deleteConfession() {
         Swal.fire({
             title: 'מחיקת וידוי',
             text: 'מחיקת וידוי מהארכיון היא לצמיתות האם את/ה בטוח/ה?',
@@ -24,9 +24,10 @@ export class ArchivedConfessionItemComponent implements OnInit {
             showCancelButton: true,
             confirmButtonText: 'מחק',
             cancelButtonText: 'ביטול'
-        }).then((result) => {
+        }).then(async (result) => {
             if (result.value) {
-                this.confessionsService.deleteConfession(this.confession._id).subscribe((res) => {
+                try {
+                    const res = await this.confessionsService.deleteConfession(this.confession._id);
                     if (res.status === "success") {
                         Swal.fire(
                             'הוידוי נחמחק בהצלחה!',
@@ -40,12 +41,14 @@ export class ArchivedConfessionItemComponent implements OnInit {
                     } else {
                         SwalError('מחיקת הוידוי נכשלה', null)
                     }
-                }, (err) => { SwalError('מחיקת הוידוי נכשלה', err) });
+                } catch (error) {
+                    SwalError('מחיקת הוידוי נכשלה', error)
+                }
             }
         });
     }
 
-    unarchiveConfession() {
+    async unarchiveConfession() {
         let text = "האם את/ה בטוח/ה שברצונך להעביר את הוידוי חזרה מהארכיון לדף הראשי?";
         if (this.confession.serial !== undefined) {
             text = "וידוי זה כבר פורסם האם את/ה בטוח/ה שברצונך להחזיר אותו לדף הראשי?"
@@ -57,10 +60,11 @@ export class ArchivedConfessionItemComponent implements OnInit {
             showCancelButton: true,
             confirmButtonText: 'שחזר',
             cancelButtonText: 'ביטול'
-        }).then((result) => {
+        }).then(async (result) => {
             if (result.value) {
-                this.confession.archived = false;
-                this.confessionsService.updateConfession(this.confession).subscribe((res) => {
+                try {
+                    this.confession.isArchived = false;
+                    const res = await this.confessionsService.updateConfession(this.confession);
                     if (res.status === "success") {
                         Swal.fire(
                             'הוידוי שוחזר בהצלחה!',
@@ -74,7 +78,9 @@ export class ArchivedConfessionItemComponent implements OnInit {
                     } else {
                         SwalError('שחזור הוידוי נכשל', null);
                     }
-                }, (err) => { SwalError('שחזור הוידוי נכשל', err) });
+                } catch (error) {
+                    SwalError('שחזור הוידוי נכשל', error)
+                }
             }
         });
     }

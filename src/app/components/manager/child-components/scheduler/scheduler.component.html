@@ -1,1 +1,11 @@
-<p style="margin:100px 50px 0 0; color:blue; font-size:100px">בקרוב</p>
+<div id="schedulers-list" class="my-scroller">
+    <p *ngIf="schedulers.length==0" class="empty-list">
+       - אין מתזמנים להצגה -
+    </p>
+    <app-scheduler-item 
+    *ngFor="let scheduler of schedulers"
+     [scheduler]="scheduler"
+     (removeScheduler)="removeScheduler($event)">
+      </app-scheduler-item>
+      <div *ngIf="schedulers.length % 2" class="invisible-item"></div>
+</div>

@@ -5,76 +5,90 @@ const facebook = require("./facebook.service");
 
 const jobs = [];
 
-const scheduler = {
-  startSchedulers: async () => {
-    db_schedulers.getSchedulers().then(data => {
-      data.forEach(s => {
-        jobs.push(getJobObject(s));
-      });
-    });
-  },
-  insertScheduler: async scheduler => {
-    jobs.push(getJobObject(scheduler));
-  },
-  updateScheduler: (id, scheduler) => {
-    jobs.forEach(job => {
-      if (job.id === id) {
-        job.job.cancel();
-        job = getJobObject(scheduler);
-      }
-    });
-  },
-  activateJob: (id, active) => {
-    if (active) {
-      jobs.find(j => {
-        if (j.id === id) {
-          j.job.reschedule(j.rule);
-          return j;
-        } else {
-          return false;
-        }
-      });
-    } else {
-      jobs.find(j => j.id === id).job.cancel();
-    }
-  },
-  deleteScheduler: id => {
-    jobs.forEach((j, i) => {
-      if (j.id == id) {
-        this.stopJob(j.id);
-        jobs.splice(i, 1);
-      }
-    });
-  }
-};
-
-module.exports = scheduler;
-
-async function getJobObject(job) {
+const getJobObject = (job) => {
   const jobObject = {
     id: job._id.toString(),
     rule: job.rule,
     job: schedule.scheduleJob(job.rule, () => {
-      handlePosting(job.tag, job.name);
-      //console.log(new Date().getSeconds(), job.name);
-    })
+      //handlePosting(job.tag, job.name);
+      console.log(job.name, job.tag);
+    }),
   };
   if (!job.isActive) jobObject.job.cancel();
   return jobObject;
-}
-async function handlePosting(tag, name) {
+};
+
+const handlePosting = async (tag, name) => {
   try {
-    let confession = await db_confession.getConfession({
-      archived: false,
-      tags: tag
+    const confession = await db_confession.getConfession({
+      isArchived: false,
+      tags: tag,
     });
     confession.serial = await db_confession.getNextSerial();
     await facebook.post(confession);
     confession.update_date = new Date();
     confession.updated_by = name;
-    confession.archived = true;
+    confession.isArchived = true;
     db_confession.updateConfession(confession._id, confession);
   } catch (error) {
-      // logs
+    // logs
   }
-}
+};
+
+const startSchedulers = async () => {
+  const data = await db_schedulers.getSchedulers();
+  data.forEach((s) => {
+    jobs.push(getJobObject(s));
+  });
+};
+
+const insertScheduler = async (scheduler) => {
+  jobs.push(getJobObject(scheduler));
+};
+
+const updateScheduler = (id, scheduler) => {
+  return new Promise((resolve, reject) => {
+    jobs.forEach((job) => {
+      if (job.id === id) {
+        job.job.cancel();
+        job = getJobObject(scheduler);
+      }
+    });
+    resolve();
+  });
+};
+
+const activateJob = (id, active) => {
+  return new Promise((resolve, reject) => {
+    if (active) {
+      jobs.forEach((j) => {
+        if (j.id === id) {
+          j.job.schedule(j.rule);
+        }
+      });
+    } else {
+      jobs.find((j) => j.id === id).job.cancel();
+    }
+    resolve();
+  });
+};
+
+const deleteScheduler = (id) => {
+  return new Promise((resolve, reject) => {
+    jobs.forEach((j, i) => {
+      if (j.id == id) {
+        activateJob(j.id, false);
+        jobs.splice(i, 1);
+      }
+    });
+    resolve();
+  });
+};
+
+module.exports = {
+  startSchedulers,
+  insertScheduler,
+  updateScheduler,
+  activateJob,
+  deleteScheduler,
+};

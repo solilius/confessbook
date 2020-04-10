@@ -1,0 +1,9 @@
+input{
+    direction: ltr;
+    text-align: center;
+    font-size:  20px;
+}
+
+.mat-form-field-appearance-legacy{
+    width: 150px;
+}

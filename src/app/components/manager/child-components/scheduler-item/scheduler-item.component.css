@@ -1,0 +1,37 @@
+.scheduler {
+  width: 30vw;
+  height: 300px;
+  margin-bottom: 1vw;
+}
+
+.slider {
+  position: absolute;
+  left: 1vw;
+  transform: scale(1) rotateY(180deg);
+}
+
+mat-card-content {
+  display: flex;
+  justify-content: space-around;
+}
+
+::ng-deep.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+  background-color: #089c1c !important;
+}
+
+::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+  background-color: #089c1c86 !important;
+}
+
+mat-form-field {
+  text-align: right;
+}
+mat-card-actions {
+  position: absolute;
+  left: 1.5vw;
+  bottom: 1.5vw;
+}
+
+.mat-card-actions .mat-stroked-button {
+  margin: 0 8px 0 0;
+}

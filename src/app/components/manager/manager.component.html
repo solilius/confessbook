@@ -1,23 +1,23 @@
 <mat-toolbar color="primary" class="toolbar">
     <mat-toolbar-row>
-                <a  class="toolbar-item" href={{fbPage}} target="_blank">
-            <span class='item-text'> {{appName}} </span> 
+        <a class="toolbar-item" href={{fbPage}} target="_blank">
+            <span class='item-text'> {{appName}} </span>
         </a>
-        <a  class="toolbar-item login-item" href="/login">
+        <a class="toolbar-item login-item" href="/login">
             <mat-icon>perm_identity</mat-icon>
             <span class='item-text'> {{loginText}} </span>
         </a>
         <span class="toolbar-spacer"></span>
+        <mat-icon>archive</mat-icon>
         <a [ngClass]="setClasses('archive')" class="toolbar-item" (click)="loadChild('archive')">
-            <mat-icon>archive</mat-icon>
             <span class='item-text'> ארכיון </span>
         </a>
+        <mat-icon>timer</mat-icon>
         <a [ngClass]="setClasses('scheduler')" class="toolbar-item" (click)="loadChild('scheduler')">
-            <mat-icon>timer</mat-icon>
             <span class='item-text'> תזמונים </span>
         </a>
+        <mat-icon>list_alt</mat-icon>
         <a [ngClass]="setClasses('main')" class="toolbar-item" (click)="loadChild('main')">
-            <mat-icon>list_alt</mat-icon>
             <span class='item-text'> דף ראשי </span>
         </a>
     </mat-toolbar-row>

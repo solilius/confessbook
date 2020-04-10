@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfessionsService } from '../../../../services/confessions.service';
-import { SchedulersService } from '../../../../services/schedulers.service';
 import { Confession } from '../../../../models/confession/confession.module'
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -14,34 +13,27 @@ import Swal from 'sweetalert2';
 export class MainComponent implements OnInit {
     confessions: Confession[];
 
-    constructor(private confessionsService: ConfessionsService, private schedulersService: SchedulersService, private router: Router) { }
-    ngOnInit(): void {
+    constructor(private confessionsService: ConfessionsService, private router: Router) {
         this.confessions = [];
-        this.confessionsService.getConfessions(false).subscribe(confessions => {
-            this.schedulersService.allTags = this.getAllTags(confessions);
-            this.confessions = confessions;
-        }, (err) => {
-            console.log(err);
+     }
+    async ngOnInit(): Promise<any> {
+        try {
+            this.confessions = await this.confessionsService.getConfessions(false);
+        } catch (error) {
+            console.log(error);
             Swal.fire({
                 title: 'אופס',
-                text: err.error.message,
+                text: error.error.message,
                 icon: 'warning',
                 confirmButtonText: 'אוקיי'
             });
-        })
-    }
+        }
 
+    }
     removeConfession(id) {
         this.confessions = this.confessions.filter(c => c._id !== id);
     }
 
-    getAllTags(confessions: Confession[]): string[] {
-        let tags = [];
-        confessions.forEach(confession => {
-            tags = tags.concat(confession.tags);
-        });
-        return tags.filter((item, index) => { return tags.indexOf(item) == index });
-    }
 
     lastItemClicked(id) {
         if (id === this.confessions[this.confessions.length - 1]._id) {

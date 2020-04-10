@@ -3,6 +3,7 @@ import { ConfessionsService } from '../../../../services/confessions.service';
 import { Confession } from '../../../../models/confession/confession.module'
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { Portal } from '@angular/cdk/portal';
 
 @Component({
     selector: 'app-archive',
@@ -16,21 +17,21 @@ export class ArchiveComponent implements OnInit {
     color: string;
 
     constructor(private confessionsService: ConfessionsService, private router: Router) { }
-    ngOnInit(): void {
+    async ngOnInit(): Promise<any> {
         this.displayedConfessions = [];
-        this.confessionsService.getConfessions(true).subscribe(confessions => {
-            this.confessions = confessions;
-            this.displayedConfessions = confessions;
-            this.displayPosted = false;
-            this.color = "primary";
-        }, (err) => {
+        this.color = "primary";
+        this.displayPosted = false;
+        try {
+            this.confessions = await this.confessionsService.getConfessions(true);
+            this.displayedConfessions = this.confessions;
+        } catch (error) {
             Swal.fire({
                 title: 'אופס',
-                text: err.error.message,
+                text: error.error.message,
                 icon: 'warning',
                 confirmButtonText: 'אוקיי'
             });
-        })
+        }
     }
 
     removeConfession(id) {

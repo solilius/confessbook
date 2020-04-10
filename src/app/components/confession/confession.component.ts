@@ -16,29 +16,34 @@ export class ConfessionComponent implements OnInit {
     isSent: boolean;
     constructor(private service: ConfessionsService, private router: Router, private titleService: Title) { }
 
-    ngOnInit(): void {
+    async ngOnInit(): Promise<any> {
         this.isSent = false;
-        this.service.getAppData().subscribe(res => {
+        try {
+            const res = await this.service.getAppData();
             this.titleService.setTitle(res.name);
             this.appName = res.name;
             this.intro = res.intro;
-        });
+        } catch (error) {
+            console.log(error);
+        }
     }
 
-    sendConfession() {
+    async sendConfession() {
         if (this.confession && this.confession.length >= 10) {
-            this.service.postConfession(this.confession).subscribe(res => {
+            try {
+                const res = await this.service.postConfession(this.confession);
                 if (res.status === "success") {
                     this.isSent = true;
-                } else {
-                    Swal.fire({
-                        title: 'אופס',
-                        text: 'אראה שגיאה בשמירה, אנא נסו מאוחר יותר',
-                        icon: 'error',
-                        confirmButtonText: 'סליחה'
-                    })
                 }
-            });
+
+            } catch (error) {
+                Swal.fire({
+                    title: 'אופס',
+                    text: 'אראה שגיאה בשמירה, אנא נסו מאוחר יותר',
+                    icon: 'error',
+                    confirmButtonText: 'סליחה'
+                })
+            }
         } else {
             Swal.fire({
                 title: 'אמממ...',

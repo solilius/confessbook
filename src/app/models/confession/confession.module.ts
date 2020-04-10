@@ -6,6 +6,6 @@ export class Confession {
     message: string;
     comment?: string;
     serial?: number;
-    archived: boolean;
+    isArchived: boolean;
     tags: string[];
 }

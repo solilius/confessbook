@@ -1,0 +1,42 @@
+#schedulers-list {
+  position: fixed;
+  top: 5vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  max-height: 86vh;
+  min-height: 0px;
+  width: 68vw;
+  margin: 2.5vh 16vw 0 0;
+  overflow-y: scroll;
+}
+
+.empty-list {
+  width: 100%;
+  text-align: center;
+  font-size: 25px;
+  color: blue;
+  margin-top: 10vh;
+}
+
+app-scheduler-item {
+  margin-bottom: 4px;
+}
+
+app-scheduler-item:last-child {
+  margin-bottom: 0;
+}
+
+.my-scroller::-webkit-scrollbar {
+  width: 8px;
+}
+
+.my-scroller::-webkit-scrollbar-thumb {
+  background-color: #ffffff;
+}
+
+.invisible-item{
+    width: 32vw;
+    height: 300px;
+}

@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Confession } from '../../../../models/confession/confession.module';
 import { ConfessionsService } from '../../../../services/confessions.service';
-import { Router } from '@angular/router';
 import Swal from 'sweetalert2'
 
 
@@ -15,7 +14,7 @@ export class ConfessionItemComponent implements OnInit {
     @Output() removeConfession: EventEmitter<string> = new EventEmitter();
     isOpen = false;
     cursor = 'pointer';
-    constructor(private confessionsService: ConfessionsService, private router: Router) { }
+    constructor(private confessionsService: ConfessionsService) { }
 
     ngOnInit(): void {
 
@@ -25,7 +24,7 @@ export class ConfessionItemComponent implements OnInit {
         (this.isOpen) ? this.cursor = 'pointer' : this.cursor = 'default'
         this.isOpen = !this.isOpen;
     }
-    saveConfession() {
+    async saveConfession() {
         Swal.fire({
             title: 'עדכן וידוי',
             text: "האם את/ה בטוח/ה?",
@@ -34,9 +33,10 @@ export class ConfessionItemComponent implements OnInit {
             confirmButtonColor: '#228B22',
             confirmButtonText: 'שמור',
             cancelButtonText: 'ביטול'
-        }).then((result) => {
+        }).then(async (result) => {
             if (result.value) {
-                this.confessionsService.updateConfession(this.confession).subscribe((res) => {
+                try {
+                    const res = await this.confessionsService.updateConfession(this.confession);
                     if (res.status === "success") {
                         Swal.fire(
                             'הוידוי נשמר בהצלחה!',
@@ -46,13 +46,14 @@ export class ConfessionItemComponent implements OnInit {
                     } else {
                         SwalError('שמירת הוידוי נכשלה', null);
                     }
-                }, (err) => {
-                    SwalError('שמירת הוידוי נכשלה', err);
-                });
+                } catch (error) {
+                    SwalError('שמירת הוידוי נכשלה', error);
+                }
+
             }
         })
     }
-    archiveConfession() {
+    async archiveConfession() {
         Swal.fire({
             title: 'מחק וידוי',
             text: "מחיקת הודוי תעביר אותו לארכיון, האם את/ה בטוח/ה?",
@@ -62,10 +63,11 @@ export class ConfessionItemComponent implements OnInit {
             cancelButtonColor: '#b2b2b2',
             confirmButtonText: 'מחק',
             cancelButtonText: 'ביטול'
-        }).then((result) => {
+        }).then(async (result) => {
             if (result.value) {
-                this.confession.archived = true;
-                this.confessionsService.updateConfession(this.confession).subscribe((res) => {
+                try {
+                    this.confession.isArchived = true;
+                    const res = await this.confessionsService.updateConfession(this.confession);
                     if (res.status === "success") {
                         Swal.fire(
                             'הוידוי נמחק בהצלחה!',
@@ -79,11 +81,13 @@ export class ConfessionItemComponent implements OnInit {
                     } else {
                         SwalError('מחיקת הוידוי הכשלה', null);
                     }
-                }, (err) => { SwalError('מחיקת הוידוי הכשלה', err) });
+                } catch (error) {
+                    SwalError('מחיקת הוידוי הכשלה', error)
+                }
             }
         })
     }
-    postConfession() {
+    async postConfession() {
         Swal.fire({
             title: 'העלה וידויי',
             text: "האם את/ה בטוח/ה שברצונך להעלות את הוידוי כעת?",
@@ -93,10 +97,11 @@ export class ConfessionItemComponent implements OnInit {
             cancelButtonColor: '#b2b2b2',
             confirmButtonText: 'העלה',
             cancelButtonText: 'ביטול'
-        }).then((result) => {
+        }).then(async (result) => {
             if (result.value) {
-                this.confession.updated_by = localStorage.getItem('username');
-                this.confessionsService.postConfessionToFB(this.confession).subscribe((res) => {
+                try {
+                    this.confession.updated_by = localStorage.getItem('username');
+                    const res = await this.confessionsService.postConfessionToFB(this.confession);
                     if (res.status === "success") {
                         Swal.fire(
                             'הוידוי הועלה בהצלחה!',
@@ -111,14 +116,11 @@ export class ConfessionItemComponent implements OnInit {
                         SwalError('העלאת פוסט נכשלה', null);
 
                     }
-                }, (err) => {
-                    SwalError('העלאת פוסט נכשלה', err);
-                });
+                } catch (error) {
+                    SwalError('העלאת פוסט נכשלה', error);
+                }
             }
         })
-    }
-    updateTags(tags:string[]){
-        this.confession.tags = tags;
     }
 }
 

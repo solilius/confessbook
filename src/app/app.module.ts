@@ -13,41 +13,43 @@ import { ArchiveComponent } from './components/manager/child-components/archive/
 import { ConfessionItemComponent } from './components/manager/child-components/confession-item/confession-item.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material';
-import {CookieService } from 'ngx-cookie-service';
+import { CookieService } from 'ngx-cookie-service';
 import { ArchivedConfessionItemComponent } from './components/manager/child-components/archived-confession-item/archived-confession-item.component';
-import {AuthGuard } from './auth.guard';
+import { AuthGuard } from './auth.guard';
 import { FooterComponent } from './components/footer/footer.component';
 import { ChipsComponent } from './components/chips/chips.component';
 import { SchedulerItemComponent } from './components/manager/child-components/scheduler-item/scheduler-item.component';
 import { FloatingButtonComponent } from './components/floating-button/floating-button.component';
+import { CronJobComponent } from './components/cron-job/cron-job.component';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    ConfessionComponent,
-    ManagerComponent,
-    MainComponent,
-    SchedulerComponent,
-    ArchiveComponent,
-    ConfessionItemComponent,
-    ArchivedConfessionItemComponent,
-    FooterComponent,
-    ChipsComponent,
-    SchedulerItemComponent,
-    FloatingButtonComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MaterialModule
-  ],
-  providers: [CookieService, AuthGuard],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        LoginComponent,
+        ConfessionComponent,
+        ManagerComponent,
+        MainComponent,
+        SchedulerComponent,
+        ArchiveComponent,
+        ConfessionItemComponent,
+        ArchivedConfessionItemComponent,
+        FooterComponent,
+        ChipsComponent,
+        SchedulerItemComponent,
+        FloatingButtonComponent,
+        CronJobComponent
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MaterialModule
+    ],
+    providers: [CookieService, AuthGuard],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

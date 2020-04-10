@@ -1,51 +1,54 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { Confession } from '../models/confession/confession.module';
-import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../environments/environment';
-
-const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-    withCredentials: true
-};
 
 @Injectable({
     providedIn: 'root'
 })
 export class ConfessionsService {
-    allTags: string[];
+    baseUrl: string;
 
-    constructor(private http: HttpClient, private cookie: CookieService) { }
-
-    login(data: Object): Observable<any> {
-        return this.http.post<any>(`${environment.server}/login`, data, httpOptions).pipe(map(res => { }));
+    constructor(private http: HttpClient) {
+        this.baseUrl = `${environment.server}/confessions/`;
     }
 
-    getConfessions(isArchived: boolean): Observable<any> {
-        return this.http.get<Confession[]>(`${environment.server}/confessions?archived=${isArchived}`);
+    request(method: string, url: string, body?: any): Promise<any> {
+        return this.http.request(method, url,
+            {
+                body: body,
+                headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+                withCredentials: true
+            }).toPromise();
     }
 
-    postConfession(confession: string): Observable<any> {
-        return this.http.post<any>(`${environment.server}/confessions`, { message: confession }, httpOptions);
+    login(data: Object): Promise<any> {
+        return this.request('post', `${environment.server}/login`, data);
     }
 
-    updateConfession(confession: Confession): Observable<any> {
+    getConfessions(isArchived: boolean): Promise<Confession[]> {
+        return this.request('get', `${this.baseUrl}?isArchived=${isArchived}`);
+    }
+
+    postConfession(confession: string): Promise<any> {
+        return this.request('post', this.baseUrl, { message: confession });
+    }
+
+    updateConfession(confession: Confession): Promise<any> {
         confession.updated_by = localStorage.getItem('username');
-        return this.http.put<any>(`${environment.server}/confessions/${confession._id}`, confession, httpOptions);
+        return this.request('put', `${this.baseUrl}/${confession._id}`, confession);
     }
 
-    deleteConfession(id: string): Observable<any> {
-        return this.http.delete(`${environment.server}/confessions/${id}?user=${localStorage.getItem('username')}`);
+    deleteConfession(id: string): Promise<any> {
+        return this.request('delete', `${this.baseUrl}/${id}?user=${localStorage.getItem('username')}`);
     }
 
-    postConfessionToFB(confession: Confession): Observable<any> {
+    postConfessionToFB(confession: Confession): Promise<any> {
         confession.updated_by = localStorage.getItem('username');
-        return this.http.post<any>(`${environment.server}/confessions/fb`, confession, httpOptions);
+        return this.request('post', `${this.baseUrl}/fb`, confession);
     }
 
-    getAppData(): Observable<any> {
-        return this.http.get<any[]>(`${environment.server}/app`);
+    getAppData(): Promise<any> {
+        return this.request('get', `${environment.server}/app`);
     }
 }

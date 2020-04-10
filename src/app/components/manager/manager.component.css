@@ -18,7 +18,8 @@
 }
 
 .toolbar-item:hover {
-  color: rgb(235, 235, 253);
+  color: rgba(255, 255, 255, 0.562);
+  transition: 100ms;
 }
 
 .toolbar-spacer {
@@ -26,9 +27,7 @@
 }
 
 .active {
-  font-size: 27px;
-  color: rgb(235, 235, 253);
-
+  text-decoration: underline;
   transition: 100ms;
 }
 

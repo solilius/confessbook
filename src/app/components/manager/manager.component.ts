@@ -16,12 +16,19 @@ export class ManagerComponent implements OnInit {
     loginText: string;
     constructor(private service: ConfessionsService, private router: Router, private titleService: Title) { }
 
-    ngOnInit(): void {
-        this.service.getAppData().subscribe(res => {
+    async ngOnInit(): Promise<any> {
+
+        if(location.href.split('/').pop() == "manager") this.router.navigateByUrl(`/manager/main`);
+        
+        try {
+            const res = await this.service.getAppData();
             this.titleService.setTitle(res.name);
             this.appName = res.name;
             this.fbPage = `https://www.facebook.com/${res.pageID}`;
-        });
+        } catch (error) {
+            console.log(error);
+        }
+
         if (this.mobilecheck()) {
             Swal.fire({
                 title: 'אופס',
@@ -31,8 +38,7 @@ export class ManagerComponent implements OnInit {
                 confirmButtonText: 'תודה'
             });
         }
-        this.router.navigateByUrl(`/manager/main`);
-        this.activeTab = 'main';
+        this.activeTab = location.href.split('/').pop();
         this.loginText = `${localStorage.getItem('username')} מחובר`;
     }
 

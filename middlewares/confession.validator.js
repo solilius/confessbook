@@ -12,7 +12,7 @@ const ConfessionScheme = Joi.object().keys({
   message: Joi.string()
     .min(10)
     .required(),
-  archived: Joi.boolean().required(),
+  isArchived: Joi.boolean().required(),
   updated_by: Joi.string().required(),
   create_date: Joi.date().required(),
   update_date: Joi.date(),

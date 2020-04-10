@@ -14,7 +14,6 @@ import { SchedulersService } from '../../services/schedulers.service'
 })
 export class ChipsComponent implements OnInit {
     @Input() tags: string[];
-    @Input() isUnlimited: boolean;
     @Output() updateTags: EventEmitter<string> = new EventEmitter();
     visible = true;
     selectable = true;
@@ -28,12 +27,12 @@ export class ChipsComponent implements OnInit {
     @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
     constructor(private service: SchedulersService) {
+    }
+    async ngOnInit(): Promise<void> {
+        this.allTags = await this.service.getTags();
         this.filteredTags = this.tagCtrl.valueChanges.pipe(
             startWith(null),
-            map((tag: string | null) => tag ? this._filter(tag) : this.allTags.slice()));
-    }
-    ngOnInit(): void {
-        this.allTags = this.service.allTags;
+            map((tag: string | null) => tag ? this._filter(tag) : this.allTags));
     }
 
     add(event: MatChipInputEvent): void {
@@ -41,7 +40,7 @@ export class ChipsComponent implements OnInit {
         const value = event.value;
 
         // Add our tag
-        if ((value || '').trim() && !this.tags.includes(value.trim()) && (this.isUnlimited || this.tags.length == 0)) {
+        if ((value || '').trim() && !this.tags.includes(value.trim())) {
             this.tags.push(value.trim());
             this.service.allTags.push(value.trim());
         }
@@ -72,7 +71,6 @@ export class ChipsComponent implements OnInit {
 
     private _filter(value: string): string[] {
         const filterValue = value.toLowerCase();
-
         return this.allTags.filter(fruit => fruit.toLowerCase().indexOf(filterValue) === 0);
     }
 }

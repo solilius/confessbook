@@ -17,12 +17,15 @@ export class LoginComponent implements OnInit {
     constructor(private fb: FormBuilder, private service: ConfessionsService, private router: Router, private titleService: Title) {
         this.initForm();
     }
-    ngOnInit(): void {
+    async ngOnInit(): Promise<any> {
         this.loginForm.controls['username'].setValue(localStorage.getItem('username'));
-        this.service.getAppData().subscribe(res => {
+        try {
+            const res = await this.service.getAppData();
             this.titleService.setTitle(res.name);
             this.appName = res.name;
-        });
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     initForm() {
@@ -32,17 +35,18 @@ export class LoginComponent implements OnInit {
         });
     }
 
-    login() {
-        this.service.login(this.loginForm.value).subscribe((res) => {
+    async login() {
+        try {
+            await this.service.login(this.loginForm.value);
             localStorage.setItem('username', this.loginForm.get('username').value);
-            this.router.navigateByUrl('/manager');
-        }, (err) => {
+            this.router.navigateByUrl('/manager/main');
+        } catch (error) {
             Swal.fire({
                 title: '!You Shall Not Pass',
                 text: 'ההזדהות נכשלה',
                 icon: 'warning',
                 confirmButtonText: 'אוקיי'
             })
-        });
+        }
     }
 }

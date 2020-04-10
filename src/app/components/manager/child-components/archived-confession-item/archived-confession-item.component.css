@@ -16,9 +16,9 @@
   flex-basis: 20%;
 }
 
-.meta-data-title{
-font-weight: bolder;  
-margin-bottom: 4px;
+.meta-data-title {
+  font-weight: bolder;
+  margin-bottom: 4px;
 }
 
 .meta-data-info {
@@ -28,10 +28,15 @@ margin-bottom: 4px;
 }
 
 .sub-container {
-  flex-basis: 70%;
+  flex-basis: 80%;
+  padding: 0 0 3% 10%;
+  position: relative;
 }
 
 .buttons-area {
+  position: absolute;
+  bottom: 0;
+  left: 2.5vh;
   margin: 25px 0 5px 0;
   width: 100%;
   text-align: left;
