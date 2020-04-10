@@ -25,7 +25,7 @@ export class ConfessionItemComponent implements OnInit {
         this.isOpen = !this.isOpen;
     }
     async saveConfession() {
-        Swal.fire({
+        const swalRes = await Swal.fire({
             title: 'עדכן וידוי',
             text: "האם את/ה בטוח/ה?",
             icon: 'info',
@@ -33,28 +33,27 @@ export class ConfessionItemComponent implements OnInit {
             confirmButtonColor: '#228B22',
             confirmButtonText: 'שמור',
             cancelButtonText: 'ביטול'
-        }).then(async (result) => {
-            if (result.value) {
-                try {
-                    const res = await this.confessionsService.updateConfession(this.confession);
-                    if (res.status === "success") {
-                        Swal.fire(
-                            'הוידוי נשמר בהצלחה!',
-                            '',
-                            'success'
-                        );
-                    } else {
-                        SwalError('שמירת הוידוי נכשלה', null);
-                    }
-                } catch (error) {
-                    SwalError('שמירת הוידוי נכשלה', error);
-                }
-
-            }
         })
+        if (swalRes.value) {
+            try {
+                const res = await this.confessionsService.updateConfession(this.confession);
+                if (res.status === "success") {
+                    Swal.fire(
+                        'הוידוי נשמר בהצלחה!',
+                        '',
+                        'success'
+                    );
+                } else {
+                    SwalError('שמירת הוידוי נכשלה', null);
+                }
+            } catch (error) {
+                SwalError('שמירת הוידוי נכשלה', error);
+            }
+
+        }
     }
     async archiveConfession() {
-        Swal.fire({
+        const swalRes = await Swal.fire({
             title: 'מחק וידוי',
             text: "מחיקת הודוי תעביר אותו לארכיון, האם את/ה בטוח/ה?",
             icon: 'error',
@@ -63,32 +62,26 @@ export class ConfessionItemComponent implements OnInit {
             cancelButtonColor: '#b2b2b2',
             confirmButtonText: 'מחק',
             cancelButtonText: 'ביטול'
-        }).then(async (result) => {
-            if (result.value) {
-                try {
-                    this.confession.isArchived = true;
-                    const res = await this.confessionsService.updateConfession(this.confession);
-                    if (res.status === "success") {
-                        Swal.fire(
-                            'הוידוי נמחק בהצלחה!',
-                            '',
-                            'success'
-                        ).then(() => {
-                            this.removeConfession.emit(this.confession._id);
-                            this.toggleItem();
-                        })
+        });
+        if (swalRes.value) {
+            try {
+                this.confession.isArchived = true;
+                const res = await this.confessionsService.updateConfession(this.confession);
+                if (res.status === "success") {
+                    await Swal.fire('הוידוי נמחק בהצלחה!', '', 'success');
+                    this.removeConfession.emit(this.confession._id);
+                    this.toggleItem();
 
-                    } else {
-                        SwalError('מחיקת הוידוי הכשלה', null);
-                    }
-                } catch (error) {
-                    SwalError('מחיקת הוידוי הכשלה', error)
+                } else {
+                    SwalError('מחיקת הוידוי הכשלה', null);
                 }
+            } catch (error) {
+                SwalError('מחיקת הוידוי הכשלה', error);
             }
-        })
+        }
     }
     async postConfession() {
-        Swal.fire({
+        const swalRes = await Swal.fire({
             title: 'העלה וידויי',
             text: "האם את/ה בטוח/ה שברצונך להעלות את הוידוי כעת?",
             icon: 'question',
@@ -97,30 +90,24 @@ export class ConfessionItemComponent implements OnInit {
             cancelButtonColor: '#b2b2b2',
             confirmButtonText: 'העלה',
             cancelButtonText: 'ביטול'
-        }).then(async (result) => {
-            if (result.value) {
-                try {
-                    this.confession.updated_by = localStorage.getItem('username');
-                    const res = await this.confessionsService.postConfessionToFB(this.confession);
-                    if (res.status === "success") {
-                        Swal.fire(
-                            'הוידוי הועלה בהצלחה!',
-                            '',
-                            'success'
-                        ).then(() => {
-                            this.removeConfession.emit(this.confession._id);
-                            this.toggleItem();
-                        })
+        });
+        if (swalRes.value) {
+            try {
+                this.confession.updated_by = localStorage.getItem('username');
+                const res = await this.confessionsService.postConfessionToFB(this.confession);
+                if (res.status === "success") {
+                    await Swal.fire('הוידוי הועלה בהצלחה!', '', 'success');
+                    this.removeConfession.emit(this.confession._id);
+                    this.toggleItem();
 
-                    } else {
-                        SwalError('העלאת פוסט נכשלה', null);
+                } else {
+                    SwalError('העלאת פוסט נכשלה', null);
 
-                    }
-                } catch (error) {
-                    SwalError('העלאת פוסט נכשלה', error);
                 }
+            } catch (error) {
+                SwalError('העלאת פוסט נכשלה', error);
             }
-        })
+        }
     }
 }
 

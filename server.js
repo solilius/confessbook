@@ -30,7 +30,11 @@ app.use("/schedulers", schedulers);
 app.use("/confessions", confessions);
 
 app.get("/app", (req, res, next) => {
-  res.send({ name: process.env.APP_NAME, intro: process.env.INTRO, pageID: process.env.PAGE_ID });
+  res.send({
+    name: process.env.APP_NAME,
+    intro: process.env.INTRO,
+    pageID: process.env.PAGE_ID,
+  });
 });
 
 app.get("/*", (req, res, next) => {
@@ -43,22 +47,16 @@ app.use((err, req, res, next) => {
 });
 
 // ############# Start Server ############### //
-
-mongoose.connect(process.env.DB_URI).then(
-  () => {
-    app.listen(port, err => {
-      err ? console.error(err) : console.log("Server is up, Port: " + port);
-      User.find().then(res => {
-        if (res.length === 0) {
-          User.create({
-            username: "admin",
-            password: process.env.ADMIN_PASSWORD
-          });
-        }
+(async () => {
+  await mongoose.connect(process.env.DB_URI);
+  app.listen(port, async (err) => {
+    err ? console.error(err) : console.log("Server is up, Port: " + port);
+    const users = await User.find();
+    if (users.length === 0) {
+      User.create({
+        username: "admin",
+        password: process.env.ADMIN_PASSWORD,
       });
-    });
-  },
-  err => {
-    console.error("err", err);
-  }
-);
+    }
+  });
+})();
