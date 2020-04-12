@@ -102,17 +102,18 @@ export class ConfessionItemComponent implements OnInit {
         }
     }
 
-    updateTagsService(tag: Tag) {
+    async updateTagsService(tag: Tag) {
         let index = -1;
-        this.SchedulersService.allTags.forEach((obj, i) => {
+        const tags = await this.SchedulersService.getTags();
+        tags.forEach((obj, i) => {
             if (obj.name === tag.name) {
                 index = i;
             }
         });
         if (index !== -1) {
-            this.SchedulersService.allTags[index].value = this.SchedulersService.allTags[index].value + tag.value;
+            tags[index].value = tags[index].value + tag.value;
         } else if (tag.value === 1) {
-            this.SchedulersService.allTags.push(tag);
+            tags.push(tag);
         }
     };
 }
