@@ -19,8 +19,9 @@ import { AuthGuard } from './auth.guard';
 import { FooterComponent } from './components/footer/footer.component';
 import { ChipsComponent } from './components/chips/chips.component';
 import { SchedulerItemComponent } from './components/manager/child-components/scheduler-item/scheduler-item.component';
-import { FloatingButtonComponent } from './components/floating-button/floating-button.component';
 import { CronJobComponent } from './components/cron-job/cron-job.component';
+import { SchedulerAddComponent } from './components/manager/child-components/scheduler-add/scheduler-add.component';
+import { TagsSelectorComponent } from './components/tags-selector/tags-selector.component';
 
 
 @NgModule({
@@ -37,8 +38,9 @@ import { CronJobComponent } from './components/cron-job/cron-job.component';
         FooterComponent,
         ChipsComponent,
         SchedulerItemComponent,
-        FloatingButtonComponent,
-        CronJobComponent
+        CronJobComponent,
+        SchedulerAddComponent,
+        TagsSelectorComponent
     ],
     imports: [
         BrowserModule,

@@ -11,6 +11,7 @@ const schedulerScheme = Joi.object().keys({
   update_date: Joi.date(),
   create_by: Joi.string().required(),
   tag: Joi.string().required(),
+  scheduler: Joi.object().allow()
 });
 
 module.exports = (req, res, next) => {

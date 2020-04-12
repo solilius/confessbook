@@ -1,9 +1,14 @@
-input{
-    direction: ltr;
-    text-align: center;
-    font-size:  20px;
+.cron-editor {
+  border: solid 1px rgb(230, 226, 226);
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
 }
 
-.mat-form-field-appearance-legacy{
-    width: 150px;
+input {
+  direction: ltr;
+}
+
+mat-form-field {
+  text-align: center;
 }

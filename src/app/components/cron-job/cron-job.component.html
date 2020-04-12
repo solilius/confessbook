@@ -1,5 +1,5 @@
-<mat-form-field>
-    <mat-label>קבע את זמני ההעלאה</mat-label>
-    <input matInput placeholder="cron job" value="{{job}}" 
+<mat-form-field class="cron-editor" >
+    <mat-label>קבע את מרווח העלאה</mat-label>
+    <input matInput placeholder=" * * * * * " value="{{job}}" 
     (change)="onRuleChanged($event)">
 </mat-form-field>

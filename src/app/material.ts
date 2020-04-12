@@ -8,6 +8,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatChipsModule } from '@angular/material/chips';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatSelectModule} from '@angular/material/select';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
     imports: [MatButtonModule,
@@ -18,7 +19,8 @@ import {MatSelectModule} from '@angular/material/select';
         MatSlideToggleModule,
         MatChipsModule,
         MatAutocompleteModule,
-        MatSelectModule
+        MatSelectModule,
+        MatDialogModule
     ],
     exports: [MatButtonModule,
         MatInputModule, MatIconModule,
@@ -26,7 +28,8 @@ import {MatSelectModule} from '@angular/material/select';
         MatSlideToggleModule,
         MatChipsModule,
         MatAutocompleteModule,
-        MatSelectModule
+        MatSelectModule,
+        MatDialogModule
     ]
 })
 

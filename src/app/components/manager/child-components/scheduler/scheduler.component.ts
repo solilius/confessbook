@@ -28,8 +28,10 @@ export class SchedulerComponent implements OnInit {
             });
         }
     }
-
-    removeScheduler(id) {
+    addScheduler(scheduler: Scheduler){
+        this.schedulers.push(scheduler);
+    }
+    removeScheduler(id:string) {
         this.schedulers = this.schedulers.filter(scheduler => scheduler._id !== id);
     }
 }

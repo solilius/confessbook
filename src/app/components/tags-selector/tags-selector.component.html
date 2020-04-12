@@ -1,0 +1,11 @@
+<mat-form-field class="tag-selector">
+    <mat-label>בחר תגית לתזמון</mat-label>
+    <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" placeholder="#תגית"
+        (focusout)="updateTag($event)">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
+            <div class="tag">{{tag.name}}</div>
+            <div class="tag-value">({{tag.value}})</div>
+        </mat-option>
+    </mat-autocomplete>
+</mat-form-field>

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfessionsService } from '../../services/confessions.service';
-import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import Swal from 'sweetalert2'
 
@@ -14,7 +13,7 @@ export class ConfessionComponent implements OnInit {
     appName: string;
     intro: string;
     isSent: boolean;
-    constructor(private service: ConfessionsService, private router: Router, private titleService: Title) { }
+    constructor(private service: ConfessionsService, private titleService: Title) { }
 
     async ngOnInit(): Promise<any> {
         this.isSent = false;

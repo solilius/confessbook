@@ -3,9 +3,9 @@ import { Scheduler } from '../../../../models/scheduler/scheduler.module';
 import { SchedulersService } from '../../../../services/schedulers.service';
 import Swal from 'sweetalert2'
 import { Tag } from '../../../../interfaces/tag';
-import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { startWith, map } from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
+import { SchedulerAddComponent } from '../scheduler-add/scheduler-add.component';
+
 
 @Component({
     selector: 'app-scheduler-item',
@@ -16,22 +16,13 @@ import { startWith, map } from 'rxjs/operators';
 export class SchedulerItemComponent implements OnInit {
     @Input() scheduler: Scheduler;
     @Output() removeScheduler: EventEmitter<string> = new EventEmitter();
-    myControl = new FormControl();
-    filteredTags: Observable<Tag[]>;
-
+    @Output() addScheduler: EventEmitter<Scheduler> = new EventEmitter();
     allTags: Tag[];
-    constructor(private service: SchedulersService) { }
+
+    constructor(private service: SchedulersService, public dialog: MatDialog) { }
 
     async ngOnInit(): Promise<void> {
         this.allTags = await this.service.getTags();
-        this.myControl.setValue({ name: this.scheduler.tag });
-        this.filteredTags = this.myControl.valueChanges
-            .pipe(
-                startWith(''),
-                map(value => typeof value === 'string' ? value : value.name),
-                map(tag => tag ? this._filter(tag) : this.allTags.slice())
-            );
-
     }
 
     async activateScheduler({ checked }) {
@@ -42,13 +33,6 @@ export class SchedulerItemComponent implements OnInit {
             this.scheduler.isActive = !checked;
             Swal.fire('אופס', "שינוי הסטטוס נכשל", 'error');
         }
-    }
-    updateRule(rule: string) {
-        this.scheduler.rule = rule;
-    }
-
-    updateTag(event) {
-        this.scheduler.tag = event.target.value;
     }
 
     async deleteScheduler() {
@@ -92,13 +76,25 @@ export class SchedulerItemComponent implements OnInit {
         }
     }
 
-    displayFn(tag: Tag): string {
-        return tag && tag.name ? tag.name : '';
+    createScheduler() {
+        const dialogRef = this.dialog.open(SchedulerAddComponent, {
+            width: '26vw',
+            data: { scheduler: {} }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                this.addScheduler.emit(result);
+            }
+        });
     }
 
-    private _filter(name: string): Tag[] {
-        const filterValue = name.toLowerCase();
+    updateRule(rule: string) {
+        this.scheduler.rule = rule;
+    }
 
-        return this.allTags.filter(tag => tag.name.indexOf(filterValue) === 0);
+    updateTag(tag) {
+        console.log(tag);
+        this.scheduler.tag = tag;
     }
 }

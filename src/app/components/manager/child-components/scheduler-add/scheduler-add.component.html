@@ -1,0 +1,15 @@
+<mat-card class="scheduler">
+        <mat-form-field appearance="standard">
+            <mat-label>שם התזמון</mat-label>
+            <input matInput #name placeholder="תזמון חדש">
+        </mat-form-field>
+        <section class="slider">
+            <mat-slide-toggle [checked]="scheduler.isActive" (change)="initActivity($event)">
+            </mat-slide-toggle>
+        </section>
+    <mat-card-content>
+        <app-tags-selector class="item" (tagSelected)="initTag($event)"></app-tags-selector>
+        <app-cron-job class="item" (updateRule)="initRule($event)"></app-cron-job>
+    </mat-card-content>
+        <button (click)="createScheduler()" mat-raised-button color="primary">צור</button>
+</mat-card>

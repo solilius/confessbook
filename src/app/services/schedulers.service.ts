@@ -28,8 +28,8 @@ export class SchedulersService {
         return this.http.get<Scheduler[]>(this.baseUrl).toPromise();
     }
 
-    createScheduler(scheduler: Scheduler): Promise<Scheduler> {
-        return this.request('post', this.baseUrl, { message: scheduler });
+    createScheduler(scheduler: Scheduler): Promise<any> {
+        return this.request('post', this.baseUrl, scheduler );
     }
 
     updateScheduler(scheduler: Scheduler): Promise<Scheduler> {

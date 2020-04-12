@@ -5,7 +5,7 @@
     <app-scheduler-item 
     *ngFor="let scheduler of schedulers"
      [scheduler]="scheduler"
-     (removeScheduler)="removeScheduler($event)">
+     (removeScheduler)="removeScheduler($event)" (addScheduler)="addScheduler($event)">
       </app-scheduler-item>
       <div *ngIf="schedulers.length % 2" class="invisible-item"></div>
 </div>

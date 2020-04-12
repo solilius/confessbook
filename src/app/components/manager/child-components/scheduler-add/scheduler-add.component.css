@@ -1,0 +1,44 @@
+.scheduler {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  direction: rtl;
+}
+
+.slider {
+  position: absolute;
+  left: 1vw;
+  top: 1vw;
+  transform: rotateY(180deg);
+}
+
+::ng-deep.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+  background-color: #089c1c !important;
+}
+
+::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+  background-color: #089c1c86 !important;
+}
+
+mat-card-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 0;
+}
+
+mat-form-field {
+  text-align: center;
+  border: solid 1px rgb(230, 226, 226);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px !important;
+  width: 90%;
+}
+
+button {
+  margin: 2% !important;
+  width: 96%;
+}

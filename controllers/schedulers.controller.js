@@ -25,7 +25,7 @@ const insertScheduler = async (req, res, next) => {
   try {
     req.body._id = (await db.insertScheduler(req.body)).id;
     schedulersManager.insertScheduler(req.body);
-    res.send({ status: "success" });
+    res.send({ _id: req.body._id });
   } catch (error) {
     next(error);
   }
