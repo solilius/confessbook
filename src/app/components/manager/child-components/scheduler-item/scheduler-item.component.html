@@ -10,14 +10,16 @@
     <mat-card-content>
 
         <mat-form-field>
-            <mat-label>בחר תגית לוידויים</mat-label>
-            <mat-select [(value)]="scheduler.tag">
-                <mat-option *ngFor="let tag of allTags" [value]="tag">
-                    {{tag}}
+            <mat-label>בחר תגית לתזמון</mat-label>
+            <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" value="scheduler.tag" (focusout)="updateTag($event)">
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
+                    <div class="tag">{{tag.name}}</div>
+                    <div class="tag-value">({{tag.value}})</div>
                 </mat-option>
-            </mat-select>
+            </mat-autocomplete>
         </mat-form-field>
-        <app-cron-job [job]="scheduler.rule" (updateRule)="updateRule($event)" ></app-cron-job>
+        <app-cron-job [job]="scheduler.rule" (updateRule)="updateRule($event)"></app-cron-job>
     </mat-card-content>
     <mat-card-actions>
         <button (click)="deleteScheduler()" mat-stroked-button color="warn">מחק</button>

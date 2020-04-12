@@ -5,14 +5,36 @@ const getSchedulers = () => {
   return Scheduler.find();
 };
 
+const addTag = (tags, tag, isScheduler) => {
+  const val = isScheduler ? 0 : 1;
+  let index = -1;
+  if(tags.length === 0) tags.push({name: tag, value: val});
+  tags.forEach((obj, i) => {
+      if(obj.name === tag) {
+         index = i;
+      }   
+  }); 
+  if(index !== -1){
+      tags[index].value = tags[index].value + val;
+  } else {
+      tags.push({name: tag, value: val});
+  }
+  return tags;
+};
+
 const getTags = async () => {
   const confessions = await Confession.find({ isArchived: false }, { tags: 1 });
   const schedulers = await Scheduler.find({}, { tag: 1 });
-  let tags = [];
-  confessions.forEach((confession) => { tags = tags.concat(confession.tags) });
-  schedulers.forEach((scheduler) => { tags.push(scheduler.tag) });
 
-  return tags.filter((item, index) => tags.indexOf(item) === index);
+  let tags = [];
+  confessions.forEach((confession) => {
+    confession.tags.forEach((tag) => (tags = addTag(tags, tag, false)));
+  });
+  schedulers.forEach((scheduler) => {
+    tags = addTag(tags, scheduler.tag, true);
+  });
+
+  return tags;
 };
 
 const insertScheduler = (scheduler) => {
@@ -34,3 +56,5 @@ module.exports = {
   updateScheduler,
   deleteScheduler,
 };
+
+

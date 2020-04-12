@@ -7,7 +7,7 @@ const schedulerScheme = Joi.object().keys({
   name: Joi.string().required(),
   isActive: Joi.boolean().required(),
   rule: Joi.string().required(),
-  create_date: Joi.date().required(),
+  create_date: Joi.date(),
   update_date: Joi.date(),
   create_by: Joi.string().required(),
   tag: Joi.string().required(),

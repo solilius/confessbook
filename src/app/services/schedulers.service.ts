@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Scheduler } from '../models/scheduler/scheduler.module';
 import { environment } from '../../environments/environment';
+import { Tag } from '../interfaces/tag';
 
 @Injectable({
     providedIn: 'root'
 })
 export class SchedulersService {
     baseUrl: string;
-    allTags: string[];
+    allTags: Tag[];
 
     constructor(private http: HttpClient) {
         this.baseUrl = `${environment.server}/schedulers`;

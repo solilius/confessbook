@@ -27,15 +27,10 @@ export class ArchivedConfessionItemComponent implements OnInit {
         });
         if (swalRes.value) {
             try {
-                const res = await this.confessionsService.deleteConfession(this.confession._id);
-                if (res.status === "success") {
-                    await Swal.fire('הוידוי נחמחק בהצלחה!', '', 'success')
-                    console.log('success');
-                    this.removeConfession.emit(this.confession._id);
-
-                } else {
-                    SwalError('מחיקת הוידוי נכשלה', null)
-                }
+                await this.confessionsService.deleteConfession(this.confession._id);
+                await Swal.fire('הוידוי נחמחק בהצלחה!', '', 'success')
+                console.log('success');
+                this.removeConfession.emit(this.confession._id);
             } catch (error) {
                 SwalError('מחיקת הוידוי נכשלה', error)
             }
@@ -58,15 +53,11 @@ export class ArchivedConfessionItemComponent implements OnInit {
         if (swalRes.value) {
             try {
                 this.confession.isArchived = false;
-                const res = await this.confessionsService.updateConfession(this.confession);
-                if (res.status === "success") {
-                    await Swal.fire('הוידוי שוחזר בהצלחה!', '', 'success')
-                    console.log('success');
-                    this.removeConfession.emit(this.confession._id);
+                await this.confessionsService.updateConfession(this.confession);
+                await Swal.fire('הוידוי שוחזר בהצלחה!', '', 'success')
+                console.log('success');
+                this.removeConfession.emit(this.confession._id);
 
-                } else {
-                    SwalError('שחזור הוידוי נכשל', null);
-                }
             } catch (error) {
                 SwalError('שחזור הוידוי נכשל', error)
             }

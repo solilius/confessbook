@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Confession } from '../../../../models/confession/confession.module';
 import { ConfessionsService } from '../../../../services/confessions.service';
+import { SchedulersService } from '../../../../services/schedulers.service';
+import { Tag } from '../../../../interfaces/tag';
 import Swal from 'sweetalert2'
 
 
@@ -12,18 +14,24 @@ import Swal from 'sweetalert2'
 export class ConfessionItemComponent implements OnInit {
     @Input() confession: Confession;
     @Output() removeConfession: EventEmitter<string> = new EventEmitter();
+    updates: Tag[];
     isOpen = false;
     cursor = 'pointer';
-    constructor(private confessionsService: ConfessionsService) { }
+    constructor(private confessionsService: ConfessionsService, private SchedulersService: SchedulersService) { }
 
     ngOnInit(): void {
-
+        this.updates = [];
     }
 
     toggleItem() {
         (this.isOpen) ? this.cursor = 'pointer' : this.cursor = 'default'
         this.isOpen = !this.isOpen;
     }
+
+    saveUpdate(tag: Tag) {
+        this.updates.push(tag);
+    }
+
     async saveConfession() {
         const swalRes = await Swal.fire({
             title: 'עדכן וידוי',
@@ -36,16 +44,11 @@ export class ConfessionItemComponent implements OnInit {
         })
         if (swalRes.value) {
             try {
-                const res = await this.confessionsService.updateConfession(this.confession);
-                if (res.status === "success") {
-                    Swal.fire(
-                        'הוידוי נשמר בהצלחה!',
-                        '',
-                        'success'
-                    );
-                } else {
-                    SwalError('שמירת הוידוי נכשלה', null);
-                }
+                await this.confessionsService.updateConfession(this.confession);
+                Swal.fire('הוידוי נשמר בהצלחה!', '', 'success');
+                this.updates.forEach(tag => {
+                    this.updateTagsService(tag);
+                });
             } catch (error) {
                 SwalError('שמירת הוידוי נכשלה', error);
             }
@@ -66,15 +69,10 @@ export class ConfessionItemComponent implements OnInit {
         if (swalRes.value) {
             try {
                 this.confession.isArchived = true;
-                const res = await this.confessionsService.updateConfession(this.confession);
-                if (res.status === "success") {
-                    await Swal.fire('הוידוי נמחק בהצלחה!', '', 'success');
-                    this.removeConfession.emit(this.confession._id);
-                    this.toggleItem();
-
-                } else {
-                    SwalError('מחיקת הוידוי הכשלה', null);
-                }
+                await this.confessionsService.updateConfession(this.confession);
+                await Swal.fire('הוידוי נמחק בהצלחה!', '', 'success');
+                this.removeConfession.emit(this.confession._id);
+                this.toggleItem();
             } catch (error) {
                 SwalError('מחיקת הוידוי הכשלה', error);
             }
@@ -94,21 +92,29 @@ export class ConfessionItemComponent implements OnInit {
         if (swalRes.value) {
             try {
                 this.confession.updated_by = localStorage.getItem('username');
-                const res = await this.confessionsService.postConfessionToFB(this.confession);
-                if (res.status === "success") {
-                    await Swal.fire('הוידוי הועלה בהצלחה!', '', 'success');
-                    this.removeConfession.emit(this.confession._id);
-                    this.toggleItem();
-
-                } else {
-                    SwalError('העלאת פוסט נכשלה', null);
-
-                }
+                await this.confessionsService.postConfessionToFB(this.confession);
+                await Swal.fire('הוידוי הועלה בהצלחה!', '', 'success');
+                this.removeConfession.emit(this.confession._id);
+                this.toggleItem();
             } catch (error) {
                 SwalError('העלאת פוסט נכשלה', error);
             }
         }
     }
+
+    updateTagsService(tag: Tag) {
+        let index = -1;
+        this.SchedulersService.allTags.forEach((obj, i) => {
+            if (obj.name === tag.name) {
+                index = i;
+            }
+        });
+        if (index !== -1) {
+            this.SchedulersService.allTags[index].value = this.SchedulersService.allTags[index].value + tag.value;
+        } else if (tag.value === 1) {
+            this.SchedulersService.allTags.push(tag);
+        }
+    };
 }
 
 function SwalError(msg, err) {

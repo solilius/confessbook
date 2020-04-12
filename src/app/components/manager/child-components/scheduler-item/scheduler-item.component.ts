@@ -2,34 +2,53 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Scheduler } from '../../../../models/scheduler/scheduler.module';
 import { SchedulersService } from '../../../../services/schedulers.service';
 import Swal from 'sweetalert2'
+import { Tag } from '../../../../interfaces/tag';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { startWith, map } from 'rxjs/operators';
 
 @Component({
     selector: 'app-scheduler-item',
     templateUrl: './scheduler-item.component.html',
     styleUrls: ['./scheduler-item.component.css']
 })
+
 export class SchedulerItemComponent implements OnInit {
     @Input() scheduler: Scheduler;
     @Output() removeScheduler: EventEmitter<string> = new EventEmitter();
-    allTags: string[];
+    myControl = new FormControl();
+    filteredTags: Observable<Tag[]>;
+
+    allTags: Tag[];
     constructor(private service: SchedulersService) { }
 
     async ngOnInit(): Promise<void> {
         this.allTags = await this.service.getTags();
+        this.myControl.setValue({ name: this.scheduler.tag });
+        this.filteredTags = this.myControl.valueChanges
+            .pipe(
+                startWith(''),
+                map(value => typeof value === 'string' ? value : value.name),
+                map(tag => tag ? this._filter(tag) : this.allTags.slice())
+            );
+
     }
 
     async activateScheduler({ checked }) {
         this.scheduler.isActive = checked;
         try {
             const res = await this.service.activateScheduler(this.scheduler._id, checked);
-            console.log(res.status);
         } catch (err) {
             this.scheduler.isActive = !checked;
             Swal.fire('אופס', "שינוי הסטטוס נכשל", 'error');
         }
     }
-    updateRule(rule:string){
+    updateRule(rule: string) {
         this.scheduler.rule = rule;
+    }
+
+    updateTag(event) {
+        this.scheduler.tag = event.target.value;
     }
 
     async deleteScheduler() {
@@ -42,7 +61,7 @@ export class SchedulerItemComponent implements OnInit {
                 confirmButtonText: 'מחק',
                 cancelButtonText: 'ביטול'
             });
-            if (res) {
+            if (res.value) {
                 await this.service.deleteScheduler(this.scheduler._id);
                 this.removeScheduler.emit(this.scheduler._id);
                 Swal.fire('התזמון נמחק בהצלחה', "", 'success');
@@ -63,7 +82,7 @@ export class SchedulerItemComponent implements OnInit {
                 confirmButtonText: 'שמור',
                 cancelButtonText: 'ביטול'
             });
-            if (res) {
+            if (res.value) {
                 await this.service.updateScheduler(this.scheduler);
                 Swal.fire('התזמון עודכן בהצלחה', "", 'success');
             }
@@ -71,5 +90,15 @@ export class SchedulerItemComponent implements OnInit {
         } catch (error) {
             Swal.fire('אופס', "עדכון הזתמון נכשל", 'error');
         }
+    }
+
+    displayFn(tag: Tag): string {
+        return tag && tag.name ? tag.name : '';
+    }
+
+    private _filter(name: string): Tag[] {
+        const filterValue = name.toLowerCase();
+
+        return this.allTags.filter(tag => tag.name.indexOf(filterValue) === 0);
     }
 }
