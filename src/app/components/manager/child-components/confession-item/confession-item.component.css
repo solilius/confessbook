@@ -122,3 +122,8 @@ button {
   border-radius: 10px;
   background-color: rgb(73, 125, 189);
 }
+
+.schedule{
+    background: rgb(0, 187, 162);
+    color:  white;
+}

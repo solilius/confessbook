@@ -22,7 +22,10 @@ import { SchedulerItemComponent } from './components/manager/child-components/sc
 import { CronJobComponent } from './components/cron-job/cron-job.component';
 import { SchedulerAddComponent } from './components/manager/child-components/scheduler-add/scheduler-add.component';
 import { TagsSelectorComponent } from './components/tags-selector/tags-selector.component';
-
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { NgxMatDatetimePickerModule } from "@angular-material-components/datetime-picker";
+import { NgxMatMomentModule } from "@angular-material-components/moment-adapter";
+import { SchedulePostDialogComponent } from './components/manager/child-components/schedule-post-dialog/schedule-post-dialog.component';
 
 @NgModule({
     declarations: [
@@ -40,7 +43,8 @@ import { TagsSelectorComponent } from './components/tags-selector/tags-selector.
         SchedulerItemComponent,
         CronJobComponent,
         SchedulerAddComponent,
-        TagsSelectorComponent
+        TagsSelectorComponent,
+        SchedulePostDialogComponent
     ],
     imports: [
         BrowserModule,
@@ -49,7 +53,10 @@ import { TagsSelectorComponent } from './components/tags-selector/tags-selector.
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
-        MaterialModule
+        MaterialModule,
+        MatDatepickerModule,
+        NgxMatDatetimePickerModule,
+        NgxMatMomentModule
     ],
     providers: [CookieService, AuthGuard],
     bootstrap: [AppComponent]

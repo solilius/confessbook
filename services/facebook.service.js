@@ -1,5 +1,14 @@
 const axios = require("axios");
 
+const foramtBody = (confession) => {
+  let body = {
+    access_token: process.env.ACCESS_TOKEN,
+    message: `#${confession.serial} ${confession.message}`,
+  };
+  if (confession.comment) body.message += `\nהערת העורך: ${confession.comment}`;
+  return body;
+};
+
 const post = async (confession) => {
   try {
     const body = foramtBody(confession);
@@ -7,16 +16,30 @@ const post = async (confession) => {
       `https://graph.facebook.com/${process.env.PAGE_ID}/feed`,
       body
     );
-    return res;
+    return res.data.id;
   } catch (error) {
     throw new Error(error);
   }
 };
 
-const scheduledPost = async (confession, date) => {
+const scheduledPost = async (confession) => {
   try {
+    const time = (new Date(confession.fb_scheduled_date).getTime()/1000);
     const res = await axios.post(
-      `https://graph.facebook.com/${process.env.PAGE_ID}/feed/?published=false&scheduled_publish_time=${date}`,
+      `https://graph.facebook.com/${process.env.PAGE_ID}/feed/?published=false&scheduled_publish_time=${time}`,
+      foramtBody(confession)
+    );
+    return res.data.id;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+const updateScheduledPost = async (confession) => {
+  try {
+    const time = new Date(confession.fb_scheduled_date).getTime();
+    const res = await axios.post(
+      `https://graph.facebook.com/${confession.fb_id}?published=false&scheduled_publish_time=${time}`,
       foramtBody(confession)
     );
     return res;
@@ -25,29 +48,20 @@ const scheduledPost = async (confession, date) => {
   }
 };
 
-const updateScheduledPost = async (confession, date) => {
+const deletePost = async (post_id) => {
   try {
-    const res = await axios.post(
-      `https://graph.facebook.com/${confession.fb_id}?published=false&scheduled_publish_time=${date}`,
-      foramtBody(confession)
+    const res = await axios.delete(
+      `https://graph.facebook.com/${post_id}?access_token=${process.env.ACCESS_TOKEN}`
     );
     return res;
   } catch (error) {
     throw new Error(error);
   }
 };
-
-function foramtBody(confession) {
-  let body = {
-    access_token: process.env.ACCESS_TOKEN,
-    message: `#${confession.serial} ${confession.message}`,
-  };
-  if (confession.comment) body.message += `\nהערת העורך: ${confession.comment}`;
-  return body;
-}
 
 module.exports = {
   post,
   scheduledPost,
   updateScheduledPost,
+  deletePost,
 };

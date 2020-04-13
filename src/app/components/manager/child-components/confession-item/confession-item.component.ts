@@ -1,10 +1,12 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Confession } from '../../../../models/confession/confession.module';
 import { ConfessionsService } from '../../../../services/confessions.service';
+import { FacebookPostsService } from '../../../../services/facebook-posts.service';
 import { SchedulersService } from '../../../../services/schedulers.service';
 import { Tag } from '../../../../interfaces/tag';
 import Swal from 'sweetalert2'
-
+import { MatDialog } from '@angular/material/dialog';
+import { SchedulePostDialogComponent } from '../schedule-post-dialog/schedule-post-dialog.component';
 
 @Component({
     selector: 'app-confession-item',
@@ -17,7 +19,8 @@ export class ConfessionItemComponent implements OnInit {
     updates: Tag[];
     isOpen = false;
     cursor = 'pointer';
-    constructor(private confessionsService: ConfessionsService, private SchedulersService: SchedulersService) { }
+    constructor(private confessionsService: ConfessionsService, private SchedulersService: SchedulersService,
+        private FacebookPostsService: FacebookPostsService, public dialog: MatDialog) { }
 
     ngOnInit(): void {
         this.updates = [];
@@ -78,6 +81,24 @@ export class ConfessionItemComponent implements OnInit {
             }
         }
     }
+    async scheduleConfession() {
+        const dialogRef = this.dialog.open(SchedulePostDialogComponent, {
+            width: '20%'
+        });
+
+        dialogRef.afterClosed().subscribe(async (result) => {
+            try {
+                this.confession.fb_scheduled_date = result;
+                await this.FacebookPostsService.schedule(this.confession);
+                this.removeConfession.emit(this.confession._id);
+                await Swal.fire('הוידוי תוזמן בהצלחה!', '', 'success');
+            } catch (error) {
+                SwalError('תזמון פוסט נכשל', error);
+            }
+
+        });
+    }
+
     async postConfession() {
         const swalRes = await Swal.fire({
             title: 'העלה וידויי',
@@ -92,7 +113,7 @@ export class ConfessionItemComponent implements OnInit {
         if (swalRes.value) {
             try {
                 this.confession.updated_by = localStorage.getItem('username');
-                await this.confessionsService.postConfessionToFB(this.confession);
+                await this.FacebookPostsService.post(this.confession);
                 await Swal.fire('הוידוי הועלה בהצלחה!', '', 'success');
                 this.removeConfession.emit(this.confession._id);
                 this.toggleItem();

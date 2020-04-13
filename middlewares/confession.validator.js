@@ -19,7 +19,9 @@ const ConfessionScheme = Joi.object().keys({
   tags: Joi.array().items(Joi.string()),
   serial: Joi.number().allow(null),
   __v: Joi.number(),
-  comment: Joi.string().allow("")
+  comment: Joi.string().allow(""),
+  post_id: Joi.string(),
+  fb_scheduled_date: Joi.date()
 });
 
 module.exports = (req, res, next) => {

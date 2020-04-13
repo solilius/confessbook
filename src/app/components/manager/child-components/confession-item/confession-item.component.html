@@ -33,9 +33,11 @@
                     placeholder="הערת המערכת"> </textarea>
             </mat-form-field>
             <app-chips [tags]="confession.tags" (updateTags)="saveUpdate($event)"></app-chips>
+
             <div class="buttons-area">
                 <button mat-raised-button color="warn" (click)='archiveConfession()'>מחק</button>
                 <button mat-raised-button color="accent" (click)='saveConfession()'>שמור</button>
+                <button mat-raised-button class="schedule" (click)='scheduleConfession()'>תזמן</button>
                 <button mat-raised-button color="primary" (click)='postConfession()'>פרסם</button>
                 <button mat-stroked-button class="collpase-button" (click)='toggleItem()'>
                     <mat-icon>keyboard_arrow_up</mat-icon>

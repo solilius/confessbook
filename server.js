@@ -21,12 +21,14 @@ app.use(express.static("./dist/confessbook"));
 
 const confessions = require("./routes/confessions");
 const schedulers = require("./routes/schedulers");
+const facebook = require("./routes/facebook");
 const login = require("./routes/login");
 
 // ################## API ################### //
 
 app.use("/login", login);
 app.use("/schedulers", schedulers);
+app.use("/facebook", facebook);
 app.use("/confessions", confessions);
 
 app.get("/app", (req, res, next) => {

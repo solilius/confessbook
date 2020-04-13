@@ -1,18 +1,14 @@
 const db = require("../db/confessions.db");
 const facebook = require("../services/facebook.service");
 
-async function populateConfession(confession) {
-  confession.serial = await db.getNextSerial();
-  confession.update_date = new Date();
-  confession.isArchived = true;
-  return confession;
-}
-
 const getConfessions = async (req, res, next) => {
   try {
-    const confessions = await db.getConfessions({
-      isArchived: req.query.isArchived,
-    });
+    let query = { isArchived: req.query.isArchived}
+    if(!req.query.isArchived){
+       query.post_id = {$exist: false}
+    }
+
+    const confessions = await db.getConfessions(query);
     res.send(confessions);
   } catch (error) {
     next(error);
@@ -38,20 +34,11 @@ const updateConfession = async (req, res, next) => {
   }
 };
 
-const postConfessionToFB = async (req, res, next) => {
-  try {
-    const confession = await populateConfession(req.body);
-    await facebook.post(foramtBody(confession));
-    await db.updateConfession(confession._id, confession);
-    res.send({ status: "success" });
-  } catch (error) {
-    next(error);
-  }
-};
-
 const deleteConfession = async (req, res, next) => {
   try {
+    const confession = await db.getConfession({_id:req.params.id});  
     await db.deleteConfession(req.params.id);
+    facebook.deletePost(confession.post_id);
     res.send({ status: "success" });
   } catch (error) {
     next(error);
@@ -62,6 +49,5 @@ module.exports = {
   getConfessions,
   insertConfession,
   updateConfession,
-  postConfessionToFB,
-  deleteConfession,
+  deleteConfession
 };

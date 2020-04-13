@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 import { Confession } from '../models/confession/confession.module';
-import { environment } from '../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
 })
-export class ConfessionsService {
+export class FacebookPostsService {
     baseUrl: string;
 
     constructor(private http: HttpClient) {
-        this.baseUrl = `${environment.server}/confessions`;
+        this.baseUrl = `${environment.server}/facebook`;
     }
 
     request(method: string, url: string, body?: any): Promise<any> {
@@ -22,28 +22,27 @@ export class ConfessionsService {
             }).toPromise();
     }
 
-    login(data: Object): Promise<any> {
-        return this.request('post', `${environment.server}/login`, data);
+    getPosts(): Promise<Confession[]> {
+        return this.request('get', `${this.baseUrl}`);
     }
 
-    getConfessions(isArchived: boolean): Promise<Confession[]> {
-        return this.request('get', `${this.baseUrl}?isArchived=${isArchived}`);
+    post(confession: Confession): Promise<any> {
+        confession.updated_by = localStorage.getItem('username');
+        return this.request('post', `${this.baseUrl}`, confession);
     }
 
-    postConfession(confession: string): Promise<any> {
-        return this.request('post', this.baseUrl, { message: confession });
+    schedule(confession: Confession): Promise<any> {
+        confession.updated_by = localStorage.getItem('username');
+        return this.request('post', `${this.baseUrl}/schedule`, confession);
     }
 
-    updateConfession(confession: Confession): Promise<any> {
+    updatePost(confession: Confession): Promise<any> {
         confession.updated_by = localStorage.getItem('username');
         return this.request('put', `${this.baseUrl}/${confession._id}`, confession);
     }
 
-    deleteConfession(id: string): Promise<any> {
+    deletePost(id: string): Promise<any> {
         return this.request('delete', `${this.baseUrl}/${id}?user=${localStorage.getItem('username')}`);
     }
 
-    getAppData(): Promise<any> {
-        return this.request('get', `${environment.server}/app`);
-    }
 }

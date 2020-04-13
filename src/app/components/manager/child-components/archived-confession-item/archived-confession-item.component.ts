@@ -29,7 +29,6 @@ export class ArchivedConfessionItemComponent implements OnInit {
             try {
                 await this.confessionsService.deleteConfession(this.confession._id);
                 await Swal.fire('הוידוי נחמחק בהצלחה!', '', 'success')
-                console.log('success');
                 this.removeConfession.emit(this.confession._id);
             } catch (error) {
                 SwalError('מחיקת הוידוי נכשלה', error)
@@ -55,7 +54,6 @@ export class ArchivedConfessionItemComponent implements OnInit {
                 this.confession.isArchived = false;
                 await this.confessionsService.updateConfession(this.confession);
                 await Swal.fire('הוידוי שוחזר בהצלחה!', '', 'success')
-                console.log('success');
                 this.removeConfession.emit(this.confession._id);
 
             } catch (error) {
@@ -64,7 +62,6 @@ export class ArchivedConfessionItemComponent implements OnInit {
         }
     }
 }
-
 
 function SwalError(msg, err) {
     console.log(JSON.stringify(err));

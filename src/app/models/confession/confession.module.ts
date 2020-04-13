@@ -6,6 +6,8 @@ export class Confession {
     message: string;
     comment?: string;
     serial?: number;
+    post_id?: string;
     isArchived: boolean;
     tags: string[];
+    fb_scheduled_date: Date;
 }

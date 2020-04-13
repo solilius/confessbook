@@ -7,6 +7,8 @@ const confessionSchema = mongoose.Schema({
     message: String,
     comment: String,
     tags: [String],
+    post_id: String,
+    fb_scheduled_date: { type: Date },
     serial: Number,
     isArchived :{ type: Boolean, default: false }
 });

@@ -11,8 +11,7 @@ router.use("*", validator);
 
 router.route("/").get(controller.getConfessions);
 router.route("/").post(controller.insertConfession);
-router.route("/fb").post(controller.postConfessionToFB);
 router.route("/:id").put(controller.updateConfession);
 router.route("/:id").delete(controller.deleteConfession);
-
+// add patch to archive
 module.exports = router;
