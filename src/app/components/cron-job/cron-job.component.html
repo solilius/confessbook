@@ -35,5 +35,5 @@
             <input type="time" matInput [value]="CronJob.time" (change)="updateCronJob($event, 'time')">
         </mat-form-field>
     </div>
-    <div class="preview"> {{preview}}</div>
+    <div [ngClass]="{'preview': true, 'not-active': !isActive}"> {{preview}}</div>
 </div>

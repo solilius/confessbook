@@ -44,7 +44,21 @@ const scheduleToFB = async (req, res, next) => {
 
 const updatePost = async (req, res, next) => {
   try {
-    await db.updateConfession(req.body);
+      await facebook.updateScheduledPost(req.body);
+    await db.updateConfession(req.params.id, req.body);
+    res.send({ status: "success" });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const updateScheduledTime = async (req, res, next) => {
+  try {
+    await facebook.updateScheduledTime(req.params.id, req.query.date);
+    await db.updateConfessionByQuery(
+      { post_id: req.params.id },
+      { fb_scheduled_date: req.query.date, updated_by: req.query.user }
+    );
     res.send({ status: "success" });
   } catch (error) {
     next(error);
@@ -54,6 +68,14 @@ const updatePost = async (req, res, next) => {
 const deletePost = async (req, res, next) => {
   try {
     await facebook.deletePost(req.params.id);
+    await db.updateConfessionByQuery(
+      { post_id: req.params.id },
+      {
+        $unset: { post_id: 1 },
+        $unset: { fb_scheduled_date: 1 },
+        updated_by: req.query.user,
+      }
+    );
     res.send({ status: "success" });
   } catch (error) {
     next(error);
@@ -62,8 +84,9 @@ const deletePost = async (req, res, next) => {
 
 module.exports = {
   getPosts,
-  updatePost,
   postToFB,
+  updatePost,
+  updateScheduledTime,
   scheduleToFB,
   deletePost,
 };

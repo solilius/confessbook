@@ -37,3 +37,7 @@ input[type="time"]::-webkit-clear-button {
   color: blue;
   text-align: center;
 }
+
+.not-active{
+  color: lightgrey;
+}

@@ -26,6 +26,7 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { NgxMatDatetimePickerModule } from "@angular-material-components/datetime-picker";
 import { NgxMatMomentModule } from "@angular-material-components/moment-adapter";
 import { SchedulePostDialogComponent } from './components/manager/child-components/schedule-post-dialog/schedule-post-dialog.component';
+import { PostItemComponent } from './components/manager/child-components/post-item/post-item.component';
 
 @NgModule({
     declarations: [
@@ -44,7 +45,8 @@ import { SchedulePostDialogComponent } from './components/manager/child-componen
         CronJobComponent,
         SchedulerAddComponent,
         TagsSelectorComponent,
-        SchedulePostDialogComponent
+        SchedulePostDialogComponent,
+        PostItemComponent
     ],
     imports: [
         BrowserModule,

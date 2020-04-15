@@ -39,6 +39,12 @@ export class ConfessionsService {
         return this.request('put', `${this.baseUrl}/${confession._id}`, confession);
     }
 
+    
+    patcArchived(id: string, isArchived: boolean){
+        const user = localStorage.getItem('username');
+        return this.request('patch', `${this.baseUrl}/archive/${id}?isArchived=${isArchived}&user=${user}`);
+    }
+
     deleteConfession(id: string): Promise<any> {
         return this.request('delete', `${this.baseUrl}/${id}?user=${localStorage.getItem('username')}`);
     }

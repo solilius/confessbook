@@ -24,7 +24,7 @@ const post = async (confession) => {
 
 const scheduledPost = async (confession) => {
   try {
-    const time = (new Date(confession.fb_scheduled_date).getTime()/1000);
+    const time = new Date(confession.fb_scheduled_date).getTime() / 1000;
     const res = await axios.post(
       `https://graph.facebook.com/${process.env.PAGE_ID}/feed/?published=false&scheduled_publish_time=${time}`,
       foramtBody(confession)
@@ -37,10 +37,23 @@ const scheduledPost = async (confession) => {
 
 const updateScheduledPost = async (confession) => {
   try {
-    const time = new Date(confession.fb_scheduled_date).getTime();
+    const time = new Date(confession.fb_scheduled_date).getTime() / 1000;
     const res = await axios.post(
-      `https://graph.facebook.com/${confession.fb_id}?published=false&scheduled_publish_time=${time}`,
+      `https://graph.facebook.com/${confession.post_id}?published=false&scheduled_publish_time=${time}`,
       foramtBody(confession)
+    );
+    return res;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+const updateScheduledTime = async (id, date) => {
+  try {
+    const time = new Date(date).getTime() / 1000;
+    const res = await axios.post(
+      `https://graph.facebook.com/${id}?published=false&scheduled_publish_time=${time}`,
+      { access_token: process.env.ACCESS_TOKEN }
     );
     return res;
   } catch (error) {
@@ -63,5 +76,6 @@ module.exports = {
   post,
   scheduledPost,
   updateScheduledPost,
+  updateScheduledTime,
   deletePost,
 };

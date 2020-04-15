@@ -13,11 +13,10 @@
         <p class="meta-data-info">{{confession.serial ? 'כן ( #' + confession.serial + ' )' : 'לא'}}</p>
     </div>
 
-    <div class="item-collapsed" (click)="toggleItem()" *ngIf="!isOpen; else open_confession">
+    <div class="item-collapsed" (click)="toggleItem()" *ngIf="!isExtended; else open_confession">
         {{confession.message}}
-
     </div>
-    <mat-chip-list class="mat-chip-list-stacked" *ngIf="!isOpen">
+    <mat-chip-list class="mat-chip-list-stacked" *ngIf="!isExtended">
         <mat-chip class="tag-collapsed" *ngFor="let tag of confession.tags">
             {{tag}}
         </mat-chip>
@@ -26,11 +25,11 @@
         <div class="item-extended">
             <mat-form-field>
                 <textarea cdkTextareaAutosize class="message my-scroller" matInput type="text"
-                    [(ngModel)]="confession.message"> </textarea>
+                    [value]="confession.message" (change)="updateText($event, 'message')"> </textarea>
             </mat-form-field>
             <mat-form-field>
-                <textarea matInput type="text" class="comment my-scroller" [(ngModel)]="confession.comment"
-                    placeholder="הערת המערכת"> </textarea>
+                <textarea matInput type="text" class="comment my-scroller" [value]="(confession.comment) ? confession.comment : ''"
+                    placeholder="הערת המערכת" (change)="updateText($event, 'comment')"> </textarea>
             </mat-form-field>
             <app-chips [tags]="confession.tags" (updateTags)="saveUpdate($event)"></app-chips>
 

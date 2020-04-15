@@ -51,8 +51,7 @@ export class ArchivedConfessionItemComponent implements OnInit {
         });
         if (swalRes.value) {
             try {
-                this.confession.isArchived = false;
-                await this.confessionsService.updateConfession(this.confession);
+                await this.confessionsService.patcArchived(this.confession._id, false);
                 await Swal.fire('הוידוי שוחזר בהצלחה!', '', 'success')
                 this.removeConfession.emit(this.confession._id);
 

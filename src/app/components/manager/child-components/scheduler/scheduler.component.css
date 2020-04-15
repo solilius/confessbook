@@ -1,11 +1,27 @@
-#schedulers-list {
+.container {
   position: fixed;
   top: 10vh;
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
+  width: 100vw;
+}
+
+#schedulers-list {
+  flex-basis: 60%;
+  display: flex;
+  flex-direction: row;
   max-height: 86vh;
   min-height: 0px;
-  width: 68vw;
+  overflow-y: scroll;
+}
+
+#posts-list {
+  flex-basis: 40%;
+  display: flex;
+  flex-direction: column;
+  max-height: 86vh;
+  min-height: 0px;
   overflow-y: scroll;
 }
 
@@ -33,9 +49,9 @@ app-scheduler-item:last-child {
   background-color: #ffffff;
 }
 
-.invisible-item{
-    width: 32vw;
-    height: 300px;
+.invisible-item {
+  width: 32vw;
+  height: 300px;
 }
 
 .add-shceduler-btn {

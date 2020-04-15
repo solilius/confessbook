@@ -10,6 +10,7 @@ import * as moment from 'moment';
 })
 export class CronJobComponent implements OnInit {
     @Input() job: string;
+    @Input() isActive: boolean;
     @Output() updateRule: EventEmitter<string> = new EventEmitter();
     CronJob: CronJobUtil;
     preview: string;
@@ -23,6 +24,8 @@ export class CronJobComponent implements OnInit {
     ngOnInit(): void {
         this.CronJob = parseCronJob(this.job);
         this.reloadRule(this.job);
+        moment.locale('he');
+
     }
 
     async updateCronJob(event, src) {
@@ -49,11 +52,11 @@ export class CronJobComponent implements OnInit {
         const cronJobStr = generateCronJob(this.CronJob);
         this.reloadRule(cronJobStr);
         this.updateRule.emit(cronJobStr);
+        console.log(this.job, this.isActive);
     }
 
     async reloadRule(cronJobStr: string) {
         let res = (await this.service.getNextScheduleDate(cronJobStr));
-        moment.locale('he');
         this.preview = moment(res.next).fromNow()
     }
 }

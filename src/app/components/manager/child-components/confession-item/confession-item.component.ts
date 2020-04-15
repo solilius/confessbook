@@ -17,7 +17,7 @@ export class ConfessionItemComponent implements OnInit {
     @Input() confession: Confession;
     @Output() removeConfession: EventEmitter<string> = new EventEmitter();
     updates: Tag[];
-    isOpen = false;
+    isExtended = false;
     cursor = 'pointer';
     constructor(private confessionsService: ConfessionsService, private SchedulersService: SchedulersService,
         private FacebookPostsService: FacebookPostsService, public dialog: MatDialog) { }
@@ -27,8 +27,19 @@ export class ConfessionItemComponent implements OnInit {
     }
 
     toggleItem() {
-        (this.isOpen) ? this.cursor = 'pointer' : this.cursor = 'default'
-        this.isOpen = !this.isOpen;
+        (this.isExtended) ? this.cursor = 'pointer' : this.cursor = 'default'
+        this.isExtended = !this.isExtended;
+    }
+
+    updateText(event, field: string) {
+        switch (field) {
+            case 'message':
+                this.confession.message = event.target.value;
+                break;
+            case 'comment':
+                this.confession.comment = event.target.value;
+                break;
+        }
     }
 
     saveUpdate(tag: Tag) {
@@ -47,6 +58,7 @@ export class ConfessionItemComponent implements OnInit {
         })
         if (swalRes.value) {
             try {
+                this.confession.updated_by = localStorage.getItem('username');
                 await this.confessionsService.updateConfession(this.confession);
                 Swal.fire('הוידוי נשמר בהצלחה!', '', 'success');
                 this.updates.forEach(tag => {
@@ -55,7 +67,6 @@ export class ConfessionItemComponent implements OnInit {
             } catch (error) {
                 SwalError('שמירת הוידוי נכשלה', error);
             }
-
         }
     }
     async archiveConfession() {
@@ -71,8 +82,7 @@ export class ConfessionItemComponent implements OnInit {
         });
         if (swalRes.value) {
             try {
-                this.confession.isArchived = true;
-                await this.confessionsService.updateConfession(this.confession);
+                await this.confessionsService.patcArchived(this.confession._id, true);
                 await Swal.fire('הוידוי נמחק בהצלחה!', '', 'success');
                 this.removeConfession.emit(this.confession._id);
                 this.toggleItem();
@@ -87,15 +97,17 @@ export class ConfessionItemComponent implements OnInit {
         });
 
         dialogRef.afterClosed().subscribe(async (result) => {
-            try {
-                this.confession.fb_scheduled_date = result;
-                await this.FacebookPostsService.schedule(this.confession);
-                this.removeConfession.emit(this.confession._id);
-                await Swal.fire('הוידוי תוזמן בהצלחה!', '', 'success');
-            } catch (error) {
-                SwalError('תזמון פוסט נכשל', error);
+            if (result) {
+                try {
+                    this.confession.fb_scheduled_date = result;
+                    this.confession.updated_by = localStorage.getItem('username');
+                    await this.FacebookPostsService.schedule(this.confession);
+                    this.removeConfession.emit(this.confession._id);
+                    await Swal.fire('הוידוי תוזמן בהצלחה!', '', 'success');
+                } catch (error) {
+                    SwalError('תזמון פוסט נכשל', error);
+                }
             }
-
         });
     }
 

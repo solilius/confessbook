@@ -25,7 +25,7 @@ const ConfessionScheme = Joi.object().keys({
 });
 
 module.exports = (req, res, next) => {
-  if (req.method !== "GET" && req.method !== "DELETE" ) {
+  if (req.method !== "GET" && req.method !== "DELETE" && req.method !== "PATCH" ) {
     Joi.validate(req.body, getScheme(req), err => {
       if (err) {
         res.status(400).send(err.details[0].message);

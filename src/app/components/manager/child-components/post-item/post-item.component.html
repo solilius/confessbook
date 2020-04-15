@@ -1,0 +1,36 @@
+<mat-card class="post">
+    <mat-card-header>
+        <mat-card-title><b>{{getLeft(post.fb_scheduled_date)}}</b> &nbsp; - &nbsp; {{getDate(post.fb_scheduled_date)}}
+        </mat-card-title>
+        <mat-card-subtitle> תוזמן על ידי: {{post.updated_by}} </mat-card-subtitle>
+        <button class="extend-btn" (click)="extendPost()" mat-stroked-button>
+            <mat-icon>
+                <mat-icon>{{(isExtended) ?'keyboard_arrow_up' : 'keyboard_arrow_down'}}</mat-icon>
+            </mat-icon>
+        </button>
+    </mat-card-header>
+
+    <div [ngSwitch]="isExtended" class="post-data">
+        <div *ngSwitchCase="false" class="collapsed">
+            {{post.message}}
+        </div>
+
+        <div *ngSwitchCase="true" class="extended">
+            <mat-form-field>
+                <textarea cdkTextareaAutosize class="message my-scroller" matInput type="text" [value]="post.message"
+                    (change)="updateText($event, 'message')"> </textarea>
+            </mat-form-field>
+            <mat-form-field class="comment-container">
+                <textarea matInput type="text" class="comment my-scroller" [value]="(post.comment) ? post.comment : ''"
+                    (change)="updateText($event, 'comment')" placeholder="הערת המערכת"> </textarea>
+            </mat-form-field>
+            <button (click)="updatePost()" mat-stroked-button class="update-btn">עדכן </button>
+
+        </div>
+    </div>
+
+    <mat-card-actions>
+        <button (click)="schedulePost()" mat-stroked-button color="primary">תזמן </button>
+        <button (click)="cancelPost()" mat-stroked-button color="warn">בטל</button>
+    </mat-card-actions>
+</mat-card>

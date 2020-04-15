@@ -11,7 +11,7 @@
 
     <mat-card-content>
         <app-tags-selector [defaultTag]="scheduler.tag" (tagSelected)="updateTag($event)"></app-tags-selector>
-        <app-cron-job [job]="scheduler.rule" (updateRule)="updateRule($event)"></app-cron-job>
+        <app-cron-job [job]="scheduler.rule" [isActive]="scheduler.isActive" (updateRule)="updateRule($event)"></app-cron-job>
     </mat-card-content>
 
     <mat-card-actions>

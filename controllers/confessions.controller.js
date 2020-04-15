@@ -3,9 +3,9 @@ const facebook = require("../services/facebook.service");
 
 const getConfessions = async (req, res, next) => {
   try {
-    let query = { isArchived: req.query.isArchived}
-    if(!req.query.isArchived){
-       query.post_id = {$exist: false}
+    let query = { isArchived: req.query.isArchived };
+    if (!req.query.isArchived) {
+      query.post_id = { $exist: false };
     }
 
     const confessions = await db.getConfessions(query);
@@ -34,9 +34,22 @@ const updateConfession = async (req, res, next) => {
   }
 };
 
+const updateArchived = async (req, res, next) => {
+  try {
+    req.body.update_date = new Date();
+    await db.updateConfession(req.params.id, {
+      isArchived: req.query.isArchived,
+      updated_by: req.query.user,
+    });
+    res.send({ status: "success" });
+  } catch (error) {
+    next(error);
+  }
+};
+
 const deleteConfession = async (req, res, next) => {
   try {
-    const confession = await db.getConfession({_id:req.params.id});  
+    const confession = await db.getConfession({ _id: req.params.id });
     await db.deleteConfession(req.params.id);
     facebook.deletePost(confession.post_id);
     res.send({ status: "success" });
@@ -48,6 +61,7 @@ const deleteConfession = async (req, res, next) => {
 module.exports = {
   getConfessions,
   insertConfession,
+  updateArchived,
   updateConfession,
-  deleteConfession
+  deleteConfession,
 };

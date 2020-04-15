@@ -21,9 +21,8 @@
   overflow: hidden;
 }
 
-.extra-meta-data{
+.extra-meta-data {
   text-align: center;
-
 }
 
 .meta-data-title {
@@ -38,30 +37,29 @@
 }
 
 .item-collapsed {
-  padding-left: 10px;  
+  padding-left: 10px;
   flex-basis: 65%;
   overflow-y: hidden;
   max-height: 170px;
   white-space: pre-line;
 }
-.mat-chip-list-stacked{
-    position: absolute;
-    left: 2%;
-    margin-top: 16px;
-    max-width: 7%;
+.mat-chip-list-stacked {
+  position: absolute;
+  left: 2%;
+  margin-top: 16px;
+  max-width: 7%;
 }
 
-.tag-collapsed{
+.tag-collapsed {
   overflow: hidden;
-      display: flex;
-    justify-content: center;
-
+  display: flex;
+  justify-content: center;
 }
 
 .item-extended {
   max-height: 700px;
   flex-basis: 65%;
-  padding-left: 10px;  
+  padding-left: 10px;
   cursor: default;
 }
 
@@ -123,7 +121,7 @@ button {
   background-color: rgb(73, 125, 189);
 }
 
-.schedule{
-    background: rgb(0, 187, 162);
-    color:  white;
+.schedule {
+  background: rgb(0, 187, 162);
+  color: white;
 }

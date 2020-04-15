@@ -36,13 +36,17 @@ export class FacebookPostsService {
         return this.request('post', `${this.baseUrl}/schedule`, confession);
     }
 
-    updatePost(confession: Confession): Promise<any> {
-        confession.updated_by = localStorage.getItem('username');
-        return this.request('put', `${this.baseUrl}/${confession._id}`, confession);
+    patchTime(id: string, date: Date) {
+        const user = localStorage.getItem('username');
+        return this.request('patch', `${this.baseUrl}/schedule/${id}?date=${date}&user=${user}`);
+    }
+
+    updatePost(post: Confession) {
+        return this.request('put', `${this.baseUrl}/${post._id}`, post);
     }
 
     deletePost(id: string): Promise<any> {
-        return this.request('delete', `${this.baseUrl}/${id}?user=${localStorage.getItem('username')}`);
+        const user = localStorage.getItem('username');
+        return this.request('delete', `${this.baseUrl}/${id}?user=${user}`);
     }
-
 }
