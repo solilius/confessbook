@@ -8,6 +8,7 @@ router.use("*", validator);
 // ################### API ################### //
 
 router.route("/").get(controller.getSchedulers);
+router.route("/next/:rule").get(controller.getNextScheduledDate);
 router.route("/tags").get(controller.getTags);
 router.route("/").post(controller.insertScheduler);
 router.route("/:id").put(controller.updateScheduler);

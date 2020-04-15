@@ -1,5 +1,39 @@
-<mat-form-field class="cron-editor" >
-    <mat-label>קבע את מרווח העלאה</mat-label>
-    <input matInput placeholder=" * * * * * " value="{{job}}" 
-    (change)="onRuleChanged($event)">
-</mat-form-field>
+<div class="component">
+    <div class="container">
+        <h2> כל </h2>
+        <mat-form-field>
+            <mat-select [value]="CronJob.timeUnit" (selectionChange)="updateCronJob($event, 'timeUnit')">
+                <mat-option *ngFor="let time of times" [value]="time">
+                    {{time}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <h2> {{timesTo[times.indexOf(CronJob.timeUnit)]}} </h2>
+        <div [ngSwitch]="CronJob.timeUnit">
+
+            <div *ngSwitchCase="times[1]" class="container">
+                <mat-form-field>
+                    <mat-select [value]="CronJob.dayOfWeek" (selectionChange)="updateCronJob($event,'dayOfWeek')">
+                        <mat-option *ngFor="let day of days" [value]="day">
+                            {{day}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <h2>{{timesTo[0]}} </h2>
+            </div>
+
+            <div *ngSwitchCase="times[2]" class="container">
+                <mat-form-field class="day">
+                    <input type="number" min="1" max="31" matInput [value]="CronJob.dayOfMonth"
+                        (change)="updateCronJob($event, 'dayOfMonth')">
+                </mat-form-field>
+                <h2> לחודש, &nbsp; {{timesTo[0]}}</h2>
+            </div>
+        </div>
+        <mat-form-field>
+            <input type="time" matInput [value]="CronJob.time" (change)="updateCronJob($event, 'time')">
+        </mat-form-field>
+    </div>
+    <div class="preview"> {{preview}}</div>
+</div>

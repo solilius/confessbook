@@ -66,6 +66,14 @@ const deleteScheduler = async (req, res, next) => {
   }
 };
 
+const getNextScheduledDate = async (req, res, next) => {
+  try {
+    const next = await schedulersManager.getNextScheduledDate(req.params.rule);
+    res.send({ next: next });
+  } catch (error) {
+    next(error);
+  }
+};
 module.exports = {
   getSchedulers,
   getTags,
@@ -73,4 +81,5 @@ module.exports = {
   activateScheduler,
   updateScheduler,
   deleteScheduler,
+  getNextScheduledDate
 };

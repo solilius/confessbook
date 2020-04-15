@@ -3,9 +3,6 @@ import { Scheduler } from '../../../../models/scheduler/scheduler.module';
 import { SchedulersService } from '../../../../services/schedulers.service';
 import Swal from 'sweetalert2'
 import { Tag } from '../../../../interfaces/tag';
-import { MatDialog } from '@angular/material/dialog';
-import { SchedulerAddComponent } from '../scheduler-add/scheduler-add.component';
-
 
 @Component({
     selector: 'app-scheduler-item',
@@ -19,7 +16,7 @@ export class SchedulerItemComponent implements OnInit {
     @Output() addScheduler: EventEmitter<Scheduler> = new EventEmitter();
     allTags: Tag[];
 
-    constructor(private service: SchedulersService, public dialog: MatDialog) { }
+    constructor(private service: SchedulersService) { }
 
     async ngOnInit(): Promise<void> {
         this.allTags = await this.service.getTags();
@@ -74,19 +71,6 @@ export class SchedulerItemComponent implements OnInit {
         } catch (error) {
             Swal.fire('אופס', "עדכון הזתמון נכשל", 'error');
         }
-    }
-
-    createScheduler() {
-        const dialogRef = this.dialog.open(SchedulerAddComponent, {
-            width: '26vw',
-            data: { scheduler: {} }
-        });
-
-        dialogRef.afterClosed().subscribe(result => {
-            if (result) {
-                this.addScheduler.emit(result);
-            }
-        });
     }
 
     updateRule(rule: string) {

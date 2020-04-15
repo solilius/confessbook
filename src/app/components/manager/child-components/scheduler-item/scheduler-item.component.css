@@ -1,7 +1,7 @@
 .scheduler {
-  width: 30vw;
-  height: 300px;
-  margin-bottom: 1vw;
+  width: 25vw;
+  height: 340px;
+  margin: 0 1vw 1vw 0;
 }
 
 .slider {
@@ -37,19 +37,4 @@ mat-card-actions {
 
 .mat-card-actions .mat-stroked-button {
   margin: 0 8px 0 0;
-}
-
-.add-shceduler-btn {
-  position: fixed;
-  bottom: 4vw;
-  right: 2vw;
-  background-color: rgb(0, 202, 202);
-  height: 80px;
-  width: 80px;
-}
-
-.mat-icon {
-  height: 40px;
-  width: 39px;
-  font-size: 40px;
 }

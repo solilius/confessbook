@@ -85,10 +85,18 @@ const deleteScheduler = (id) => {
   });
 };
 
+const getNextScheduledDate = (rule) => {
+  const temp = schedule.scheduleJob(rule, () => {});
+  const date = temp.nextInvocation();
+  temp.cancel();
+  return date;
+};
+
 module.exports = {
   startSchedulers,
   insertScheduler,
   updateScheduler,
   activateJob,
   deleteScheduler,
+  getNextScheduledDate,
 };

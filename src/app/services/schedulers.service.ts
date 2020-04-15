@@ -46,6 +46,9 @@ export class SchedulersService {
         return this.request('delete', `${this.baseUrl}/${id}?user=${localStorage.getItem('username')}`);
     }
 
+    getNextScheduleDate(rule: string): Promise<any> {
+        return this.request('get', `${this.baseUrl}/next/${rule}`);
+    }
     async getTags() {
         if (!this.allTags) {
             this.allTags = await this.request('get', `${this.baseUrl}/tags`);

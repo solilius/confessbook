@@ -22,13 +22,6 @@
   background-color: #089c1c86 !important;
 }
 
-mat-card-content {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  margin: 0;
-}
-
 mat-form-field {
   text-align: center;
   border: solid 1px rgb(230, 226, 226);
