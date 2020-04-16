@@ -41,12 +41,21 @@ export class SchedulerComponent implements OnInit {
     createScheduler() {
         const dialogRef = this.dialog.open(SchedulerAddComponent, {
             width: '27vw',
-            data: { scheduler: {} }
+            data: this.schedulers.map(s => s.name)
         });
 
-        dialogRef.afterClosed().subscribe(result => {
+        dialogRef.afterClosed().subscribe(async (result) => {
             if (result) {
-                this.schedulers.push(result);
+                try {
+                    const res = await this.SchedulersService.createScheduler(result);
+                    result._id = res._id;
+                    Swal.fire("התזמון נשמר", "התזמון נשמר בהצלחה !", "success");
+                    this.schedulers.push(result);
+                } catch (error) {
+                    console.log(error);
+                    Swal.fire("אופס", "ארעה תקלה בשמירת התזמון", "error");
+                }
+
             }
         });
     }

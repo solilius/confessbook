@@ -3,17 +3,25 @@
   top: 10vh;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
   width: 100vw;
 }
 
 #schedulers-list {
-  flex-basis: 60%;
+  flex-basis: 56%;
+  direction: ltr;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   max-height: 86vh;
   min-height: 0px;
   overflow-y: scroll;
+}
+
+app-scheduler-item:last-child {
+  width: 100%;
+  direction: rtl;
+  margin-right: 4px;
 }
 
 #posts-list {
@@ -31,14 +39,6 @@
   font-size: 25px;
   color: blue;
   margin-top: 10vh;
-}
-
-app-scheduler-item {
-  margin-bottom: 4px;
-}
-
-app-scheduler-item:last-child {
-  margin-bottom: 0;
 }
 
 .my-scroller::-webkit-scrollbar {

@@ -4,6 +4,11 @@
   margin: 0 1vw 1vw 0;
 }
 
+::ng-deep .mat-card-header-text {
+  width: 100%;
+  direction: rtl;
+}
+
 .slider {
   position: absolute;
   left: 1vw;

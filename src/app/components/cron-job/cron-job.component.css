@@ -5,6 +5,7 @@
   padding: 10px;
   width: 90%;
   text-align: center;
+  direction: rtl;
 }
 .container {
   display: flex;

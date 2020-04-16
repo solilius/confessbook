@@ -52,7 +52,6 @@ export class CronJobComponent implements OnInit {
         const cronJobStr = generateCronJob(this.CronJob);
         this.reloadRule(cronJobStr);
         this.updateRule.emit(cronJobStr);
-        console.log(this.job, this.isActive);
     }
 
     async reloadRule(cronJobStr: string) {

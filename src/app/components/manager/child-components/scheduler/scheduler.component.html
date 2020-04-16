@@ -6,19 +6,16 @@
         <app-scheduler-item *ngFor="let scheduler of schedulers" [scheduler]="scheduler"
             (removeScheduler)="removeScheduler($event)">
         </app-scheduler-item>
-        <div *ngIf="schedulers.length % 2" class="invisible-item"></div>
-
-        <button mat-fab class="add-shceduler-btn" (click)="createScheduler()">
-            <mat-icon>note_add</mat-icon>
-        </button>
     </div>
     <div id="posts-list" class="my-scroller">
         <p *ngIf="posts.length==0" class="empty-list">
             - אין פוסטים מתוזמנים להצגה -
         </p>
-        <app-post-item *ngFor="let post of posts" [post]="post"
-            (removePost)="removePost($event)"
+        <app-post-item *ngFor="let post of posts" [post]="post" (removePost)="removePost($event)"
             (click)="lastItemClicked(post._id)">
         </app-post-item>
     </div>
+    <button mat-fab class="add-shceduler-btn" (click)="createScheduler()">
+        <mat-icon>note_add</mat-icon>
+    </button>
 </div>

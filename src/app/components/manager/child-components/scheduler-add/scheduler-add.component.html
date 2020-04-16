@@ -8,6 +8,6 @@
             </mat-slide-toggle>
         </section>
         <app-tags-selector (tagSelected)="initTag($event)"></app-tags-selector>
-        <app-cron-job [job]="'0 0 * * *'" (updateRule)="initRule($event)"></app-cron-job>
+        <app-cron-job [job]="'0 0 * * *'" [isActive]="scheduler.isActive" (updateRule)="initRule($event)"></app-cron-job>
         <button (click)="createScheduler()" mat-raised-button color="primary">צור</button>
 </mat-card>
