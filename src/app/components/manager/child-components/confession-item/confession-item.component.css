@@ -5,10 +5,19 @@
   background-color: white;
   padding: 20px 0 10px 0;
   text-align: right;
-  max-height: 700px;
   font-size: 20px;
   transition: 300ms;
   line-height: 1.2;
+  transition: max-height ease-in 0.3s;
+  overflow: hidden;
+}
+
+.container-extended {
+  max-height: 700px;
+}
+
+.container-collapsed {
+  max-height: 170px;
 }
 
 .meta-data {
@@ -18,7 +27,6 @@
   font-size: 12px;
   flex-basis: 20%;
   max-height: 180px;
-  overflow: hidden;
 }
 
 .extra-meta-data {
@@ -32,7 +40,7 @@
 
 .meta-data-info {
   color: gray;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   direction: ltr;
 }
 
@@ -40,7 +48,6 @@
   padding-left: 10px;
   flex-basis: 65%;
   overflow-y: hidden;
-  max-height: 170px;
   white-space: pre-line;
 }
 .mat-chip-list-stacked {
@@ -57,7 +64,6 @@
 }
 
 .item-extended {
-  max-height: 700px;
   flex-basis: 65%;
   padding-left: 10px;
   cursor: default;

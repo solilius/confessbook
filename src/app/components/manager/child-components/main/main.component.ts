@@ -15,7 +15,7 @@ export class MainComponent implements OnInit {
 
     constructor(private confessionsService: ConfessionsService, private router: Router) {
         this.confessions = [];
-     }
+    }
     async ngOnInit(): Promise<any> {
         try {
             this.confessions = await this.confessionsService.getConfessions(false);
@@ -38,7 +38,9 @@ export class MainComponent implements OnInit {
     lastItemClicked(id) {
         if (id === this.confessions[this.confessions.length - 1]._id) {
             const objDiv = document.getElementById("confession-list");
-            objDiv.scrollTop = objDiv.scrollHeight;
+            setTimeout(() => {
+                objDiv.scrollTop = objDiv.scrollHeight;
+            }, 300);
         }
     }
 }

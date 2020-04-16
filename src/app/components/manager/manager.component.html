@@ -9,15 +9,15 @@
         </a>
         <span class="toolbar-spacer"></span>
         <mat-icon>archive</mat-icon>
-        <a [ngClass]="setClasses('archive')" class="toolbar-item" (click)="loadChild('archive')">
+        <a [ngClass]="{active:(activeTab === 'archive')}" class="toolbar-item" (click)="loadChild('archive')">
             <span class='item-text'> ארכיון </span>
         </a>
         <mat-icon>timer</mat-icon>
-        <a [ngClass]="setClasses('scheduler')" class="toolbar-item" (click)="loadChild('scheduler')">
+        <a [ngClass]="{active:(activeTab === 'scheduler')}" class="toolbar-item" (click)="loadChild('scheduler')">
             <span class='item-text'> תזמונים </span>
         </a>
         <mat-icon>list_alt</mat-icon>
-        <a [ngClass]="setClasses('main')" class="toolbar-item" (click)="loadChild('main')">
+        <a [ngClass]="{active:(activeTab === 'main')}" class="toolbar-item" (click)="loadChild('main')">
             <span class='item-text'> דף ראשי </span>
         </a>
     </mat-toolbar-row>

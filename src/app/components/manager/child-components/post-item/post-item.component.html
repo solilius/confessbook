@@ -1,4 +1,4 @@
-<mat-card class="post">
+<mat-card class="post" [ngClass]="(isExtended) ? 'container-extended': 'container-collapsed'">
     <mat-card-header>
         <mat-card-title><b  [ngClass]="(timeToPost.startsWith('לפני'))? 'past': 'future'">{{timeToPost}}</b> &nbsp; - &nbsp; {{postingDate}}
         </mat-card-title>
