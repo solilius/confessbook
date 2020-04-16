@@ -18,13 +18,11 @@ export class ConfessionItemComponent {
     @Output() removeConfession: EventEmitter<string> = new EventEmitter();
     updates: Tag[] = [];
     isExtended = false;
-    cursor = 'pointer';
 
     constructor(private confessionsService: ConfessionsService, private commonService: CommonService,
         private facebookPostsService: FacebookPostsService, public dialog: MatDialog) { }
 
-    toggleItem() {
-        (this.isExtended) ? this.cursor = 'pointer' : this.cursor = 'default'
+    extendConfession() {
         this.isExtended = !this.isExtended;
     }
 

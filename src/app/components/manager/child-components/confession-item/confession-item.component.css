@@ -1,9 +1,9 @@
 .container {
+  position: relative;
   display: flex;
   flex-direction: row;
   background-color: white;
   padding: 20px 0 10px 0;
-  cursor: pointer;
   text-align: right;
   max-height: 700px;
   font-size: 20px;
@@ -92,18 +92,17 @@ mat-form-field {
 button {
   margin-right: 4px;
 }
-
-.collpase-button {
-  padding: 0 0 2px 0;
-  min-width: 40px;
-  margin: 0 3vw 0 -5vw;
+.extend-btn {
+  position: absolute;
+  bottom: 14px;
+  left: 1.5vw;
+  min-width: 75px;
+  height: 30px;
+  border-radius: 16px;
+  margin-top: -4px;
 }
-
-.collpase-button:hover {
-  font-weight: bolder;
-  color: rgb(121, 121, 121);
-  transition: font-weight 100ms;
-  cursor: pointer;
+.extend-btn .mat-icon {
+  margin-top: -4px;
 }
 
 .my-scroller::-webkit-scrollbar-track {

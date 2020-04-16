@@ -1,5 +1,4 @@
-<div class="container" [ngStyle]="{'cursor': cursor}">
-
+<div class="container">
     <div class="meta-data">
         <p class="meta-data-title">תאריך יצירה:</p>
         <p class="meta-data-info">{{confession.create_date | date:'MM/d/y - HH:mm'}}</p>
@@ -13,7 +12,7 @@
         <p class="meta-data-info">{{confession.serial ? 'כן ( #' + confession.serial + ' )' : 'לא'}}</p>
     </div>
 
-    <div class="item-collapsed" (click)="toggleItem()" *ngIf="!isExtended; else open_confession">
+    <div class="item-collapsed" *ngIf="!isExtended; else open_confession">
         {{confession.message}}
     </div>
     <mat-chip-list class="mat-chip-list-stacked" *ngIf="!isExtended">
@@ -21,6 +20,11 @@
             {{tag}}
         </mat-chip>
     </mat-chip-list>
+    <button class="extend-btn" (click)="extendConfession()" mat-stroked-button>
+        <mat-icon>
+            <mat-icon>{{(isExtended) ?'keyboard_arrow_up' : 'keyboard_arrow_down'}}</mat-icon>
+        </mat-icon>
+    </button>
     <ng-template #open_confession>
         <div class="item-extended">
             <mat-form-field>
@@ -28,8 +32,9 @@
                     [value]="confession.message" (change)="updateText($event, 'message')"> </textarea>
             </mat-form-field>
             <mat-form-field>
-                <textarea matInput type="text" class="comment my-scroller" [value]="(confession.comment) ? confession.comment : ''"
-                    placeholder="הערת המערכת" (change)="updateText($event, 'comment')"> </textarea>
+                <textarea matInput type="text" class="comment my-scroller"
+                    [value]="(confession.comment) ? confession.comment : ''" placeholder="הערת המערכת"
+                    (change)="updateText($event, 'comment')"> </textarea>
             </mat-form-field>
             <app-chips [tags]="confession.tags" (updateTags)="saveUpdate($event)"></app-chips>
 
@@ -38,9 +43,6 @@
                 <button mat-raised-button color="accent" (click)='saveConfession()'>שמור</button>
                 <button mat-raised-button class="schedule" (click)='scheduleConfession()'>תזמן</button>
                 <button mat-raised-button color="primary" (click)='postConfession()'>פרסם</button>
-                <button mat-stroked-button class="collpase-button" (click)='toggleItem()'>
-                    <mat-icon>keyboard_arrow_up</mat-icon>
-                </button>
             </div>
         </div>
     </ng-template>
