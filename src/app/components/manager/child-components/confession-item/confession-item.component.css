@@ -47,13 +47,13 @@
   position: absolute;
   left: 2%;
   margin-top: 16px;
-  max-width: 7%;
 }
 
 .tag-collapsed {
   overflow: hidden;
   display: flex;
   justify-content: center;
+  width: 6vw !important;
 }
 
 .item-extended {
@@ -92,15 +92,22 @@ mat-form-field {
 button {
   margin-right: 4px;
 }
+
+.schedule-btn {
+  background: rgb(0, 187, 162);
+  color: white;
+}
+
 .extend-btn {
   position: absolute;
   bottom: 14px;
-  left: 1.5vw;
-  min-width: 75px;
+  left: 2vw;
+  min-width: 4.5vw;
   height: 30px;
   border-radius: 16px;
   margin-top: -4px;
 }
+
 .extend-btn .mat-icon {
   margin-top: -4px;
 }
@@ -118,9 +125,4 @@ button {
 .my-scroller::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: rgb(73, 125, 189);
-}
-
-.schedule {
-  background: rgb(0, 187, 162);
-  color: white;
 }
