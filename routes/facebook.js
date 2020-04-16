@@ -5,7 +5,7 @@ const validator = require("../middlewares/confession.validator");
 const auth = require("../middlewares/auth");
 
 router.use("*", validator);
-//router.use("*", auth);
+router.use("*", auth);
 
 // ################### API ################### //
 

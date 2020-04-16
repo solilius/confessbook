@@ -10,8 +10,7 @@ const getJobObject = (job) => {
     id: job._id.toString(),
     rule: job.rule,
     job: schedule.scheduleJob(job.rule, () => {
-      //handlePosting(job.tag, job.name);
-      console.log(job.name, job.tag);
+      handlePosting(job.tag, job.name);
     }),
   };
   if (!job.isActive) jobObject.job.cancel();
@@ -31,7 +30,7 @@ const handlePosting = async (tag, name) => {
     confession.isArchived = true;
     db_confession.updateConfession(confession._id, confession);
   } catch (error) {
-    // logs
+      
   }
 };
 

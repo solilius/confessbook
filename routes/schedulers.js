@@ -2,8 +2,10 @@ const express = require("express");
 const router = express.Router();
 const controller = require("../controllers/schedulers.controller");
 const validator = require("../middlewares/scheduler.validator");
+const auth = require("../middlewares/auth");
 
 router.use("*", validator);
+router.use("*", auth);
 
 // ################### API ################### //
 
