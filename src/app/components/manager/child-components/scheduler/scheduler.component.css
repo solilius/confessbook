@@ -18,7 +18,7 @@
   overflow-y: scroll;
 }
 
-app-scheduler-item:last-child {
+.scheduler-item-last {
   width: 100%;
   direction: rtl;
   margin-right: 4px;
