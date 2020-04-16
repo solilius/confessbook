@@ -23,13 +23,11 @@ export class SchedulerItemComponent implements OnInit {
     async activateScheduler({ checked }) {
         this.scheduler.isActive = checked;
         try {
-        this.commonService.setSpinnerMode(true);
         await this.schedulersService.activateScheduler(this.scheduler._id, checked);
         } catch (err) {
             this.scheduler.isActive = !checked;
             Swal.fire('אופס', "שינוי הסטטוס נכשל", 'error');
         }
-        this.commonService.setSpinnerMode(false);
     }
 
     async deleteScheduler() {

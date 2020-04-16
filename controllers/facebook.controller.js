@@ -13,7 +13,16 @@ const getPosts = async (req, res, next) => {
       isArchived: false,
       post_id: { $exists: true },
     });
-    res.send(confessions);
+
+    res.send(
+      confessions.sort((a, b) => {
+        return a.fb_scheduled_date < b.fb_scheduled_date
+          ? -1
+          : a.fb_scheduled_date > b.fb_scheduled_date
+          ? 1
+          : 0;
+      })
+    );
   } catch (error) {
     next(error);
   }
@@ -44,7 +53,7 @@ const scheduleToFB = async (req, res, next) => {
 
 const updatePost = async (req, res, next) => {
   try {
-      await facebook.updateScheduledPost(req.body);
+    await facebook.updateScheduledPost(req.body);
     await db.updateConfession(req.params.id, req.body);
     res.send({ status: "success" });
   } catch (error) {
@@ -57,7 +66,9 @@ const updateScheduledTime = async (req, res, next) => {
     await facebook.updateScheduledTime(req.params.id, req.query.date);
     await db.updateConfessionByQuery(
       { post_id: req.params.id },
-     {$set: { fb_scheduled_date: req.query.date, updated_by: req.query.user }}
+      {
+        $set: { fb_scheduled_date: req.query.date, updated_by: req.query.user },
+      }
     );
     res.send({ status: "success" });
   } catch (error) {

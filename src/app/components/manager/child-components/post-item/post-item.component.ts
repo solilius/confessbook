@@ -24,6 +24,8 @@ export class PostItemComponent implements OnInit {
     ngOnInit(): void {
         moment.locale('he');
         this.postingDate = moment(this.post.fb_scheduled_date).format('MMMM Do YYYY, HH:mm');
+        this.timeToPost = moment(this.post.fb_scheduled_date).fromNow();
+
         setInterval(() => {
             this.timeToPost = moment(this.post.fb_scheduled_date).fromNow();
         }, 900)

@@ -1,6 +1,6 @@
 <mat-card class="post">
     <mat-card-header>
-        <mat-card-title><b>{{postingDate}}</b> &nbsp; - &nbsp; {{timeToPost}}
+        <mat-card-title><b  [ngClass]="(timeToPost.startsWith('לפני'))? 'past': 'future'">{{timeToPost}}</b> &nbsp; - &nbsp; {{postingDate}}
         </mat-card-title>
         <mat-card-subtitle> תוזמן על ידי: {{post.updated_by}} </mat-card-subtitle>
         <button class="extend-btn" (click)="extendPost()" mat-stroked-button>

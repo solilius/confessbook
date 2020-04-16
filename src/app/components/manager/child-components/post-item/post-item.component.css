@@ -6,6 +6,13 @@
   position: relative;
 }
 
+.future{
+    color: rgb(0, 3, 167);
+}
+
+.past{
+    color: rgb(117, 117, 117);
+}
 .extend-btn {
   position: absolute;
   top: 1vw;

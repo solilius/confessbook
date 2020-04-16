@@ -1,9 +1,8 @@
 const axios = require("axios");
 const schedule = require("node-schedule");
 const db = require("../db/confessions.db");
-const  moment = require('moment');
 
-schedule.scheduleJob(" 0 * * * *", async () => {
+schedule.scheduleJob(" 0 0 * * *", async () => {
   const res = await db.updateConfessionByQuery(
     {
       isArchived: false,
