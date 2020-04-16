@@ -1,58 +1,41 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Scheduler } from '../models/scheduler/scheduler.module';
 import { environment } from '../../environments/environment';
-import { Tag } from '../interfaces/tag';
+import { CommonService } from './common.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class SchedulersService {
     baseUrl: string;
-    allTags: Tag[];
 
-    constructor(private http: HttpClient) {
+    constructor(private service: CommonService) {
         this.baseUrl = `${environment.server}/schedulers`;
     }
 
-    request(method: string, url: string, body?: any): Promise<any> {
-        return this.http.request(method, url,
-            {
-                body: body,
-                headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-                withCredentials: true
-            }).toPromise();
-    }
-
     getSchedulers(): Promise<Scheduler[]> {
-        return this.http.get<Scheduler[]>(this.baseUrl).toPromise();
+        return this.service.request('get', this.baseUrl);
     }
 
     createScheduler(scheduler: Scheduler): Promise<any> {
-        return this.request('post', this.baseUrl, scheduler );
+        return this.service.request('post', this.baseUrl, scheduler);
     }
 
     updateScheduler(scheduler: Scheduler): Promise<Scheduler> {
-        return this.request('put', `${this.baseUrl}/${scheduler._id}`, scheduler);
+        return this.service.request('put', `${this.baseUrl}/${scheduler._id}`, scheduler);
 
     }
 
     activateScheduler(id: string, active: Boolean): Promise<any> {
-        return this.request('patch', `${this.baseUrl}/${id}?active=${active}`);
+        return this.service.request('patch', `${this.baseUrl}/${id}?active=${active}`);
 
     }
 
     deleteScheduler(id: string): Promise<any> {
-        return this.request('delete', `${this.baseUrl}/${id}?user=${localStorage.getItem('username')}`);
+        return this.service.request('delete', `${this.baseUrl}/${id}?user=${localStorage.getItem('username')}`);
     }
 
     getNextScheduleDate(rule: string): Promise<any> {
-        return this.request('get', `${this.baseUrl}/next/${rule}`);
-    }
-    async getTags() {
-        if (!this.allTags) {
-            this.allTags = await this.request('get', `${this.baseUrl}/tags`);
-        }
-        return Promise.resolve(this.allTags);
+        return this.service.request('get', `${this.baseUrl}/next/${rule}`);
     }
 }

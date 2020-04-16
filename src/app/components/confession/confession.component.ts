@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfessionsService } from '../../services/confessions.service';
 import { CommonService } from '../../services/common.service';
-import { Title } from '@angular/platform-browser';
 import Swal from 'sweetalert2'
 
 @Component({
@@ -14,13 +13,12 @@ export class ConfessionComponent implements OnInit {
     appName: string;
     intro: string;
     isSent: boolean;
-    constructor(private confessionsService: ConfessionsService, private commonService: CommonService, private titleService: Title) { }
+    constructor(private confessionsService: ConfessionsService, private commonService: CommonService) { }
 
     async ngOnInit(): Promise<any> {
         this.isSent = false;
         try {
-            const res = await this.confessionsService.getAppData();
-            this.titleService.setTitle(res.name);
+            const res = await this.commonService.getAppData();
             this.appName = res.name;
             this.intro = res.intro;
         } catch (error) {

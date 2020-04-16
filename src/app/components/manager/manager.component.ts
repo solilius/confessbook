@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ConfessionsService } from '../../services/confessions.service';
+import { CommonService } from '../../services/common.service';
 import { Router } from '@angular/router';
-import { Title } from '@angular/platform-browser';
 import Swal from 'sweetalert2'
 
 @Component({
@@ -14,7 +13,7 @@ export class ManagerComponent implements OnInit {
     appName: string;
     fbPage: string;
     loginText: string;
-    constructor(private service: ConfessionsService, private router: Router, private titleService: Title) { }
+    constructor(private service: CommonService, private router: Router) { }
 
     async ngOnInit(): Promise<any> {
 
@@ -22,7 +21,6 @@ export class ManagerComponent implements OnInit {
         
         try {
             const res = await this.service.getAppData();
-            this.titleService.setTitle(res.name);
             this.appName = res.name;
             this.fbPage = `https://www.facebook.com/${res.pageID}`;
         } catch (error) {

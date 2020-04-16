@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { SchedulersService } from 'src/app/services/schedulers.service';
+import { CommonService } from 'src/app/services/common.service';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Tag } from 'src/app/interfaces/tag';
@@ -17,7 +17,7 @@ export class TagsSelectorComponent implements OnInit {
     filteredTags: Observable<Tag[]>;
     allTags: Tag[];
 
-    constructor(private service: SchedulersService) { }
+    constructor(private service: CommonService) { }
 
     async ngOnInit(): Promise<void> {
         this.allTags = await this.service.getTags();

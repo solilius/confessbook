@@ -1,9 +1,8 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { Confession } from '../../../../models/confession/confession.module';
 import { ConfessionsService } from '../../../../services/confessions.service';
-import { CommonService } from '../../../../services/common.service';
 import { FacebookPostsService } from '../../../../services/facebook-posts.service';
-import { SchedulersService } from '../../../../services/schedulers.service';
+import { CommonService } from '../../../../services/common.service';
 import { Tag } from '../../../../interfaces/tag';
 import Swal from 'sweetalert2'
 import { MatDialog } from '@angular/material/dialog';
@@ -21,8 +20,8 @@ export class ConfessionItemComponent {
     isExtended = false;
     cursor = 'pointer';
 
-    constructor(private confessionsService: ConfessionsService, private schedulersService: SchedulersService,
-        private facebookPostsService: FacebookPostsService, private commonService: CommonService, public dialog: MatDialog) { }
+    constructor(private confessionsService: ConfessionsService, private commonService: CommonService,
+        private facebookPostsService: FacebookPostsService, public dialog: MatDialog) { }
 
     toggleItem() {
         (this.isExtended) ? this.cursor = 'pointer' : this.cursor = 'default'
@@ -150,7 +149,7 @@ export class ConfessionItemComponent {
 
     async updateTagsService(tag: Tag) {
         let index = -1;
-        const tags = await this.schedulersService.getTags();
+        const tags = await this.commonService.getTags();
         tags.forEach((obj, i) => {
             if (obj.name === tag.name) {
                 index = i;

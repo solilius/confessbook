@@ -5,7 +5,7 @@ import { MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material
 import { MatChipInputEvent } from '@angular/material/chips';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { SchedulersService } from '../../services/schedulers.service'
+import { CommonService } from '../../services/common.service'
 import { Tag } from 'src/app/interfaces/tag';
 
 @Component({
@@ -27,7 +27,7 @@ export class ChipsComponent implements OnInit {
     @ViewChild('tagInput') tagInput: ElementRef<HTMLInputElement>;
     @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
-    constructor(private service: SchedulersService) {
+    constructor(private service: CommonService) {
     }
     async ngOnInit(): Promise<void> {
         const tagsObjects = await this.service.getTags();
