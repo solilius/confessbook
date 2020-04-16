@@ -23,6 +23,7 @@
 .collapsed {
   overflow-y: hidden;
   width: 98%;
+  height: 40px;
 }
 
 .extended {
@@ -59,7 +60,7 @@ mat-form-field {
 }
 
 .update-btn {
-  color: green;  
+  color: green;
   position: absolute;
   left: 8.5vw;
   bottom: 1.1vw;
