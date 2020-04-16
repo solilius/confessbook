@@ -8,7 +8,7 @@
   font-size: 20px;
   transition: 300ms;
   line-height: 1.2;
-  transition: max-height ease-in 0.3s;
+  transition: max-height ease-in 0.1s;
   overflow: hidden;
 }
 
@@ -50,6 +50,7 @@
   overflow-y: hidden;
   white-space: pre-line;
 }
+
 .mat-chip-list-stacked {
   position: absolute;
   left: 2%;

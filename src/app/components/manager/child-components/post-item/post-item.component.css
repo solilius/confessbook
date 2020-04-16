@@ -4,7 +4,7 @@
   max-height: 35vh;
   margin-bottom: 1vw;
   position: relative;
-  transition: max-height ease-in-out 0.4s;
+  transition: max-height ease-in 0.1s;
   overflow: hidden;
 }
 

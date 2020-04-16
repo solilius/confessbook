@@ -66,7 +66,7 @@ export class ConfessionItemComponent {
             this.commonService.setSpinnerMode(false);
         }
     }
-    
+
     async archiveConfession() {
         const swalRes = await Swal.fire({
             title: 'מחק וידוי',
