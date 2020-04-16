@@ -135,7 +135,6 @@ export class ConfessionItemComponent {
                 await this.facebookPostsService.post(this.confession);
                 await Swal.fire('הוידוי הועלה בהצלחה!', '', 'success');
                 this.removeConfession.emit(this.confession._id);
-                this.toggleItem();
             } catch (error) {
                 Swal.fire('אופס', 'העלאת הוידוי נכשלה', 'error');
             }
