@@ -64,7 +64,6 @@ export class ConfessionItemComponent {
                 Swal.fire('אופס', 'שמירת הוידוי נכשלה', 'error');
             }
             this.commonService.setSpinnerMode(false);
-
         }
     }
     
@@ -85,7 +84,6 @@ export class ConfessionItemComponent {
                 await this.confessionsService.patcArchived(this.confession._id, true);
                 await Swal.fire('הוידוי נמחק בהצלחה!', '', 'success');
                 this.removeConfession.emit(this.confession._id);
-                this.toggleItem();
             } catch (error) {
                 Swal.fire('אופס', 'מחיקת הוידוי נכשלה', 'error');
             }
