@@ -2,3 +2,9 @@
 * {
   font-family: "Varela Round" !important;
 }
+
+::ng-deep .spinner{
+    position: fixed !important;
+    top: 45vh;
+    left: 45vw;
+}

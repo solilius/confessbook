@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Confession } from '../../../../models/confession/confession.module';
 import { ConfessionsService } from '../../../../services/confessions.service';
+import { CommonService } from '../../../../services/common.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2'
 
@@ -13,7 +14,7 @@ export class ArchivedConfessionItemComponent implements OnInit {
     @Input() confession: Confession;
     @Output() removeConfession: EventEmitter<string> = new EventEmitter();
 
-    constructor(private confessionsService: ConfessionsService, private router: Router) { }
+    constructor(private confessionsService: ConfessionsService, private commonService: CommonService, private router: Router) { }
 
     ngOnInit(): void { }
     async deleteConfession() {
@@ -27,12 +28,15 @@ export class ArchivedConfessionItemComponent implements OnInit {
         });
         if (swalRes.value) {
             try {
+                this.commonService.setSpinnerMode(true);
                 await this.confessionsService.deleteConfession(this.confession._id);
                 await Swal.fire('הוידוי נחמחק בהצלחה!', '', 'success')
                 this.removeConfession.emit(this.confession._id);
             } catch (error) {
-                SwalError('מחיקת הוידוי נכשלה', error)
+                Swal.fire('אופס', 'מחיקת הוידוי נכשלה', 'error');
             }
+            this.commonService.setSpinnerMode(false);
+
         }
     }
 
@@ -51,18 +55,16 @@ export class ArchivedConfessionItemComponent implements OnInit {
         });
         if (swalRes.value) {
             try {
+                this.commonService.setSpinnerMode(true);
                 await this.confessionsService.patcArchived(this.confession._id, false);
                 await Swal.fire('הוידוי שוחזר בהצלחה!', '', 'success')
                 this.removeConfession.emit(this.confession._id);
 
             } catch (error) {
-                SwalError('שחזור הוידוי נכשל', error)
+                Swal.fire('אופס', 'שחזור הוידוי נכשל', 'error');
             }
+
+            this.commonService.setSpinnerMode(false);
         }
     }
-}
-
-function SwalError(msg, err) {
-    console.log(JSON.stringify(err));
-    Swal.fire('אופס', msg, 'error');
 }

@@ -9,3 +9,7 @@ mat-form-field{
     text-align: center;
 }
 
+input{
+    direction: ltr;
+}
+

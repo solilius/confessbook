@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ConfessionsService } from '../../services/confessions.service';
+import { CommonService } from '../../services/common.service';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2'
@@ -14,13 +15,13 @@ export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     appName: string
 
-    constructor(private fb: FormBuilder, private service: ConfessionsService, private router: Router, private titleService: Title) {
+    constructor(private fb: FormBuilder, private confessionsService: ConfessionsService, private commonService: CommonService, private router: Router, private titleService: Title) {
         this.initForm();
     }
     async ngOnInit(): Promise<any> {
         this.loginForm.controls['username'].setValue(localStorage.getItem('username'));
         try {
-            const res = await this.service.getAppData();
+            const res = await this.confessionsService.getAppData();
             this.titleService.setTitle(res.name);
             this.appName = res.name;
         } catch (error) {
@@ -37,7 +38,8 @@ export class LoginComponent implements OnInit {
 
     async login() {
         try {
-            await this.service.login(this.loginForm.value);
+            this.commonService.setSpinnerMode(true);
+            await this.confessionsService.login(this.loginForm.value);
             localStorage.setItem('username', this.loginForm.get('username').value);
             this.router.navigateByUrl('/manager/main');
         } catch (error) {
@@ -48,5 +50,7 @@ export class LoginComponent implements OnInit {
                 confirmButtonText: 'אוקיי'
             })
         }
+        this.commonService.setSpinnerMode(false);
+
     }
 }

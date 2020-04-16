@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Scheduler } from '../../../../models/scheduler/scheduler.module';
 import { SchedulersService } from '../../../../services/schedulers.service';
+import { CommonService } from '../../../../services/common.service';
+
 import Swal from 'sweetalert2'
 
 @Component({
@@ -14,18 +16,20 @@ export class SchedulerItemComponent implements OnInit {
     @Output() removeScheduler: EventEmitter<string> = new EventEmitter();
     @Output() addScheduler: EventEmitter<Scheduler> = new EventEmitter();
 
-    constructor(private service: SchedulersService) { }
+    constructor(private schedulersService: SchedulersService, private commonService:CommonService) { }
 
     async ngOnInit(): Promise<void> {}
 
     async activateScheduler({ checked }) {
         this.scheduler.isActive = checked;
         try {
-        await this.service.activateScheduler(this.scheduler._id, checked);
+        this.commonService.setSpinnerMode(true);
+        await this.schedulersService.activateScheduler(this.scheduler._id, checked);
         } catch (err) {
             this.scheduler.isActive = !checked;
             Swal.fire('אופס', "שינוי הסטטוס נכשל", 'error');
         }
+        this.commonService.setSpinnerMode(false);
     }
 
     async deleteScheduler() {
@@ -39,7 +43,8 @@ export class SchedulerItemComponent implements OnInit {
                 cancelButtonText: 'ביטול'
             });
             if (res.value) {
-                await this.service.deleteScheduler(this.scheduler._id);
+                this.commonService.setSpinnerMode(true);
+                await this.schedulersService.deleteScheduler(this.scheduler._id);
                 this.removeScheduler.emit(this.scheduler._id);
                 Swal.fire('התזמון נמחק בהצלחה', "", 'success');
             }
@@ -47,6 +52,7 @@ export class SchedulerItemComponent implements OnInit {
         } catch (error) {
             Swal.fire('אופס', "  מחיקת הזתמון נכשלה", 'error');
         }
+        this.commonService.setSpinnerMode(false);
     }
 
     async updateScheduler() {
@@ -60,13 +66,15 @@ export class SchedulerItemComponent implements OnInit {
                 cancelButtonText: 'ביטול'
             });
             if (res.value) {
-                await this.service.updateScheduler(this.scheduler);
+                this.commonService.setSpinnerMode(true);
+                await this.schedulersService.updateScheduler(this.scheduler);
                 Swal.fire('התזמון עודכן בהצלחה', "", 'success');
             }
 
         } catch (error) {
             Swal.fire('אופס', "עדכון הזתמון נכשל", 'error');
         }
+        this.commonService.setSpinnerMode(false);
     }
 
     updateRule(rule: string) {

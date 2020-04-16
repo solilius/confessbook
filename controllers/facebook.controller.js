@@ -57,7 +57,7 @@ const updateScheduledTime = async (req, res, next) => {
     await facebook.updateScheduledTime(req.params.id, req.query.date);
     await db.updateConfessionByQuery(
       { post_id: req.params.id },
-      { fb_scheduled_date: req.query.date, updated_by: req.query.user }
+     {$set: { fb_scheduled_date: req.query.date, updated_by: req.query.user }}
     );
     res.send({ status: "success" });
   } catch (error) {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SchedulersService } from '../../../../services/schedulers.service';
 import { FacebookPostsService } from '../../../../services/facebook-posts.service';
+import { CommonService } from '../../../../services/common.service';
 import { Scheduler } from '../../../../models/scheduler/scheduler.module'
 import { Confession } from 'src/app/models/confession/confession.module';
 import { SchedulerAddComponent } from '../scheduler-add/scheduler-add.component';
@@ -18,15 +19,15 @@ export class SchedulerComponent implements OnInit {
     schedulers: Scheduler[];
     posts: Confession[];
 
-    constructor(private SchedulersService: SchedulersService, private FacebookPostsService: FacebookPostsService, public dialog: MatDialog) {
+    constructor(private schedulersService: SchedulersService, private facebookPostsService: FacebookPostsService, private commonService:CommonService, public dialog: MatDialog) {
         this.schedulers = [];
         this.posts = [];
 
     }
     async ngOnInit(): Promise<any> {
         try {
-            this.schedulers = await this.SchedulersService.getSchedulers();
-            this.posts = await this.FacebookPostsService.getPosts();
+            this.schedulers = await this.schedulersService.getSchedulers();
+            this.posts = await this.facebookPostsService.getPosts();
 
         } catch (error) {
             Swal.fire({
@@ -47,7 +48,8 @@ export class SchedulerComponent implements OnInit {
         dialogRef.afterClosed().subscribe(async (result) => {
             if (result) {
                 try {
-                    const res = await this.SchedulersService.createScheduler(result);
+                    this.commonService.setSpinnerMode(true);
+                    const res = await this.schedulersService.createScheduler(result);
                     result._id = res._id;
                     Swal.fire("התזמון נשמר", "התזמון נשמר בהצלחה !", "success");
                     this.schedulers.push(result);
@@ -55,7 +57,7 @@ export class SchedulerComponent implements OnInit {
                     console.log(error);
                     Swal.fire("אופס", "ארעה תקלה בשמירת התזמון", "error");
                 }
-
+                this.commonService.setSpinnerMode(false);
             }
         });
     }
@@ -65,6 +67,7 @@ export class SchedulerComponent implements OnInit {
     }
 
     removePost(id: string) {
+        console.log("qwe", id)
         this.posts = this.posts.filter(post => post._id !== id);
     }
 

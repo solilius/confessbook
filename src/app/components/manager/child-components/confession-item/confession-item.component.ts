@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { Confession } from '../../../../models/confession/confession.module';
 import { ConfessionsService } from '../../../../services/confessions.service';
+import { CommonService } from '../../../../services/common.service';
 import { FacebookPostsService } from '../../../../services/facebook-posts.service';
 import { SchedulersService } from '../../../../services/schedulers.service';
 import { Tag } from '../../../../interfaces/tag';
@@ -13,18 +14,15 @@ import { SchedulePostDialogComponent } from '../schedule-post-dialog/schedule-po
     templateUrl: './confession-item.component.html',
     styleUrls: ['./confession-item.component.css']
 })
-export class ConfessionItemComponent implements OnInit {
+export class ConfessionItemComponent {
     @Input() confession: Confession;
     @Output() removeConfession: EventEmitter<string> = new EventEmitter();
-    updates: Tag[];
+    updates: Tag[] = [];
     isExtended = false;
     cursor = 'pointer';
-    constructor(private confessionsService: ConfessionsService, private SchedulersService: SchedulersService,
-        private FacebookPostsService: FacebookPostsService, public dialog: MatDialog) { }
 
-    ngOnInit(): void {
-        this.updates = [];
-    }
+    constructor(private confessionsService: ConfessionsService, private schedulersService: SchedulersService,
+        private facebookPostsService: FacebookPostsService, private commonService: CommonService, public dialog: MatDialog) { }
 
     toggleItem() {
         (this.isExtended) ? this.cursor = 'pointer' : this.cursor = 'default'
@@ -59,16 +57,20 @@ export class ConfessionItemComponent implements OnInit {
         if (swalRes.value) {
             try {
                 this.confession.updated_by = localStorage.getItem('username');
+                this.commonService.setSpinnerMode(true);
                 await this.confessionsService.updateConfession(this.confession);
                 Swal.fire('הוידוי נשמר בהצלחה!', '', 'success');
                 this.updates.forEach(tag => {
                     this.updateTagsService(tag);
                 });
             } catch (error) {
-                SwalError('שמירת הוידוי נכשלה', error);
+                Swal.fire('אופס', 'שמירת הוידוי נכשלה', 'error');
             }
+            this.commonService.setSpinnerMode(false);
+
         }
     }
+    
     async archiveConfession() {
         const swalRes = await Swal.fire({
             title: 'מחק וידוי',
@@ -82,31 +84,40 @@ export class ConfessionItemComponent implements OnInit {
         });
         if (swalRes.value) {
             try {
+                this.commonService.setSpinnerMode(true);
                 await this.confessionsService.patcArchived(this.confession._id, true);
                 await Swal.fire('הוידוי נמחק בהצלחה!', '', 'success');
                 this.removeConfession.emit(this.confession._id);
                 this.toggleItem();
             } catch (error) {
-                SwalError('מחיקת הוידוי הכשלה', error);
+                Swal.fire('אופס', 'מחיקת הוידוי נכשלה', 'error');
             }
+            this.commonService.setSpinnerMode(false);
+
         }
     }
+
     async scheduleConfession() {
         const dialogRef = this.dialog.open(SchedulePostDialogComponent, {
             width: '20%'
         });
 
         dialogRef.afterClosed().subscribe(async (result) => {
+            console.log(result);
             if (result) {
                 try {
                     this.confession.fb_scheduled_date = result;
                     this.confession.updated_by = localStorage.getItem('username');
-                    await this.FacebookPostsService.schedule(this.confession);
+                    this.commonService.setSpinnerMode(true);
+
+                    await this.facebookPostsService.schedule(this.confession);
                     this.removeConfession.emit(this.confession._id);
                     await Swal.fire('הוידוי תוזמן בהצלחה!', '', 'success');
                 } catch (error) {
-                    SwalError('תזמון פוסט נכשל', error);
+                    Swal.fire('אופס', 'תזמון הפוסט נכשל', 'error');
                 }
+                this.commonService.setSpinnerMode(false);
+
             }
         });
     }
@@ -125,19 +136,21 @@ export class ConfessionItemComponent implements OnInit {
         if (swalRes.value) {
             try {
                 this.confession.updated_by = localStorage.getItem('username');
-                await this.FacebookPostsService.post(this.confession);
+                this.commonService.setSpinnerMode(true);
+                await this.facebookPostsService.post(this.confession);
                 await Swal.fire('הוידוי הועלה בהצלחה!', '', 'success');
                 this.removeConfession.emit(this.confession._id);
                 this.toggleItem();
             } catch (error) {
-                SwalError('העלאת פוסט נכשלה', error);
+                Swal.fire('אופס', 'העלאת הוידוי נכשלה', 'error');
             }
+            this.commonService.setSpinnerMode(false);
         }
     }
 
     async updateTagsService(tag: Tag) {
         let index = -1;
-        const tags = await this.SchedulersService.getTags();
+        const tags = await this.schedulersService.getTags();
         tags.forEach((obj, i) => {
             if (obj.name === tag.name) {
                 index = i;
@@ -149,9 +162,4 @@ export class ConfessionItemComponent implements OnInit {
             tags.push(tag);
         }
     };
-}
-
-function SwalError(msg, err) {
-    console.log(JSON.stringify(err));
-    Swal.fire('אופס', msg, 'error');
 }

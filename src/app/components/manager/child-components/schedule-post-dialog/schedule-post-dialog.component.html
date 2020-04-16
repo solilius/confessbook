@@ -1,7 +1,7 @@
     <h2>בחר זמן להעלאת הוידויי</h2>
 <mat-form-field appearance="outline">
-    <input [disabled]="true" matInput #date [ngxMatDatetimePicker]="picker" placeholder="לחץ על לוח השנה כדי לבחור זמן &#8594;">
+    <input [disabled]="true" matInput #date [value]="inputDate" [ngxMatDatetimePicker]="picker" placeholder="לחץ על לוח השנה כדי לבחור זמן &#8594;">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <ngx-mat-datetime-picker #picker [disabled]="false"></ngx-mat-datetime-picker>
 </mat-form-field>
-<button mat-raised-button color="primary" (click)='saveDate()'>פרסם</button>
+<button mat-raised-button color="primary" (click)='saveDate()'>תזמן</button>

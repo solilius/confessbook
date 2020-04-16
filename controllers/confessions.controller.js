@@ -4,10 +4,9 @@ const facebook = require("../services/facebook.service");
 const getConfessions = async (req, res, next) => {
   try {
     let query = { isArchived: req.query.isArchived };
-    if (!req.query.isArchived) {
-      query.post_id = { $exist: false };
+    if (req.query.isArchived == "false") {
+      query.post_id = { $exists: false };
     }
-
     const confessions = await db.getConfessions(query);
     res.send(confessions);
   } catch (error) {

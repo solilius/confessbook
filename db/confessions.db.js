@@ -16,8 +16,12 @@ const updateConfession = (id, newConfession) => {
   return Confession.updateOne({ _id: id }, { $set: newConfession });
 };
 
-const updateConfessionByQuery = (query, newConfession) => {
-  return Confession.updateOne(query, { $set: newConfession });
+const updateConfessions = (query, newConfession) => {
+  return Confession.updateMany(query, { $set: newConfession });
+};
+
+const updateConfessionByQuery = (query, setQuery) => {
+  return Confession.updateMany(query, setQuery);
 };
 
 const deleteConfession = (id) => {
@@ -43,6 +47,7 @@ module.exports = {
   getConfession,
   insertConfession,
   updateConfession,
+  updateConfessions,
   updateConfessionByQuery,
   deleteConfession,
   getNextSerial,
