@@ -40,6 +40,7 @@ allowing you to handle confession's posting and scheduling in a more orgenized w
 * after it's creatred it will redirect you to the app managment page, on your left side go to _Setting > Basic_  amd in the _Privacy Policy URL_ input box paste this: <br/>
 `https://www.privacypolicies.com/generic/?fbclid=IwAR2HttnlhNRWmfgZrd3aWGsaOF7FCe6p_RadxFTAH-68d2YXLxAmY9jU14M` <br/>
 and click _Save Changes_ button on the bottom of the page.
+* 
 * on the top left you will see _In development_  toogle, click it,  _Choose a Category_ > _Businnes and Pages_, and then click _Switch Mode_. the toggle should show _Live_ now.
 <br/>
 
@@ -139,12 +140,12 @@ INTRO=don't be shy just confess!
 
 ## How To Use
 
-### Save Confession 
+### Save a Confession 
 `http://your-app.domain` + `/`
 This is the route your confessors will access to send their confessions.
 (it's compatible with both desktop and mobile browsers.)
 
-### Manage Confessions
+### Login
 `http://your-app.domain` + `/login`
 You will be moved here automaticlly if you try to go to `/manager`
 and only after the authentication you will be rediredted there.
@@ -157,7 +158,7 @@ you can edit it and add a comment before posting it.
 or delete it which will move it to the archive.
 also, you can schdule a confession for later publish by Facebook or add a custom tag and let our schedulers to post it in time.
 
-### Schedules
+### Schedulers
 `http://your-app.domain` + `/manager` + `/scheduler`
 In this tab you can mannage all the available schedulers: 
 1. Set a scheduler for auto posting confessions with a custom tag on fixed interval.
