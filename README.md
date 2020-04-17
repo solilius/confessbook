@@ -158,8 +158,8 @@ or delete it which will move it to the archive.
 also, you can schdule a confession for later publish by Facebook or add a custom tag and let our schedulers to post it in time.
 
 ### Schedules
-`http://your-app.domain` + `/manager` + `/main`
-Here you can:
+`http://your-app.domain` + `/manager` + `/scheduler`
+In this tab you can mannage all the available schedulers: 
 1. Set a scheduler for auto posting confessions with a custom tag on fixed interval.
 2. View, edit and cancel posts that are scheduled by Facebook for later publish.
 
@@ -168,7 +168,3 @@ Here you can:
 Here you can view all the archived confessions, and restore them or completely delete them (from Faebook too)
 you can see when they were created and posted/deleted and by who.
 there is a toggle on the top left to filter only the none-posted confession.
-
-### Schedualers
-`http://your-app.domain` + `/manager` + `/scheduler`
-in development atm.
