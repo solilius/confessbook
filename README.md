@@ -18,25 +18,22 @@ allowing you to handle confession's posting and scheduling in a more orgenized w
   * Organizing confessions in convenient lists.
   * Editing confessions before posting (editor's comment, confession number).
   * Posting the confession directly using Facebook API.
+  * Schedule a single post for later publish.
+  * Create an auto time based scheduler for tagged confessions. 
   * Archiving deleteld and posted confessions.
   * Token based security for authentication.
 
 
 ##### In Development
-  * Schedule a confession for future posting.
-  * Set schedulers for automatic posting from tagged confessions.
   * Full mobile compatibility.
 
 <br/>
 
 ## Prerequisites
 
-##### 1. Facebook Page
-If you don't already have a page use [this guide](https://www.facebook.com/help/104002523024878) to create a new Facebook Page.
-
 <br/>
 
-##### 2. Facebook App
+##### 1. Facebook App
 * first make sure you have a Developer Account go [Here](https://developers.facebook.com/docs/pages/getting-started/) and scroll down until you see a button saying _Create Developer Account_ and click it.
 * click next and for _"as Which of the following best describes you?"_ choose _Developer_.
 * then click _Create You First App_ and name it as your page.
@@ -46,7 +43,7 @@ and click _Save Changes_ button on the bottom of the page.
 * on the top left you will see _In development_  toogle, click it,  _Choose a Category_ > _Businnes and Pages_, and then click _Switch Mode_. the toggle should show _Live_ now.
 <br/>
 
-##### 3. Access Token
+##### 2. Access Token
 * go to [Facebook's Graph API Explorer](https://developers.facebook.com/tools/explorer), and select your Facebook App from the list.
 * press on _Get Token_ and select _Get User Access Token_.
 * add the following permissions from _Events Group Pages_:
@@ -64,7 +61,7 @@ and click _Save Changes_ button on the bottom of the page.
 
 <br/>
 
-##### 4. Mongo DB
+##### 3. Mongo DB
 If you don't have a MongoDB ready, you can get one for free [here](https://www.mongodb.com/atlas-signup-from-mlab?).
 * sign up, create a free cluster, choose Cloud Provider & Region.
 * after the cluster is created (1-3 minutes) click _connect_ on you new cluster (Clusrter0 probably).
@@ -74,7 +71,7 @@ If you don't have a MongoDB ready, you can get one for free [here](https://www.m
 
 <br/>
 
-##### 5. GitHub
+##### 4. GitHub
 If you don't already have a GitHub account create on from [here](https://github.com/join?source=header-home). <br/>
 now click on the _Fork_ button on the top right, now you should have a copy of this repository named **Confessbook**
 
@@ -137,7 +134,7 @@ INTRO=don't be shy just confess!
 * go to the Deploy tab and choose GitHub, connect and choose your new forked repository, _Enable Automatic Deploys_, but before you click _Deploy Branch_...
 * go to _Settings_ tab, click on Reveal Config Vars and add all the vars from the .env file (except PORT).
 * go back to _Deploy_ tab, scroll down and click _Deploy Branch_. after the build process is finished you can access the app by clicking  _Open app_ on the top right.
-
+ Please notice! Heroku gives only 550 hours per month. use [this guide](https://medium.com/better-programming/keeping-my-heroku-app-alive-b19f3a8c3a82) to maximize the usage. 
 <br/>
 
 ## How To Use
