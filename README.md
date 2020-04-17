@@ -134,7 +134,7 @@ INTRO=don't be shy just confess!
 * go to the Deploy tab and choose GitHub, connect and choose your new forked repository, _Enable Automatic Deploys_, but before you click _Deploy Branch_...
 * go to _Settings_ tab, click on Reveal Config Vars and add all the vars from the .env file (except PORT).
 * go back to _Deploy_ tab, scroll down and click _Deploy Branch_. after the build process is finished you can access the app by clicking  _Open app_ on the top right.
- Please notice! Heroku gives only 550 hours per month. use [this guide](https://medium.com/better-programming/keeping-my-heroku-app-alive-b19f3a8c3a82) to maximize the usage. 
+ ###### Please notice! Heroku gives only 550 hours per month. use [this guide](https://medium.com/better-programming/keeping-my-heroku-app-alive-b19f3a8c3a82) to maximize the usage. 
 <br/>
 
 ## How To Use
