@@ -6,7 +6,7 @@
 
 .title {
   text-align: center;
-  font-size: 8vw;
+  font-size: 35px;
   font-weight: bolder;
   color: royalblue;
   padding-top: 17vh;
@@ -104,5 +104,6 @@
   .title {
     padding-bottom: 10vh;
     padding-top: 10vh;
+    font-size: 8vw;
   }
 }
