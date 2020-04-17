@@ -152,13 +152,20 @@ and only after the authentication you will be rediredted there.
 ### Manage Confessions
 `http://your-app.domain` + `/manager` + `/main`
 Here you can view all the pending confessions
-click one one to expend and reviel all the confession.
+click one one to expend and reveal all the confession.
 you can edit it and add a comment before posting it.
-or delete it which will move it to the archive
+or delete it which will move it to the archive.
+also, you can schdule a confession for later publish by Facebook or add a custom tag and let our schedulers to post it in time.
+
+### Schedules
+`http://your-app.domain` + `/manager` + `/main`
+Here you can:
+1. Set a scheduler for auto posting confessions with a custom tag on fixed interval.
+2. View, edit and cancel posts that are scheduled by Facebook for later publish.
 
 ### Archive
 `http://your-app.domain` + `/manager` + `/archive`
-Here you can view all the archived confessions, and restore them.
+Here you can view all the archived confessions, and restore them or completely delete them (from Faebook too)
 you can see when they were created and posted/deleted and by who.
 there is a toggle on the top left to filter only the none-posted confession.
 
