@@ -37,9 +37,7 @@ a:hover {
 
 @media only screen and (max-width: 600px) {
   .footer {
-    font-size: 0.6vh;
-  }
-  .angular-logo {
-    height: 3vh;
+    justify-content: center;
+    padding: 5px 0;
   }
 }
