@@ -35,7 +35,7 @@ a:hover {
   transition: 300ms;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 900px) {
   .footer {
     justify-content: center;
     padding: 5px 0;
