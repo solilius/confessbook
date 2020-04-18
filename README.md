@@ -41,7 +41,7 @@ allowing you to handle confession's posting and scheduling in a more orgenized w
 `https://www.privacypolicies.com/generic/?fbclid=IwAR2HttnlhNRWmfgZrd3aWGsaOF7FCe6p_RadxFTAH-68d2YXLxAmY9jU14M` <br/>
 and click _Save Changes_ button on the bottom of the page.
 * now you need to varify yourself in order to get an app review (required: passport, ID, driver license).
-* after you are verified you need to request permissions for _manage_pages_ and _publish_pages_. and give them all the data they need to access and check the app( url to the site, user and password). you also need to record a video of how to you are using the permissions. (feel free to [contact me](mailto:sol.elan.x@gmail.com) if you need help with this process),
+* after you are verified you need to request permissions for _manage_pages_ and _publish_pages_. and give them all the data they need to access and check the app (url to the site, user and password). you also need to record a video of how to you are using the permissions. (feel free to [contact me](mailto:sol.elan.x@gmail.com) if you need help with this process),
 * after you got approved, on the top left you will see _In development_  toogle, click it,  _Choose a Category_ > _Businnes and Pages_, and then click _Switch Mode_. the toggle should show _Live_ now.
 <br/>
 
