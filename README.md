@@ -40,8 +40,8 @@ allowing you to handle confession's posting and scheduling in a more orgenized w
 * after it's creatred it will redirect you to the app managment page, on your left side go to _Setting > Basic_  amd in the _Privacy Policy URL_ input box paste this: <br/>
 `https://www.privacypolicies.com/generic/?fbclid=IwAR2HttnlhNRWmfgZrd3aWGsaOF7FCe6p_RadxFTAH-68d2YXLxAmY9jU14M` <br/>
 and click _Save Changes_ button on the bottom of the page.
-* now you need to varify yourself in order to get an app review (required: passport, ID, driver license).
-* after you are verified you need to request permissions for _manage_pages_ and _publish_pages_. and give them all the data they need to access and check the app (url to the site, user and password). you also need to record a video of how to you are using the permissions. (feel free to [contact me](mailto:sol.elan.x@gmail.com) if you need help with this process),
+* now you need to varify yourself in order to get an app review ( required: passport, ID, driver license ).
+* after you are verified you need to request permissions for _manage_pages_ and _publish_pages_. and give them all the data they need to access and check the app ( url to the site, user and password ). you also need to record a video of how to you are using the permissions. ( feel free to [contact me](mailto:sol.elan.x@gmail.com) if you need help with this process ),
 * after you got approved, on the top left you will see _In development_  toogle, click it,  _Choose a Category_ > _Businnes and Pages_, and then click _Switch Mode_. the toggle should show _Live_ now.
 <br/>
 
@@ -49,7 +49,7 @@ and click _Save Changes_ button on the bottom of the page.
 * go to [Facebook's Graph API Explorer](https://developers.facebook.com/tools/explorer), and select your Facebook App from the list.
 * press on _Get Token_ and select _Get User Access Token_.
 * add the following permissions from _Events Group Pages_:
-  * public_profile (added automatically)
+  * public_profile ( added automatically )
   * manage_pages
   * publish_pages
 * click the _Generate Access Token_ and copy the _Access Token_.
@@ -58,7 +58,7 @@ and click _Save Changes_ button on the bottom of the page.
 * `https://graph.facebook.com/[Page_ID]?fields=access_token&access_token=[Token]` 
     *  the _Page ID_ is in the  About section of your Facebook page.
     *  the Token is the extended one from the last step.
-    * (no square brackets of course...)
+    * ( no square brackets of course... )
 * copy the _"access_token"_ and That's the Access Token we will use.
 
 <br/>
