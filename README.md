@@ -16,7 +16,7 @@ allowing you to handle confession's posting and scheduling in a more orgenized w
 ## Abilities
   * Submitting confessions anonymously.
   * Organizing confessions in convenient lists.
-  * Editing confessions before posting (editor's comment, confession number).
+  * Editing confessions before posting ( editor's comment, confession number ).
   * Posting the confession directly using Facebook API.
   * Schedule a single post for later publish.
   * Create an auto time based scheduler for tagged confessions. 
@@ -66,7 +66,7 @@ and click _Save Changes_ button on the bottom of the page.
 ##### 3. Mongo DB
 If you don't have a MongoDB ready, you can get one for free [here](https://www.mongodb.com/atlas-signup-from-mlab?).
 * sign up, create a free cluster, choose Cloud Provider & Region.
-* after the cluster is created (1-3 minutes) click _connect_ on you new cluster (Clusrter0 probably).
+* after the cluster is created ( 1-3 minutes ) click _connect_ on you new cluster ( Clusrter0 probably ).
 * on _Whitelist a connection IP address_ choose _Add a Different IP Address_, insert 0.0.0.0 and click _Add IP Address_
 * insert a user name and a password and click on _Choose a connection method_.
 * on the next page choose _connect your application_, copy the URI you received and remember to replace _<password>_ with the new user's password.
@@ -81,7 +81,7 @@ now click on the _Fork_ button on the top right, now you should have a copy of t
 
 #### For Local Deployment
 
-Get the latest version of NodeJS from [here](https://nodejs.org/en/), LTS version is recommended). <br/>
+Get the latest version of NodeJS from [here](https://nodejs.org/en/), LTS version is recommended. <br/>
 and run the command: ```$ npm install -g @angular/cli ```.
 
 
@@ -131,10 +131,10 @@ INTRO=don't be shy just confess!
 
 **Heroku Cloud Platrofm**
 
-* go to [Heroku](https://www.heroku.com/). sign up/in. (if you sign up choose NodeJS as _your Primary development language_, and Other as _Role_).
+* go to [Heroku](https://www.heroku.com/). sign up/in. ( if you sign up choose NodeJS as _your Primary development language_, and Other as _Role_ )
 * Create a new app, choose an _App name_ and a _region_ and click _Create app_.
 * go to the Deploy tab and choose GitHub, connect and choose your new forked repository, _Enable Automatic Deploys_, but before you click _Deploy Branch_...
-* go to _Settings_ tab, click on Reveal Config Vars and add all the vars from the .env file (except PORT).
+* go to _Settings_ tab, click on Reveal Config Vars and add all the vars from the .env file ( except PORT ).
 * go back to _Deploy_ tab, scroll down and click _Deploy Branch_. after the build process is finished you can access the app by clicking  _Open app_ on the top right.
  ###### Please notice! Heroku gives only 550 hours per month. use [this guide](https://medium.com/better-programming/keeping-my-heroku-app-alive-b19f3a8c3a82) to maximize the usage. 
 <br/>
@@ -144,7 +144,7 @@ INTRO=don't be shy just confess!
 ### Save a Confession 
 `http://your-app.domain` + `/`
 This is the route your confessors will access to send their confessions.
-(it's compatible with both desktop and mobile browsers.)
+( it's compatible with both desktop and mobile browsers. )
 
 ### Login
 `http://your-app.domain` + `/login`
@@ -167,6 +167,6 @@ In this tab you can mannage all the available schedulers:
 
 ### Archive
 `http://your-app.domain` + `/manager` + `/archive`
-Here you can view all the archived confessions, and restore them or completely delete them (from Faebook too)
+Here you can view all the archived confessions, and restore them or completely delete them ( from Facebook too )
 you can see when they were created and posted/deleted and by who.
 there is a toggle on the top left to filter only the none-posted confession.
