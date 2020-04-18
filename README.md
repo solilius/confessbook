@@ -40,8 +40,9 @@ allowing you to handle confession's posting and scheduling in a more orgenized w
 * after it's creatred it will redirect you to the app managment page, on your left side go to _Setting > Basic_  amd in the _Privacy Policy URL_ input box paste this: <br/>
 `https://www.privacypolicies.com/generic/?fbclid=IwAR2HttnlhNRWmfgZrd3aWGsaOF7FCe6p_RadxFTAH-68d2YXLxAmY9jU14M` <br/>
 and click _Save Changes_ button on the bottom of the page.
-* 
-* on the top left you will see _In development_  toogle, click it,  _Choose a Category_ > _Businnes and Pages_, and then click _Switch Mode_. the toggle should show _Live_ now.
+* now you need to varify yourself in order to get an app review (required: passport, ID, driver license).
+* after you are verified you need to request premissions for manage_pages and publish_pages. and give them all the data they need to access the app and check the usage of the app. you also need to record a video showing the usage. (feel free to [contact me](mailto:sol.elan.x@gmail.com) if you need help with this process),
+* after you got approved, on the top left you will see _In development_  toogle, click it,  _Choose a Category_ > _Businnes and Pages_, and then click _Switch Mode_. the toggle should show _Live_ now.
 <br/>
 
 ##### 2. Access Token
