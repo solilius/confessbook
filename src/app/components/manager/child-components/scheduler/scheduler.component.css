@@ -49,11 +49,6 @@
   background-color: #ffffff;
 }
 
-.invisible-item {
-  width: 32vw;
-  height: 300px;
-}
-
 .add-shceduler-btn {
   position: fixed;
   bottom: 4vw;
@@ -67,4 +62,21 @@
   height: 40px;
   width: 39px;
   font-size: 40px;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .add-shceduler-btn {
+    bottom: 14vw;
+    height: 50px;
+    width: 50px;
+  }
+  .mat-icon {
+    height: 40px;
+    width: 39px;
+    font-size: 20px;
+  }
 }

@@ -33,3 +33,10 @@ app-confession-item:last-child {
 .my-scroller::-webkit-scrollbar-thumb {
   background-color: #32c3f3;
 }
+
+@media only screen and (max-width: 600px) {
+  #confession-list {
+    width: 99vw;
+    margin: 2.5vh 1vw 0 0;
+  }
+}
