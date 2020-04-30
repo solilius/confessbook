@@ -55,7 +55,6 @@ export class CommonService {
     async getAppData(): Promise<any> {
         if (!this.appData) {
             this.appData = await this.request('get', `${environment.server}/app`);
-            console.log(this.appData);
         }
         return Promise.resolve(this.appData);
     }

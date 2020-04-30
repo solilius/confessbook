@@ -3,6 +3,7 @@
   padding-right: 20px;
   position: fixed;
   top: 0;
+  z-index: 100;
 }
 .toolbar-item {
   display: flex;
@@ -38,4 +39,32 @@
 .login-item {
   margin-left: 30px;
   font-size: 18px;
+}
+
+.side-bar {
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 100vh;
+  padding-top: 7vh;
+  background: rgb(86, 138, 236);
+  z-index: 10;
+  transition: width 150ms ease-out;
+  overflow: hidden;
+}
+
+.side-bar-open {
+  width: 33vw;
+}
+
+@media only screen and (max-width: 600px) {
+  .mat-toolbar {
+    padding-left: 0;
+  }
+
+  .toolbar-item {
+    font-size: 20px;
+    padding: 16px 0;
+    margin: 0;
+  }
 }

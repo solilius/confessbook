@@ -1,5 +1,5 @@
 <mat-toolbar color="primary" class="toolbar">
-    <mat-toolbar-row>
+    <mat-toolbar-row *ngIf="!isMobile else mobile_toolbar">
         <a class="toolbar-item" href={{fbPage}} target="_blank">
             <span class='item-text'> {{appName}} </span>
         </a>
@@ -21,6 +21,21 @@
             <span class='item-text'> דף ראשי </span>
         </a>
     </mat-toolbar-row>
+
+    <ng-template #mobile_toolbar>
+        <button mat-button (click)="toggleSideBar()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        {{appName}}
+    </ng-template>
 </mat-toolbar>
+
+<div class="side-bar" [ngClass]="(isSideBarOpen) ? 'side-bar-open': ''">
+        <div class="toolbar-item" (click)="loadChild('main')">דף ראשי</div>
+        <div class="toolbar-item" (click)="loadChild('scheduler')">תזמונים</div>
+        <div class="toolbar-item" (click)="loadChild('archive')">ארכיון</div>
+        <a class="toolbar-item" href="/login"> משתמש </a>
+        <a class="toolbar-item" href={{fbPage}} target="_blank">פייסבוק </a>
+</div>
 
 <router-outlet></router-outlet>
