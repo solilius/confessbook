@@ -4,14 +4,24 @@ html {
   font-size: 15px;
   direction: rtl;
   background-color: #c7effc !important;
-  
 }
 
-body{
+body {
   background-color: #c7effc !important;
   margin: 0;
 }
 
-*{
+* {
   font-family: "Varela Round";
+}
+
+.mat-dialog-container {
+  padding: 15px !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .mat-dialog-container {
+    margin: 10px;
+    padding: 8px !important;
+  }
 }

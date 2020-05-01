@@ -1,0 +1,12 @@
+<div class="list my-scroller">
+    <p *ngIf="schedulers.length==0" class="empty-list">
+        - אין מתזמנים להצגה -
+    </p>
+    <app-scheduler-item *ngFor="let scheduler of schedulers" [scheduler]="scheduler"
+        (removeScheduler)="removeScheduler($event)">
+    </app-scheduler-item>
+</div>
+
+<button mat-fab class="add-shceduler-btn" (click)="createScheduler()">
+    <mat-icon>note_add</mat-icon>
+</button>

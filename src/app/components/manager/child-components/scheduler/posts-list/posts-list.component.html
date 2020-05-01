@@ -1,0 +1,5 @@
+<div class="list my-scroller">
+    <p *ngIf="posts.length==0" class="empty-list"> - אין פוסטים מתוזמנים להצגה - </p>
+    <app-post-item *ngFor="let post of posts" [post]="post" (removePost)="removePost($event)">
+    </app-post-item>
+</div>

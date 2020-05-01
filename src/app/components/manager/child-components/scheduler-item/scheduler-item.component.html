@@ -14,9 +14,9 @@
         <app-cron-job [job]="scheduler.rule" [isActive]="scheduler.isActive" (updateRule)="updateRule($event)"></app-cron-job>
     </mat-card-content>
 
-    <mat-card-actions>
-        <button (click)="deleteScheduler()" mat-stroked-button color="warn">מחק</button>
-        <button (click)="updateScheduler()" mat-stroked-button color="primary">שמור</button>
-    </mat-card-actions>
+    <div class="buttons-area">
+        <button (click)="updateScheduler()"  class="action-btn" mat-stroked-button color="primary">שמור</button>
+        <button (click)="deleteScheduler()" class="action-btn" mat-stroked-button color="warn">מחק</button>
+    </div>
 </mat-card>
 

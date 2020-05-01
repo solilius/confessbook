@@ -39,10 +39,10 @@
             <app-chips [tags]="confession.tags" (updateTags)="saveUpdate($event)"></app-chips>
 
             <div class="buttons-area">
-                <button mat-raised-button color="warn" (click)='archiveConfession()'>מחק</button>
-                <button mat-raised-button color="accent" (click)='saveConfession()'>שמור</button>
-                <button mat-raised-button class="schedule-btn" (click)='scheduleConfession()'>תזמן</button>
-                <button mat-raised-button color="primary" (click)='postConfession()'>פרסם</button>
+                <button mat-raised-button color="warn" class="action-btn" (click)='archiveConfession()'>מחק</button>
+                <button mat-raised-button color="accent" class="action-btn"(click)='saveConfession()'>שמור</button>
+                <button mat-raised-button class="schedule-btn action-btn" (click)='scheduleConfession()'>תזמן</button>
+                <button mat-raised-button color="primary" class="action-btn" (click)='postConfession()'>פרסם</button>
             </div>
         </div>
     </ng-template>

@@ -1,6 +1,7 @@
 <mat-card class="post" [ngClass]="(isExtended) ? 'container-extended': 'container-collapsed'">
     <mat-card-header>
-        <mat-card-title><b  [ngClass]="(timeToPost.startsWith('לפני'))? 'past': 'future'">{{timeToPost}}</b> &nbsp; - &nbsp; {{postingDate}}
+        <mat-card-title><b [ngClass]="(timeToPost.startsWith('לפני'))? 'past': 'future'">{{timeToPost}}</b> &nbsp; -
+            &nbsp; {{postingDate}}
         </mat-card-title>
         <mat-card-subtitle> תוזמן על ידי: {{post.updated_by}} </mat-card-subtitle>
         <button class="extend-btn" (click)="extendPost()" mat-stroked-button>
@@ -11,6 +12,7 @@
     </mat-card-header>
 
     <div [ngSwitch]="isExtended" class="post-data">
+
         <div *ngSwitchCase="false" class="collapsed">
             {{post.message}}
         </div>
@@ -24,14 +26,13 @@
                 <textarea matInput type="text" class="comment my-scroller" [value]="(post.comment) ? post.comment : ''"
                     (change)="updateText($event, 'comment')" placeholder="הערת המערכת"> </textarea>
             </mat-form-field>
-            <button (click)="updatePost()" mat-stroked-button class="update-btn">עדכן </button>
-
         </div>
+        
     </div>
-
-    <mat-card-actions>
-        <button (click)="schedulePost()" mat-stroked-button color="primary">תזמן </button>
-        <button (click)="cancelPost()" mat-stroked-button color="warn">בטל</button>
-    </mat-card-actions>
+    
+    <div class="buttons-area ">
+        <button *ngIf="isExtended" class="update-btn action-btn" (click)="updatePost()" mat-stroked-button>עדכן </button>
+        <button (click)="schedulePost()" class="action-btn" mat-stroked-button color="primary">תזמן </button>
+        <button (click)="cancelPost()"  class="action-btn" mat-stroked-button color="warn">בטל</button>
+    </div>
 </mat-card>
-

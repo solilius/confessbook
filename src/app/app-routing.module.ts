@@ -18,6 +18,7 @@ const routes: Routes = [
         children: [
             {  canActivate: [AuthGuard], path: 'main', component: MainComponent },
             {  canActivate: [AuthGuard], path: 'scheduler', component: SchedulerComponent },
+            {  canActivate: [AuthGuard], path: 'scheduler/posts', component: SchedulerComponent },
             {  canActivate: [AuthGuard], path: 'archive', component: ArchiveComponent }
         ]
     },

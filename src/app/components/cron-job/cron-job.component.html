@@ -11,8 +11,7 @@
 
         <h2> {{timesTo[times.indexOf(CronJob.timeUnit)]}} </h2>
         <div [ngSwitch]="CronJob.timeUnit">
-
-            <div *ngSwitchCase="times[1]" class="container">
+            <div *ngSwitchCase="times[1]" class="inner-container">
                 <mat-form-field>
                     <mat-select [value]="CronJob.dayOfWeek" (selectionChange)="updateCronJob($event,'dayOfWeek')">
                         <mat-option *ngFor="let day of days" [value]="day">
@@ -23,7 +22,7 @@
                 <h2>{{timesTo[0]}} </h2>
             </div>
 
-            <div *ngSwitchCase="times[2]" class="container">
+            <div *ngSwitchCase="times[2]" class="inner-container">
                 <mat-form-field class="day">
                     <input type="number" min="1" max="31" matInput [value]="CronJob.dayOfMonth"
                         (change)="updateCronJob($event, 'dayOfMonth')">

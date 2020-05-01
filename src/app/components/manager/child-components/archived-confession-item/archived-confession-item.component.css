@@ -31,6 +31,7 @@
   flex-basis: 80%;
   padding: 0 0 3% 10%;
   position: relative;
+  overflow: auto;
 }
 
 .buttons-area {
@@ -42,6 +43,42 @@
   text-align: left;
 }
 
-button {
+.action-btn {
   margin-right: 4px;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    font-size: 14px;
+    padding: 20px 0 0 0;
+  }
+
+  .meta-data {
+    font-size: 8px;
+    flex-basis: 28%;
+  }
+
+  .sub-container {
+    flex-basis: 72%;
+    padding: 0 3% 10% 10%;
+    position: relative;
+  }
+
+.buttons-area {
+    display: flex;
+    flex-direction: row-reverse;
+    left: 1vh;
+    bottom: 0.5vh;
+}
+
+  .action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    padding: 0;
+    min-width: 10vw;
+    height: 7vw;
+  }
 }

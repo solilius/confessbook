@@ -1,7 +1,9 @@
 .scheduler {
   width: 25vw;
-  height: 340px;
+  min-height: 340px;
+  max-height: 400px;
   margin: 0 1vw 1vw 0;
+  direction: rtl;
 }
 
 ::ng-deep .mat-card-header-text {
@@ -23,23 +25,31 @@
   background-color: #089c1c86 !important;
 }
 
-.tag {
-  float: right;
-}
-
-.tag-value {
-  float: left;
-}
-
 mat-form-field {
   text-align: right;
 }
-mat-card-actions {
-  position: absolute;
-  left: 1.5vw;
-  bottom: 1.5vw;
+
+.buttons-area {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
-.mat-card-actions .mat-stroked-button {
-  margin: 0 8px 0 0;
+.action-btn{
+    margin-right: 4px;
+}
+
+@media only screen and (max-width: 600px) {
+  .scheduler {
+    width: 83.5vw;
+    margin: 0 0 8px 0;
+  }
+
+  .slider {
+    position: absolute;
+    left: 5vw;
+    transform: scale(1) rotateY(180deg);
+  }
 }

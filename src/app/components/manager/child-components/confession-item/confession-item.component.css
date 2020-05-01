@@ -12,12 +12,12 @@
   overflow: hidden;
 }
 
-.container-extended {
-  max-height: 700px;
-}
-
 .container-collapsed {
   max-height: 170px;
+}
+
+.container-extended {
+  max-height: 700px;
 }
 
 .meta-data {
@@ -47,7 +47,7 @@
 .item-collapsed {
   padding-left: 10px;
   flex-basis: 65%;
-  overflow-y: hidden;
+  overflow: hidden;
   white-space: pre-line;
 }
 
@@ -113,6 +113,7 @@ button {
   height: 30px;
   border-radius: 16px;
   margin-top: -4px;
+  background: white;
 }
 
 .extend-btn .mat-icon {
@@ -132,4 +133,49 @@ button {
 .my-scroller::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: rgb(73, 125, 189);
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    font-size: 14px;
+  }
+
+  .container-collapsed {
+    max-height: 20vh;
+  }
+
+  .container-extended {
+    max-height: 70vh;
+  }
+
+  .meta-data {
+    font-size: 8px;
+    flex-basis: 23%;
+  }
+
+  .buttons-area {
+    text-align: right;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    padding: 0;
+    min-width: 13vw;
+    height: 7vw;
+  }
+
+  .extend-btn {
+    bottom: 8px;
+  }
+
+  .tag-collapsed {
+  width: 10vw !important;
+  font-size: 10px;
+}
 }

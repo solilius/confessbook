@@ -7,14 +7,17 @@ import { CommonService } from './common.service';
     providedIn: 'root'
 })
 export class SchedulersService {
-    baseUrl: string;
-
+    private baseUrl: string;
+    private schedulers: Scheduler[];
     constructor(private service: CommonService) {
         this.baseUrl = `${environment.server}/schedulers`;
     }
 
-    getSchedulers(): Promise<Scheduler[]> {
-        return this.service.request('get', this.baseUrl);
+    async getSchedulers() {
+        if (!this.schedulers) {
+            this.schedulers = await this.service.request('get', this.baseUrl);
+        }
+        return Promise.resolve(this.schedulers);
     }
 
     createScheduler(scheduler: Scheduler): Promise<any> {

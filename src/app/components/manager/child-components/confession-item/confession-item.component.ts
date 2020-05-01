@@ -94,7 +94,7 @@ export class ConfessionItemComponent {
 
     async scheduleConfession() {
         const dialogRef = this.dialog.open(SchedulePostDialogComponent, {
-            width: '20%'
+            width: (this.commonService.isMobile()) ? '100%' : '20%'
         });
 
         dialogRef.afterClosed().subscribe(async (result) => {

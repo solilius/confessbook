@@ -14,7 +14,7 @@
 
 .slider {
   position: absolute;
-  left: 1vw;
+  left: 1.5vw;
   top: 1vw;
   transform: rotateY(180deg);
 }
@@ -39,4 +39,16 @@ mat-form-field {
 button {
   margin: 2% !important;
   width: 96%;
+}
+
+@media only screen and (max-width: 600px) {
+  mat-form-field {
+    margin: 5px !important;
+  }
+
+  .slider {
+  left: 5vw;
+  top: 3vw;
+  transform: rotateY(180deg);
+}
 }

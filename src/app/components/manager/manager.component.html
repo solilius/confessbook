@@ -23,7 +23,7 @@
     </mat-toolbar-row>
 
     <ng-template #mobile_toolbar>
-        <button mat-button (click)="toggleSideBar()">
+        <button mat-button class="toogle-btn" (click)="toggleSideBar()">
             <mat-icon>menu</mat-icon>
         </button>
         {{appName}}
@@ -33,6 +33,7 @@
 <div class="side-bar" [ngClass]="(isSideBarOpen) ? 'side-bar-open': ''">
         <div class="toolbar-item" (click)="loadChild('main')">דף ראשי</div>
         <div class="toolbar-item" (click)="loadChild('scheduler')">תזמונים</div>
+        <div class="toolbar-item" (click)="loadChild('scheduler/posts')">פוסטים</div>
         <div class="toolbar-item" (click)="loadChild('archive')">ארכיון</div>
         <a class="toolbar-item" href="/login"> משתמש </a>
         <a class="toolbar-item" href={{fbPage}} target="_blank">פייסבוק </a>

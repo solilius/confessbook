@@ -30,6 +30,7 @@ app-archived-confession-item:last-child {
   position: absolute;
   left: 1vw;
   top: 7vh;
+
   background: lightcyan;
 }
 
@@ -52,12 +53,16 @@ mat-slide-toggle {
 
 @media only screen and (max-width: 600px) {
   #confession-list {
-    width: 99vw;
+    width: 98vw;
     margin: 10vh 1vw 0 0;
+    max-height: 79.5vh;
   }
 
-  .slider{
-  top: 7.5vh;
-
+  .slider {
+    top: 7.5vh;
+    width: 89%;
+  }
+  .my-scroller::-webkit-scrollbar {
+    width: 0;
   }
 }

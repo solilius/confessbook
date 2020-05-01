@@ -1,6 +1,6 @@
 .container {
   position: fixed;
-  top: 10vh;
+  top: 8.5vh;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -8,75 +8,11 @@
 }
 
 #schedulers-list {
-  flex-basis: 56%;
-  direction: ltr;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-basis: 57%;
   max-height: 86vh;
-  min-height: 0px;
-  overflow-y: scroll;
-}
-
-.scheduler-item-last {
-  width: 100%;
-  direction: rtl;
-  margin-right: 4px;
 }
 
 #posts-list {
   flex-basis: 40%;
-  display: flex;
-  flex-direction: column;
-  max-height: 86vh;
-  min-height: 0px;
-  overflow-y: scroll;
-}
-
-.empty-list {
-  width: 100%;
-  text-align: center;
-  font-size: 25px;
-  color: blue;
-  margin-top: 10vh;
-}
-
-.my-scroller::-webkit-scrollbar {
-  width: 8px;
-}
-
-.my-scroller::-webkit-scrollbar-thumb {
-  background-color: #ffffff;
-}
-
-.add-shceduler-btn {
-  position: fixed;
-  bottom: 4vw;
-  right: 2vw;
-  background-color: rgb(0, 202, 202);
-  height: 80px;
-  width: 80px;
-}
-
-.mat-icon {
-  height: 40px;
-  width: 39px;
-  font-size: 40px;
-}
-
-@media only screen and (max-width: 600px) {
-  .container {
-    flex-direction: column;
-  }
-
-  .add-shceduler-btn {
-    bottom: 14vw;
-    height: 50px;
-    width: 50px;
-  }
-  .mat-icon {
-    height: 40px;
-    width: 39px;
-    font-size: 20px;
-  }
+  height: 86vh;
 }

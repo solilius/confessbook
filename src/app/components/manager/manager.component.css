@@ -62,6 +62,13 @@
     padding-left: 0;
   }
 
+  .toogle-btn {
+    padding: 0;
+    min-width: 36px;
+    width: 36px;
+    margin: 0 12px;
+  }
+
   .toolbar-item {
     font-size: 20px;
     padding: 16px 0;
