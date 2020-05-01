@@ -33,7 +33,7 @@ export class PostItemComponent implements OnInit {
 
     schedulePost() {
         const dialogRef = this.dialog.open(SchedulePostDialogComponent, {
-            width: '20%',
+            width: (this.commonService.isMobile()) ? '100%' : "20%",
             data: this.post.fb_scheduled_date
         });
 
