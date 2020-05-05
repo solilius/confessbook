@@ -5,6 +5,7 @@
         <mat-card-subtitle> נוצר על ידי: {{scheduler.create_by}} </mat-card-subtitle>
         <section class="slider">
             <mat-slide-toggle [checked]="scheduler.isActive" (change)="activateScheduler($event)">
+                <p class="toggle-label">סטטוס פעילות</p>
             </mat-slide-toggle>
         </section>
     </mat-card-header>

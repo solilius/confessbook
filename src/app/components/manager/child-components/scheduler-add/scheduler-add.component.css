@@ -19,6 +19,11 @@
   transform: rotateY(180deg);
 }
 
+.toggle-label{
+    padding: 12px 0 0 4px;
+    transform: rotateY(180deg);
+}
+
 ::ng-deep.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
   background-color: #089c1c !important;
 }
@@ -36,8 +41,22 @@ mat-form-field {
   width: 90%;
 }
 
+.btns{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.confirm-btn{
+    flex-basis: 74%;
+}
+
+.cancel-btn{
+    flex-basis: 25%;
+}
+
 button {
-  margin: 2% !important;
+  margin: 0.5% !important;
   width: 96%;
 }
 

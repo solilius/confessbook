@@ -17,6 +17,11 @@
   transform: scale(1.2) rotateY(180deg);
 }
 
+.toggle-label{
+    padding: 12px 0 0 4px;
+    transform: rotateY(180deg);
+}
+
 ::ng-deep.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
   background-color: #089c1c !important;
 }

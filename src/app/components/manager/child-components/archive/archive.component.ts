@@ -36,6 +36,7 @@ export class ArchiveComponent implements OnInit {
 
     removeConfession(id) {
         this.displayedConfessions = this.displayedConfessions.filter(c => c._id !== id);
+        this.confessions = this.confessions.filter(c => c._id !== id);
     }
 
     filter() {

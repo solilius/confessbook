@@ -30,7 +30,7 @@ export class ArchivedConfessionItemComponent implements OnInit {
             try {
                 this.commonService.setSpinnerMode(true);
                 await this.confessionsService.deleteConfession(this.confession._id);
-                await Swal.fire('הוידוי נחמחק בהצלחה!', '', 'success')
+                await Swal.fire('הוידוי נמחק בהצלחה!', '', 'success')
                 this.removeConfession.emit(this.confession._id);
             } catch (error) {
                 Swal.fire('אופס', 'מחיקת הוידוי נכשלה', 'error');

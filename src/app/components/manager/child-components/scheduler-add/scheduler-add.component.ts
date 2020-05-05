@@ -17,6 +17,7 @@ export class SchedulerAddComponent implements OnInit {
     ngOnInit(): void {
         this.scheduler = new Scheduler();
         this.scheduler.isActive = false;
+        this.scheduler.rule = "0 0 * * *"
     }
 
     initTag(tag: string) {
@@ -31,9 +32,12 @@ export class SchedulerAddComponent implements OnInit {
         this.scheduler.isActive = event.checked;
     }
 
+    close() {
+        this.dialogRef.close();
+    }
     async createScheduler() {
 
-        if (this.validateTag() && this.validateRule() && await this.validateName()) {
+        if (this.validateTag() && await this.validateRule() && await this.validateName()) {
             this.scheduler.create_by = localStorage.getItem('username');
             this.scheduler.name = this.name.nativeElement.value;
             this.dialogRef.close(this.scheduler);
@@ -44,7 +48,7 @@ export class SchedulerAddComponent implements OnInit {
         if (!this.name.nativeElement.value && this.name.nativeElement.value === "") {
             Swal.fire("אזהרה", "חובה למלא את השם לתזמון", "warning");
             return false;
-        } else if (this.schedulers.filter(t =>  t === this.name.nativeElement.value).length > 0) {
+        } else if (this.schedulers.filter(t => t === this.name.nativeElement.value).length > 0) {
             Swal.fire("אזהרה", "כבר קיים תזמון בשם זה", "warning");
 
             return false;
@@ -62,12 +66,24 @@ export class SchedulerAddComponent implements OnInit {
         }
     }
 
-    private validateRule() {
-        if (this.scheduler.rule) {
+     private async validateRule() {
+        if (this.scheduler.rule !== "0 0 * * *") {
             return true;
         } else {
-            Swal.fire("אזהרה", "חובה למלא את החוק לתזמון", "warning");
-            return false;
+            Swal.fire("אזהרה", "לא שינית את זמן התזמון הדיפולטי", "warning");
+            const swalRes = await Swal.fire({
+                title: 'אזהרה',
+                text:  "לא שינית את זמן התזמון הדיפולטי",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'שמור',
+                cancelButtonText: 'ביטול'
+            });
+            if(swalRes.value){
+                return true;
+            }else{
+                return false;
+            }
         }
     }
 }

@@ -1,13 +1,17 @@
 <mat-card class="scheduler">
-        <mat-form-field appearance="standard">
-            <mat-label>שם התזמון</mat-label>
-            <input matInput #name placeholder="תזמון חדש">
-        </mat-form-field>
-        <section class="slider">
-            <mat-slide-toggle [checked]="scheduler.isActive" (change)="initActivity($event)">
-            </mat-slide-toggle>
-        </section>
-        <app-tags-selector (tagSelected)="initTag($event)"></app-tags-selector>
-        <app-cron-job [job]="'0 0 * * *'" [isActive]="scheduler.isActive" (updateRule)="initRule($event)"></app-cron-job>
-        <button (click)="createScheduler()" mat-raised-button color="primary">צור</button>
+    <mat-form-field appearance="standard">
+        <mat-label>שם התזמון</mat-label>
+        <input matInput #name placeholder="תזמון חדש">
+    </mat-form-field>
+    <section class="slider">
+        <mat-slide-toggle [checked]="scheduler.isActive" (change)="initActivity($event)">
+        <p class="toggle-label">סטטוס פעילות</p>
+        </mat-slide-toggle>
+    </section>
+    <app-tags-selector (tagSelected)="initTag($event)"></app-tags-selector>
+    <app-cron-job [job]="'0 0 * * *'" [isActive]="scheduler.isActive" (updateRule)="initRule($event)"></app-cron-job>
+    <div class="btns">
+        <button (click)="close()" class="cancel-btn" mat-raised-button color="accent">ביטול</button>
+        <button (click)="createScheduler()" class="confirm-btn" mat-raised-button color="primary">צור</button>
+    </div>
 </mat-card>
