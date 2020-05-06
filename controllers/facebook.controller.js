@@ -82,8 +82,7 @@ const deletePost = async (req, res, next) => {
     await db.updateConfessionByQuery(
       { post_id: req.params.id },
       {
-        $unset: { post_id: 1 },
-        $unset: { fb_scheduled_date: 1 },
+        $unset: { post_id: 1, fb_scheduled_date: 1, serial: 1 },
         updated_by: req.query.user,
       }
     );
