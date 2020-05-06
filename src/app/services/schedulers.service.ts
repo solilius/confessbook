@@ -35,6 +35,7 @@ export class SchedulersService {
     }
 
     deleteScheduler(id: string): Promise<any> {
+        this.schedulers = this.schedulers.filter(s => s._id !== id);
         return this.service.request('delete', `${this.baseUrl}/${id}?user=${localStorage.getItem('username')}`);
     }
 
