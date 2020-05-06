@@ -7,7 +7,9 @@ const getConfessions = async (req, res, next) => {
     if (req.query.isArchived == "false") {
       query.post_id = { $exists: false };
     }
-    const confessions = await db.getConfessions(query);
+    const limit = parseInt(req.query.limit);
+    const page = parseInt(req.query.page);
+    const confessions = await db.getConfessions(query, limit, page);
     res.send(confessions);
   } catch (error) {
     next(error);

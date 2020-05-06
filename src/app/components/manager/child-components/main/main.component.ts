@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ConfessionsService } from '../../../../services/confessions.service';
 import { Confession } from '../../../../models/confession/confession.module'
-import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -11,14 +10,16 @@ import Swal from 'sweetalert2';
 })
 
 export class MainComponent implements OnInit {
-    confessions: Confession[];
+    @HostListener("scroll", ["$event"])
+    confessions: Confession[] = [];
+    pageLimit: number = 10;
+    page: number = 1;
+    constructor(private confessionsService: ConfessionsService) { }
 
-    constructor(private confessionsService: ConfessionsService, private router: Router) {
-        this.confessions = [];
-    }
     async ngOnInit(): Promise<any> {
         try {
-            this.confessions = await this.confessionsService.getConfessions(false);
+            this.confessions = await this.confessionsService.getConfessions(false, this.pageLimit, this.page);
+            this.page++;
         } catch (error) {
             console.log(error);
             Swal.fire({
@@ -34,13 +35,34 @@ export class MainComponent implements OnInit {
         this.confessions = this.confessions.filter(c => c._id !== id);
     }
 
-
     lastItemClicked(id) {
         if (id === this.confessions[this.confessions.length - 1]._id) {
             const objDiv = document.getElementById("confession-list");
             setTimeout(() => {
                 objDiv.scrollTop = objDiv.scrollHeight;
             }, 300);
+        }
+    }
+
+
+    async loadConfessions() {
+        try {
+            const loadedConfessions = await this.confessionsService.getConfessions(false, this.pageLimit, this.page);
+            this.confessions = this.confessions.concat(loadedConfessions);
+            this.page++;
+        } catch (error) {
+            console.log(error);
+            Swal.fire({
+                title: 'אופס',
+                text: error.error.message,
+                icon: 'warning',
+                confirmButtonText: 'אוקיי'
+            });
+        }
+    }
+    onScroll(event: any) {
+        if (event.target.offsetHeight + event.target.scrollTop >= event.target.scrollHeight) {
+            this.loadConfessions();
         }
     }
 }

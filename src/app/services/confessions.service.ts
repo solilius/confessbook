@@ -13,8 +13,8 @@ export class ConfessionsService {
         this.baseUrl = `${environment.server}/confessions`;
     }
 
-    getConfessions(isArchived: boolean): Promise<Confession[]> {
-        return this.service.request('get', `${this.baseUrl}?isArchived=${isArchived}`);
+    getConfessions(isArchived: boolean, limit: number, page: number): Promise<Confession[]> {
+        return this.service.request('get', `${this.baseUrl}?isArchived=${isArchived}&limit=${limit}&page=${page}`);
     }
 
     postConfession(confession: string): Promise<any> {

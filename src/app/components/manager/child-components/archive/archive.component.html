@@ -9,7 +9,7 @@
     </mat-card-content>
 </mat-card>
 
-<div id="confession-list" class="my-scroller">
+<div id="confession-list" class="my-scroller" (scroll)="onScroll($event)">
     <p *ngIf="displayedConfessions.length==0" class="empty-list">
         - אין וידויים להצגה -
     </p>

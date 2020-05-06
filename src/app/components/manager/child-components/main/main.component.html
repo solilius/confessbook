@@ -1,4 +1,4 @@
-<div id="confession-list" class="my-scroller">
+<div id="confession-list" class="my-scroller" (scroll)="onScroll($event)">
     <p *ngIf="confessions.length==0" class="empty-list">
        - אין וידויים להצגה -
     </p>

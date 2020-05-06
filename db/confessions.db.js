@@ -1,7 +1,10 @@
 const Confession = require("../models/confession");
 
-const getConfessions = (query) => {
-  return Confession.find(query).sort({ create_date: "asc" });
+const getConfessions = (query, limit, page) => {
+  return Confession.find(query)
+    .limit(limit || null)
+    .skip(limit * (page - 1) || 0)
+    .sort({ create_date: "asc" });
 };
 
 const getConfession = (query) => {
