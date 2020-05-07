@@ -1,7 +1,7 @@
 # Confessbook
 
 a confessions manager for Facebook confessions pages,
-allowing you to handle confession's posting and scheduling in a more orgenized way.
+allowing you to handle confession's posting and scheduling in a more organized way.
 [click here to see screenshots](https://confessbook.pixieset.com/confessbook/)
 
 #### Table of Contents
@@ -20,7 +20,7 @@ allowing you to handle confession's posting and scheduling in a more orgenized w
   * Posting the confession directly using Facebook API.
   * Schedule a single post for later publish.
   * Create an auto time based scheduler for tagged confessions. 
-  * Archiving deleteld and posted confessions.
+  * Archiving deleted and posted confessions.
   * Token based security for authentication.
 
 
@@ -37,12 +37,12 @@ allowing you to handle confession's posting and scheduling in a more orgenized w
 * first make sure you have a Developer Account go [Here](https://developers.facebook.com/docs/pages/getting-started/) and scroll down until you see a button saying _Create Developer Account_ and click it.
 * click next and for _"as Which of the following best describes you?"_ choose _Developer_.
 * then click _Create You First App_ and name it as your page.
-* after it's creatred it will redirect you to the app managment page, on your left side go to _Setting > Basic_  amd in the _Privacy Policy URL_ input box paste this: <br/>
+* after it's created it will redirect you to the app management page, on your left side go to _Setting_ > _Basic_  and in the _Privacy_ _Policy URL_ input box paste this: <br/>
 `https://www.privacypolicies.com/generic/?fbclid=IwAR2HttnlhNRWmfgZrd3aWGsaOF7FCe6p_RadxFTAH-68d2YXLxAmY9jU14M` <br/>
 and click _Save Changes_ button on the bottom of the page.
-* now you need to varify yourself in order to get an app review ( required: passport, ID, driver license ).
+* now you need to verify yourself in order to get an app review ( required: passport, ID, driver license ).
 * after you are verified you need to request permissions for _manage_pages_ and _publish_pages_. and give them all the data they need to access and check the app ( url to the site, user and password ). you also need to record a video of how to you are using the permissions. ( feel free to [contact me](mailto:sol.elan.x@gmail.com) if you need help with this process ),
-* after you got approved, on the top left you will see _In development_  toogle, click it,  _Choose a Category_ > _Businnes and Pages_, and then click _Switch Mode_. the toggle should show _Live_ now.
+* after you got approved, on the top left you will see _In development_  toggle, click it,  _Choose a Category_ > _Businnes and Pages_, and then click _Switch Mode_. the toggle should show _Live_ now.
 <br/>
 
 ##### 2. Access Token
@@ -129,7 +129,7 @@ INTRO=don't be shy just confess!
 
 <br/>
 
-**Heroku Cloud Platrofm**
+**Heroku Cloud Platform**
 
 * go to [Heroku](https://www.heroku.com/). sign up/in. ( if you sign up choose NodeJS as _your Primary development language_, and Other as _Role_ )
 * Create a new app, choose an _App name_ and a _region_ and click _Create app_.
@@ -148,16 +148,16 @@ This is the route your confessors will access to send their confessions.
 
 ### Login
 `http://your-app.domain` + `/login`
-You will be moved here automaticlly if you try to go to `/manager`
-and only after the authentication you will be rediredted there.
+You will be moved here automatically if you try to go to `/manager`
+and only after the authentication you will be redirected there.
 
 ### Manage Confessions
 `http://your-app.domain` + `/manager` + `/main`
 Here you can view all the pending confessions
-click one one to expend and reveal all the confession.
+click one one to expand and reveal all the confession.
 you can edit it and add a comment before posting it.
 or delete it which will move it to the archive.
-also, you can schdule a confession for later publish by Facebook or add a custom tag and let our schedulers to post it in time.
+also, you can schedule a confession for later publish by Facebook or add a custom tag and let our schedulers to post it in time.
 
 ### Schedulers
 `http://your-app.domain` + `/manager` + `/scheduler`
