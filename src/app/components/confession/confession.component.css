@@ -6,12 +6,13 @@ body {
   display: flex;
   flex-direction: column;
   width: 100vw;
-  padding-top: 15vh;
+  height: 100vh;
   align-items: center;
+  justify-content: center;
 }
 
 .title {
-  font-size: 3vh;
+  font-size: 35px;
   font-weight: bolder;
   padding-bottom: 6vh;
 }
