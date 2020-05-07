@@ -49,7 +49,8 @@ const scheduledPost = async (confession) => {
 
 const updateScheduledPost = async (confession) => {
   try {
-    const time = new Date(confession.fb_scheduled_date).getTime() / 1000;
+    const date =  new Date(confession.fb_scheduled_date).toISOString();
+    const time = new Date(date).getTime() / 1000;
     const res = await axios.post(
       `https://graph.facebook.com/${confession.post_id}?published=false&scheduled_publish_time=${time}`,
       foramtBody(confession)
